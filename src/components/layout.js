@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm, scale } from 'utils/typography'
 /* -------------------------------------------------------------------------- */
 
 class Layout extends React.Component {

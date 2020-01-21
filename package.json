@@ -45,6 +45,7 @@
     "eslint-plugin-react": "^7.18.0",
     "eslint-plugin-react-hooks": "^2.3.0",
     "gatsby-plugin-eslint": "^2.0.8",
+    "gatsby-plugin-root-import": "^2.0.5",
     "gh-pages": "^2.2.0",
     "prettier": "^1.19.1"
   },
