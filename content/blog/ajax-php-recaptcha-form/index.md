@@ -1,9 +1,9 @@
 ---
 title: How to create a AJAX Form in PHP with Google Recaptcha
-date: "2018-08-03T11:37:59.000Z"
-image: "./contact-form.PNG"
-categories: ["code"]
-tags: ["code", "javascript", "php", "ajax", "webdev"]
+date: '2018-08-03T11:37:59.000Z'
+image: './contact-form.PNG'
+categories: ['code']
+tags: ['code', 'javascript', 'php', 'ajax', 'webdev']
 ---
 
 Recently, at my software development internship I was tasked to redo our company webpage including a new design.

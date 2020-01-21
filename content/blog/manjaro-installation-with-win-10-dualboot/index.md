@@ -1,10 +1,10 @@
 ---
 title: Manjaro Installation with Windows 10 dualboot
-date: "2017-07-28T13:06:00.000Z"
+date: '2017-07-28T13:06:00.000Z'
 description: On my personal machine I like to use Manjaro as my primary operating system, but sometimes having Windows ready can be very useful.
-image: "./installer1.png"
-categories: ["linux"]
-tags: ["linux"]
+image: './installer1.png'
+categories: ['linux']
+tags: ['linux']
 ---
 
 On my personal machine I like to use Manjaro as my primary operating system, but sometimes having Windows ready can be very useful. I mainly use it to watch Netflix, play games, or try out some Windows programs. I will describe in the following post how I configured my Laptop to dualboot Manjaro and Windows 10 Education.
