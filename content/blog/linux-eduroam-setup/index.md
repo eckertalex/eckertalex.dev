@@ -1,10 +1,10 @@
 ---
 title: Eduroam setup for Linux at UAF
-date: "2017-07-31T06:26:00.000Z"
+date: '2017-07-31T06:26:00.000Z'
 description: If you are running a Linux distribution with the KDE environment, then this should be pretty easy to follow in order to set up eduroam on your machine. The network manager interface for other Linux window managers (like Ubuntu Unity, xfce4, etc) should be pretty similar.
-image: "./eduroam_conf.png"
-categories: ["wifi", "linux"]
-tags: ["wifi", "linux"]
+image: './eduroam_conf.png'
+categories: ['wifi', 'linux']
+tags: ['wifi', 'linux']
 ---
 
 If you are running a Linux distribution with the KDE environment, then this should be pretty easy to follow in order to set up eduroam on your machine. The network manager interface for other Linux window managers (like Ubuntu Unity, xfce4, etc) should be pretty similar. Even the setup process for an Android phone is very similar.

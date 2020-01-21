@@ -1,8 +1,10 @@
-import React from "react"
-import { graphql } from "gatsby"
+import React from 'react'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from 'components/layout'
+import SEO from 'components/seo'
+/* -------------------------------------------------------------------------- */
 
 class NotFoundPage extends React.Component {
   render() {
@@ -17,6 +19,19 @@ class NotFoundPage extends React.Component {
       </Layout>
     )
   }
+}
+
+NotFoundPage.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default NotFoundPage

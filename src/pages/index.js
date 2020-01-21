@@ -1,10 +1,12 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import Bio from 'components/bio'
+import Layout from 'components/layout'
+import SEO from 'components/seo'
+import { rhythm } from 'utils/typography'
+/* -------------------------------------------------------------------------- */
 
 class BlogIndex extends React.Component {
   render() {
@@ -45,6 +47,20 @@ class BlogIndex extends React.Component {
       </Layout>
     )
   }
+}
+
+BlogIndex.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    allMarkdownRemark: PropTypes.shape().isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
 }
 
 export default BlogIndex

@@ -1,7 +1,9 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from 'utils/typography'
+/* -------------------------------------------------------------------------- */
 
 class Layout extends React.Component {
   render() {
@@ -70,6 +72,14 @@ class Layout extends React.Component {
       </div>
     )
   }
+}
+
+Layout.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
 }
 
 export default Layout

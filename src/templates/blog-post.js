@@ -1,10 +1,12 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React from 'react'
+import { Link, graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import { rhythm, scale } from "../utils/typography"
+import Bio from 'components/bio'
+import Layout from 'components/layout'
+import SEO from 'components/seo'
+import { rhythm, scale } from 'utils/typography'
+/* -------------------------------------------------------------------------- */
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -14,10 +16,7 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
+        <SEO title={post.frontmatter.title} description={post.frontmatter.description || post.excerpt} />
         <article>
           <header>
             <h1
@@ -78,6 +77,21 @@ class BlogPostTemplate extends React.Component {
       </Layout>
     )
   }
+}
+
+BlogPostTemplate.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+    markdownRemark: PropTypes.shape().isRequired,
+  }).isRequired,
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  pageContext: PropTypes.shape().isRequired,
 }
 
 export default BlogPostTemplate

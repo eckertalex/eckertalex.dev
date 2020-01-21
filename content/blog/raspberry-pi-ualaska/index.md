@@ -1,9 +1,9 @@
 ---
 title: Connecting Raspberry Pi 3 with UAlaska
-date: "2017-10-17T17:06:00.000Z"
-image: ""
-categories: ["wifi"]
-tags: ["wifi", "gaming"]
+date: '2017-10-17T17:06:00.000Z'
+image: ''
+categories: ['wifi']
+tags: ['wifi', 'gaming']
 ---
 
 With the release of the **Super Nintendo Classic Edition** I decided to revive my **Raspberry Pi 3** running [Retropie][retropie] so that I can enjoy the SNES games without spending more money.  
