@@ -1,0 +1,3 @@
+User-agent: *
+
+sitemap: https://eckertalex.dev/sitemap.xml
