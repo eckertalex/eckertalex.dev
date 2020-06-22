@@ -42,6 +42,21 @@ slug: "/vscode"
   - [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
   - [VisualStudioExptTeam.vscodeintellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
   - [WallabyJs.quokka-vscode](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
+- Snippets
+```json:title=sep.code-snippets
+{
+  // For JS/TS I like to insert a line to separate imports from code
+  "Insert Separator Line": {
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "prefix": "sep",
+    "body": [
+      "/* -------------------------------------------------------------------------- */",
+      "$0"
+    ],
+    "description": "Inserts a separator line."
+  },
+}
+```
 - Settings
 ```json:title=settings.json
 {
