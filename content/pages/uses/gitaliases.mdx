@@ -1,0 +1,74 @@
+---
+title: Git Aliases
+slug: "/gitaliases"
+---
+
+Most of the aliases that I use come with the oh-my-zsh plugin [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git/).
+
+```bash:title=.gitalias.txt {16,20,25,28,31,34,39,46,50,55,58,61,65}
+# ## Usage
+#
+# Typical usage for a typical user:
+#
+#   * Save this file as a dot file in your home directory: `~/.gitalias.txt`
+#
+#   * Edit your git config dot file in your home directory such as  `~/.gitconfig`
+#
+#   * Include the path to this file.
+#
+# Example file `~/.gitconfig` with an entry to include the file `~/.gitalias.txt`:
+#
+#     [include]
+#       path = gitalias.txt
+
+[alias]
+  ### ALIAS MANAGEMENT ###
+
+  # Show our defined alias list
+  aliases = "!git config --get-regexp '^alias\\.' | cut -c 7- | sed 's/ / = /'"
+
+  ### LOOKUP ALIASES ###
+
+  # whois: given a string for an author, try to figure out full name and email:
+  whois = "!sh -c 'git log --regexp-ignore-case -1 --pretty=\"format:%an <%ae>\n\" --author=\"$1\"' -"
+
+  # Given any git object, try to show it briefly
+  whatis = show --no-patch --pretty='tformat:%h (%s, %ad)' --date=short
+
+  # Show who contributed with summarized changes
+  who = shortlog --summary --
+
+  # Show who contributed, in descending order by number of commits
+  whorank = shortlog --summary --numbered --no-merges
+
+  ### WORKFLOW ALIASES ###
+
+  # Discard changes in a (list of) file(s) in working tree
+  discard = checkout --
+
+  # Clean and discard changes and untracked files in working tree
+  cleanout = !git clean -df && git checkout -- .
+
+  # Publish the current branch by pushing it to the remote "origin",
+  # and setting the current branch to track the upstream branch.
+  publish = !"git push --set-upstream origin $(git branch-name)"
+
+  # Unpublish the current branch by deleting the
+  # remote version of the current branch.
+  unpublish = !"git push origin :$(git branch-name)"
+
+  ### SHELL SCRIPTING ALIASES ###
+
+  # Get the top level directory name
+  top-name = rev-parse --show-toplevel
+
+  # Get the current branch name
+  branch-name = rev-parse --abbrev-ref HEAD
+
+  # Get the upstream branch name
+  upstream-name = !git for-each-ref --format='%(upstream:short)' $(git symbolic-ref -q HEAD)
+
+  # Execute shell scripts. Git always runs scripts in the top directory.
+  # For example "git exec pwd" will always show you the top directory.
+  exec = ! exec
+```
