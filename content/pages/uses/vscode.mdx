@@ -8,6 +8,7 @@ slug: "/vscode"
 - [Theme](#theme)
 - [Extensions](#extensions)
 - [Snippets](#snippets)
+- [Keybindings](#keybindings)
 - [Settings](#settings)
 - [How to generate a list of VSCode Extensions](#generate-extension-list)
 
@@ -58,6 +59,49 @@ slug: "/vscode"
 
 ### <a name="snippets"></a>Snippets
 
+```json:title=keybindings.json
+[
+  /**
+   * Activity Bar
+   **/
+  {
+    "key": "cmd+k cmd+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "workbench.view.extension.gitlens"
+  },
+  {
+    "key": "cmd+k cmd+h",
+    "command": "workbench.view.extension.github-pull-requests"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.view.extension.projects"
+  },
+  {
+    "key": "cmd+k cmd+l",
+    "command": "workbench.view.extension.liveshare"
+  },
+  {
+    "key": "cmd+k cmd+x",
+    "command": "workbench.view.extensions"
+  }
+]
+
+```
+
+### <a name="keybindings"></a>Keybindings
+
 ```json:title=sep.code-snippets
 {
   // For JS/TS I like to insert a line to separate imports from code
@@ -72,11 +116,26 @@ slug: "/vscode"
   },
 }
 ```
+
 ### <a name="settings"></a>Settings
 
 ```json:title=settings.json
 {
-  // Editor
+  /**
+   * Workbench
+   **/
+  "workbench.colorTheme": "Borealis",
+  "workbench.preferredDarkColorTheme": "Borealis",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": false,
+  "workbench.editor.limit.value": 10,
+  "workbench.activityBar.visible": false,
+  "workbench.settings.editor": "json",
+  /**
+   * Editor
+   **/
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
   "editor.wordBasedSuggestions": false,
@@ -90,7 +149,9 @@ slug: "/vscode"
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  // Editor Font
+  /**
+   * Editor Font
+   **/
   "editor.fontFamily": "'Dank Mono'",
   "editor.fontSize": 16,
   "editor.lineHeight": 25,
@@ -98,7 +159,9 @@ slug: "/vscode"
   "editor.fontLigatures": true,
   "editor.glyphMargin": true,
   "editor.fontWeight": "normal",
-  // Editor Cursor
+  /**
+   * Editor Cursor
+   **/
   "editor.cursorStyle": "line",
   "editor.cursorBlinking": "solid",
   "editor.cursorWidth": 3,
@@ -106,14 +169,18 @@ slug: "/vscode"
   "editor.multiCursorModifier": "alt",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.smoothScrolling": true,
-  // Editor Rendering
+  /**
+   * Editor Rendering
+   **/
   "editor.minimap.showSlider": "always",
   "editor.mouseWheelZoom": false,
   "editor.renderControlCharacters": false,
   "editor.renderIndentGuides": true,
   "editor.renderWhitespace": "all",
   "editor.rulers": [80, 120],
-  // Files
+  /**
+   * Files
+   **/
   "files.eol": "\n",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
@@ -134,14 +201,22 @@ slug: "/vscode"
     "**/.settings": true,
     "**/.factorypath": true
   },
-  // Breadcrumbs
+  /**
+   * Breadcrumbs
+   **/
   "breadcrumbs.enabled": true,
-  // Debug
+  /**
+   * Debug
+   **/
   "debug.javascript.codelens.npmScripts": "never",
-  // Git
+  /**
+   * Git
+   **/
   "git.autofetch": true,
   "git.enableSmartCommit": true,
-  // Terminal
+  /**
+   * Terminal
+   **/
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
   "terminal.integrated.shell.osx": "zsh",
   "terminal.integrated.shell.linux": "zsh",
@@ -151,15 +226,9 @@ slug: "/vscode"
   "terminal.integrated.fontFamily": "'Dank Mono'",
   "terminal.integrated.fontSize": 16,
   "terminal.integrated.confirmOnExit": false,
-  // Workbench
-  "workbench.colorTheme": "Borealis",
-  "workbench.preferredDarkColorTheme": "Borealis",
-  "workbench.iconTheme": "material-icon-theme",
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.limit.enabled": true,
-  "workbench.editor.limit.perEditorGroup": false,
-  "workbench.editor.limit.value": 10,
-  // Search
+  /**
+   * Search
+   **/
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -169,11 +238,16 @@ slug: "/vscode"
     "**/.build": true,
     "**/.gh-pages": true
   },
-  // Language-Specific
+  /**
+   * Language-Specific
+   **/
+  // Markdown
   "[markdown]": {
     "editor.quickSuggestions": true,
     "files.trimTrailingWhitespace": false
   },
+  "markdown.preview.breaks": true,
+  // JavaScript
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.suggestSelection": "recentlyUsed",
@@ -184,6 +258,11 @@ slug: "/vscode"
     "editor.suggestSelection": "recentlyUsed",
     "editor.suggest.showKeywords": false
   },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.suggest.autoImports": false,
+  "javascript.format.enable": true,
+  "javascript.validate.enable": false,
+  // TypeScript
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.suggestSelection": "recentlyUsed",
@@ -194,18 +273,16 @@ slug: "/vscode"
     "editor.suggestSelection": "recentlyUsed",
     "editor.suggest.showKeywords": false
   },
-  "javascript.updateImportsOnFileMove.enabled": "never",
-  "javascript.format.enable": true,
-  "javascript.suggest.autoImports": false,
-  "javascript.validate.enable": false,
   "typescript.updateImportsOnFileMove.enabled": "never",
   "typescript.suggest.autoImports": false,
+  // HMTL
   "html.format.endWithNewline": true,
   "html.format.indentHandlebars": true,
   "html.format.indentInnerHtml": true,
   "html.format.wrapLineLength": 80,
-  "markdown.preview.breaks": true,
-  // Extensions
+  /**
+   * Extensions
+   **/
   // Spellright
   "spellright.language": ["en", "de"],
   "spellright.documentTypes": ["markdown", "plaintext", "mdx"],
