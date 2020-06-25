@@ -1,6 +1,6 @@
 ---
 title: Visual Studio Code Configuration
-slug: "/vscode"
+slug: '/vscode'
 ---
 
 ### Content
@@ -12,10 +12,9 @@ slug: "/vscode"
 - [Settings](#settings)
 - [How to generate a list of VSCode Extensions](#generate-extension-list)
 
-
 ### <a name="theme"></a>Theme
 
-  [Borealis Theme for VSCode](https://github.com/eckertalex/borealis-vscode)
+[Borealis Theme for VSCode](https://github.com/eckertalex/borealis-vscode)
 
 ### <a name="extensions"></a>Extensions
 
@@ -54,7 +53,8 @@ slug: "/vscode"
 - [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [VisualStudioExptTeam.vscodeintellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 - [WallabyJs.quokka-vscode](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
-- 
+-
+
 ### <a name="snippets"></a>Snippets
 
 ```json:title=keybindings.json
@@ -95,7 +95,6 @@ slug: "/vscode"
     "command": "workbench.view.extensions"
   }
 ]
-
 ```
 
 ### <a name="keybindings"></a>Keybindings
@@ -111,7 +110,7 @@ slug: "/vscode"
       "$0"
     ],
     "description": "Inserts a separator line."
-  },
+  }
 }
 ```
 
@@ -131,6 +130,7 @@ slug: "/vscode"
   "workbench.editor.limit.value": 10,
   "workbench.activityBar.visible": false,
   "workbench.settings.editor": "json",
+  "workbench.panel.defaultLocation": "right",
   /**
    * Editor
    **/
@@ -216,6 +216,7 @@ slug: "/vscode"
    * Terminal
    **/
   "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "terminal.integrated.shellArgs.osx": ["-l"],
   "terminal.integrated.shell.osx": "zsh",
   "terminal.integrated.shell.linux": "zsh",
   "terminal.integrated.scrollback": 100000,
@@ -343,9 +344,10 @@ slug: "/vscode"
 
 <hr />
 
-### <a name="generate-extension-list"></a>How to generate a list of VSCode Extensions 
+### <a name="generate-extension-list"></a>How to generate a list of VSCode Extensions
 
-I just load the following snippet up in a Quokka buffer​​​​ and the list will be copied to my clipboard.
+I just load the following snippet up in a Quokka buffer​​​​ and the list will be
+copied to my clipboard.
 
 ```js:title=generate-vscode-extensions-list.js
 const {execSync, spawn} = require('child_process')
@@ -356,7 +358,7 @@ const list = String(result)
   .split('\n')
   .filter(Boolean)
   .map(
-    x => `- [${x}](https://marketplace.visualstudio.com/items?itemName=${x})`
+    (x) => `- [${x}](https://marketplace.visualstudio.com/items?itemName=${x})`,
   )
   .join('\n')
 
@@ -366,4 +368,5 @@ proc.stdin.write(list)
 proc.stdin.end()
 ```
 
-Credit: [Kent C. Dodds](https://github.com/kentcdodds/ama/issues/406#issuecomment-391764106)
+Credit:
+[Kent C. Dodds](https://github.com/kentcdodds/ama/issues/406#issuecomment-391764106)
