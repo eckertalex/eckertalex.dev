@@ -99,9 +99,8 @@ slug: '/vscode'
 
 ### <a name="keybindings"></a>Keybindings
 
-```json:title=sep.code-snippets
+```json:title=js-ts.code-snippets
 {
-  // For JS/TS I like to insert a line to separate imports from code
   "Insert Separator Line": {
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
     "prefix": "sep",
@@ -110,6 +109,149 @@ slug: '/vscode'
       "$0"
     ],
     "description": "Inserts a separator line."
+  },
+  "console.log": {
+    "prefix": "cl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log(${1:'here'})$0"
+  },
+  "console.log('var', var)": {
+    "prefix": "vl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log('$1', $1)$0"
+  },
+  "import x from '": {
+    "prefix": "imp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "import ${2:*} from '$1'$3"
+  },
+  "eslint disable next line": {
+    "prefix": "eslnl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-next-line $1"
+  },
+  "eslint disable line": {
+    "prefix": "esll",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-line $1"
+  },
+  "try/catch": {
+    "prefix": "try",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["try {", "  $1", "} catch (error) {", "  $0", "}"]
+  },
+  "function": {
+    "prefix": "fun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["function $1($2) {", "  $0", "}"]
+  },
+  "async function": {
+    "prefix": "afun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["async function $1($2) {", "  $0", "}"]
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "switch (${1:key}) {",
+      "  case ${2:value}: {",
+      "    $0",
+      "    break",
+      "  }",
+      "  default: {",
+      "    break",
+      "  }",
+      "}"
+    ]
+  },
+  "Reducer": {
+    "prefix": "reducer",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "function ${1:someReducer}(state, action) {",
+      "  switch (action.type) {",
+      "    case ${2:'value'}: {",
+      "      return $0",
+      "    }",
+      "    default: {",
+      "      throw new Error(`Unhandled action type: ${action.type}`)",
+      "    }",
+      "  }",
+      "}"
+    ]
+  },
+  "Switch case": {
+    "prefix": "case",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["case ${2:'value'}: {", "  return $0", "}"]
+  },
+  "React function component": {
+    "prefix": "comp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "import React from 'react'",
+      "/* -------------------------------------------------------------------------- */",
+      "",
+      "export default function $1($2) {",
+      "  $3",
+      "  return (",
+      "    $0",
+      "  )",
+      "}"
+    ]
+  },
+  "useState": {
+    "prefix": "us",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const [${1:state}, ${2:setState}] = useState($3)$0"]
+  },
+  "useEffect": {
+    "prefix": "uf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "React.useEffect(() => {",
+      "  $1",
+      "",
+      "  return () => {",
+      "    $0",
+      "  }",
+      "}, [])"
+    ]
+  },
+  "useReducer": {
+    "prefix": "ur",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "const [state, dispatch] = useReducer(${1:someReducer}, {",
+      "  $0",
+      "})"
+    ]
+  },
+  "useRef": {
+    "prefix": "urf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const ${1:someRef} = useRef($2)$0"]
+  },
+  "Jest test": {
+    "prefix": "test",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', () => {", "  $0", "})"]
+  },
+  "Jest async test": {
+    "prefix": "atest",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', async () => {", "  $0", "})"]
+  },
+  "Mocha it block": {
+    "prefix": "it",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["it('$1', () => {", "  $2", "})"]
+  },
+  "Mocha describe block": {
+    "prefix": "desc",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["describe('$1', () => {", "  $2", "})"]
   }
 }
 ```
