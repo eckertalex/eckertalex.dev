@@ -1,0 +1,571 @@
+---
+title: "Visual Studio Code Configuration"
+---
+
+### Content
+
+- [Theme](#theme)
+- [Extensions](#extensions)
+- [Snippets](#snippets)
+- [Keybindings](#keybindings)
+- [Settings](#settings)
+- [How to generate a list of VSCode Extensions](#how-to-generate-a-list-of-vscode-extensions)
+
+### Theme
+
+[Borealis Theme for VSCode](https://github.com/eckertalex/borealis-vscode)
+
+### Extensions
+
+- [bradgashler.htmltagwrap](https://marketplace.visualstudio.com/items?itemName=bradgashler.htmltagwrap)
+- [bradlc.vscode-tailwindcss](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
+- [BriteSnow.vscode-toggle-quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
+- [christian-kohler.npm-intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense)
+- [christian-kohler.path-intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
+- [CoenraadS.bracket-pair-colorizer-2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
+- [CoenraadS.disableligatures](https://marketplace.visualstudio.com/items?itemName=CoenraadS.disableligatures)
+- [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [docsmsft.docs-markdown](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-markdown)
+- [docsmsft.docs-preview](https://marketplace.visualstudio.com/items?itemName=docsmsft.docs-preview)
+- [eckertalex.borealis](https://marketplace.visualstudio.com/items?itemName=eckertalex.borealis)
+- [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [fabiospampinato.vscode-projects-plus](https://marketplace.visualstudio.com/items?itemName=fabiospampinato.vscode-projects-plus)
+- [firefox-devtools.vscode-firefox-debug](https://marketplace.visualstudio.com/items?itemName=firefox-devtools.vscode-firefox-debug)
+- [formulahendry.auto-close-tag](https://marketplace.visualstudio.com/items?itemName=formulahendry.auto-close-tag)
+- [johnpapa.vscode-peacock](https://marketplace.visualstudio.com/items?itemName=johnpapa.vscode-peacock)
+- [mgmcdermott.vscode-language-babel](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel)
+- [mikestead.dotenv](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
+- [mrmlnc.vscode-duplicate](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate)
+- [msjsdiag.debugger-for-chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
+- [naumovs.color-highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
+- [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
+- [PKief.material-icon-theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [silvenon.mdx](https://marketplace.visualstudio.com/items?itemName=silvenon.mdx)
+- [steoates.autoimport](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport)
+- [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+- [VisualStudioExptTeam.vscodeintellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+- [WallabyJs.quokka-vscode](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
+
+### Keybindings
+
+```json:title=keybindings.json
+[
+  /**
+   * Activity Bar
+   **/
+  {
+    "key": "cmd+k cmd+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.view.extension.projects"
+  },
+  {
+    "key": "cmd+k cmd+x",
+    "command": "workbench.view.extensions"
+  },
+  /**
+   * Editor Group
+   **/
+  {
+    "key": "cmd+e cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  /**
+   * Terminal
+   **/
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+  /**
+   * ZEN MODE
+   **/
+  {
+    "key": "cmd+k cmd+k",
+    "command": "workbench.action.toggleZenMode"
+  },
+  /**
+   * File Explorer
+   **/
+  {
+    "key": "cmd+d",
+    "command": "duplicate.execute",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.files.action.refreshFilesExplorer",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  }
+]
+```
+
+### Snippets
+
+```json:title=js-ts.code-snippets
+{
+  "Insert Separator Line": {
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "prefix": "sep",
+    "body": [
+      "/* -------------------------------------------------------------------------- */",
+      "$0"
+    ],
+    "description": "Inserts a separator line."
+  },
+  "console.log": {
+    "prefix": "cl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log(${1:'here'})$0"
+  },
+  "console.log('var', var)": {
+    "prefix": "vl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log('$1', $1)$0"
+  },
+  "import x from '": {
+    "prefix": "imp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "import ${2:*} from '$1'$3"
+  },
+  "eslint disable next line": {
+    "prefix": "eslnl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-next-line $1"
+  },
+  "eslint disable line": {
+    "prefix": "esll",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-line $1"
+  },
+  "try/catch": {
+    "prefix": "try",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["try {", "  $1", "} catch (error) {", "  $0", "}"]
+  },
+  "function": {
+    "prefix": "fun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["function $1($2) {", "  $0", "}"]
+  },
+  "async function": {
+    "prefix": "afun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["async function $1($2) {", "  $0", "}"]
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "switch (${1:key}) {",
+      "  case ${2:value}: {",
+      "    $0",
+      "    break",
+      "  }",
+      "  default: {",
+      "    break",
+      "  }",
+      "}"
+    ]
+  },
+  "Reducer": {
+    "prefix": "reducer",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "function ${1:someReducer}(state, action) {",
+      "  switch (action.type) {",
+      "    case ${2:'value'}: {",
+      "      return $0",
+      "    }",
+      "    default: {",
+      "      throw new Error(`Unhandled action type: ${action.type}`)",
+      "    }",
+      "  }",
+      "}"
+    ]
+  },
+  "Switch case": {
+    "prefix": "case",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["case ${2:'value'}: {", "  return $0", "}"]
+  },
+  "React function component": {
+    "prefix": "comp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "import React from 'react'",
+      "/* -------------------------------------------------------------------------- */",
+      "",
+      "export default function $1($2) {",
+      "  $3",
+      "  return (",
+      "    $0",
+      "  )",
+      "}"
+    ]
+  },
+  "useState": {
+    "prefix": "us",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const [${1:state}, ${2:setState}] = React.useState($3)$0"]
+  },
+  "useEffect": {
+    "prefix": "uf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "React.useEffect(() => {",
+      "  $1",
+      "",
+      "  return () => {",
+      "    $0",
+      "  }",
+      "}, [])"
+    ]
+  },
+  "useReducer": {
+    "prefix": "ur",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "const [state, dispatch] = React.useReducer(${1:someReducer}, {",
+      "  $0",
+      "})"
+    ]
+  },
+  "useMemo": {
+    "prefix": "um",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const memoized$0 = React.useMemo(() => $1, [])"]
+  },
+  "useRef": {
+    "prefix": "urf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const ${1:someRef} = React.useRef($2)$0"]
+  },
+  "Jest test": {
+    "prefix": "test",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', () => {", "  $0", "})"]
+  },
+  "Jest async test": {
+    "prefix": "atest",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', async () => {", "  $0", "})"]
+  },
+  "Mocha it block": {
+    "prefix": "it",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["it('$1', () => {", "  $2", "})"]
+  },
+  "Mocha describe block": {
+    "prefix": "desc",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["describe('$1', () => {", "  $2", "})"]
+  }
+}
+```
+
+### Settings
+
+```json:title=settings.json
+{
+  /**
+   * Window
+   **/
+  "window.title": "${activeEditorMedium}${separator}${rootName} ${dirty}",
+  /**
+   * Explorer
+   **/
+  "explorer.openEditors.visible": 0,
+  /**
+   * Workbench
+   **/
+  "workbench.colorTheme": "Borealis",
+  "workbench.preferredDarkColorTheme": "Borealis",
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": false,
+  "workbench.editor.limit.value": 10,
+  "workbench.activityBar.visible": false,
+  "workbench.settings.editor": "json",
+  "workbench.panel.defaultLocation": "right",
+  "workbench.editor.showTabs": false,
+  "workbench.sideBar.location": "right",
+  "workbench.statusBar.visible": false,
+  "workbench.startupEditor": "none",
+  /**
+   * Editor
+   **/
+  "editor.emptySelectionClipboard": false,
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.quickSuggestionsDelay": 0,
+  "editor.formatOnPaste": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.codeLens": false,
+  "editor.minimap.enabled": false,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "first",
+  "editor.wordBasedSuggestions": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrapColumn": 120,
+  "editor.dragAndDrop": false,
+  "editor.formatOnSave": true,
+  "editor.semanticHighlighting.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  /**
+   * Editor Font
+   **/
+  "editor.fontFamily": "'Dank Mono'",
+  "editor.fontSize": 16,
+  "editor.lineHeight": 28,
+  "editor.letterSpacing": 0.5,
+  "editor.suggestFontSize": 14,
+  "editor.suggestLineHeight": 25,
+  "editor.fontLigatures": true,
+  "editor.glyphMargin": true,
+  "editor.fontWeight": "normal",
+  /**
+   * Editor Cursor
+   **/
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorWidth": 3,
+  "editor.hideCursorInOverviewRuler": false,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+  /**
+   * Editor Rendering
+   **/
+  "editor.minimap.showSlider": "always",
+  "editor.mouseWheelZoom": false,
+  "editor.renderControlCharacters": false,
+  "editor.renderIndentGuides": false,
+  "editor.renderWhitespace": "all",
+  "editor.renderLineHighlight": "none",
+  "editor.matchBrackets": "never",
+  "editor.lineNumbers": "on",
+  "editor.rulers": [80, 120],
+  /**
+   * Zen mode
+   **/
+  "zenMode.fullScreen": false,
+  /**
+   * Files
+   **/
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.autoSave": "onFocusChange",
+  "files.hotExit": "onExit",
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "files.associations": {
+    "*.jsx": "javascriptreact",
+    "*.js": "javascript",
+    "*.mdx": "mdx"
+  },
+  "files.exclude": {
+    "USE_GITIGNORE": true,
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  /**
+   * Debug
+   **/
+  "debug.javascript.codelens.npmScripts": "never",
+  /**
+   * Git
+   **/
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  /**
+   * Terminal
+   **/
+  "terminal.integrated.shell.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "terminal.integrated.shell.osx": "zsh",
+  "terminal.integrated.shell.linux": "zsh",
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": false,
+  "terminal.integrated.fontFamily": "'Dank Mono'",
+  "terminal.integrated.fontSize": 16,
+  "terminal.integrated.confirmOnExit": false,
+  /**
+   * Search
+   **/
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/build": true,
+    "**/.build": true,
+    "**/.gh-pages": true
+  },
+  /**
+   * Language-Specific
+   **/
+  // mdx
+  "[mdx]": {
+    "editor.quickSuggestions": true,
+    "files.trimTrailingWhitespace": false
+  },
+  // Markdown
+  "[markdown]": {
+    "editor.quickSuggestions": true,
+    "files.trimTrailingWhitespace": false
+  },
+  "markdown.preview.breaks": true,
+  // JavaScript
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.suggest.showKeywords": false
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.suggest.showKeywords": false
+  },
+  "javascript.updateImportsOnFileMove.enabled": "never",
+  "javascript.suggest.autoImports": false,
+  "javascript.format.enable": true,
+  "javascript.validate.enable": false,
+  // TypeScript
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.suggest.showKeywords": false
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.suggestSelection": "recentlyUsed",
+    "editor.suggest.showKeywords": false
+  },
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "typescript.suggest.autoImports": false,
+  // HMTL
+  "html.format.endWithNewline": true,
+  "html.format.indentHandlebars": true,
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapLineLength": 80,
+  /**
+   * Extensions
+   **/
+  // Disable Ligatures
+  "disableLigatures.mode": "Cursor",
+  // Auto Close Tag
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "javascriptreact",
+    "typescriptreact",
+    "HTML (Eex)"
+  ],
+  "auto-close-tag.SublimeText3Mode": true,
+  // Eslint
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.lintTask.enable": true,
+  "eslint.run": "onSave",
+  "eslint.packageManager": "npm",
+  "npm.packageManager": "npm",
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "eslint.options": {
+    "env": {
+      "browser": true,
+      "jest/globals": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 2019,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
+    "rules": {
+      "no-debugger": "off"
+    }
+  },
+  // Prettier
+  "prettier.endOfLine": "lf",
+  "prettier.jsxSingleQuote": true,
+  "prettier.printWidth": 80,
+  "prettier.bracketSpacing": false,
+  "prettier.proseWrap": "always",
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all"
+}
+```
+
+---
+
+### How to generate a list of VSCode Extensions
+
+I just load the following snippet up in a Quokka buffer​​​​ and the list will be
+copied to my clipboard.
+
+```js:title=generate-vscode-extensions-list.js
+const {execSync, spawn} = require('child_process')
+
+const result = execSync('code-insiders --list-extensions')
+
+const list = String(result)
+  .split('\n')
+  .filter(Boolean)
+  .map(
+    (x) => `- [${x}](https://marketplace.visualstudio.com/items?itemName=${x})`,
+  )
+  .join('\n')
+
+// const proc = spawn('clip') // for Windows
+const proc = spawn('pbcopy') // for MacOS
+proc.stdin.write(list)
+proc.stdin.end()
+```
+
+Credit:
+[Kent C. Dodds](https://github.com/kentcdodds/ama/issues/406#issuecomment-391764106)
