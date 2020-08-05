@@ -1,0 +1,147 @@
+pre {
+  @apply rounded;
+}
+
+.prism-code {
+  @apply p-3 mb-0 min-w-full scrolling-touch bg-transparent float-left;
+  overflow: initial;
+}
+
+.token {
+  @apply inline-block;
+}
+
+.code-block {
+  @apply relative scrolling-touch overflow-auto rounded;
+}
+
+.line-number-style {
+  @apply inline-block select-none opacity-25 text-right relative w-8 mr-4 -ml-2;
+}
+
+.highlight-line {
+  @apply -mx-3;
+  background-color: #1f625d;
+}
+
+.highlight-line .line-number-style {
+  @apply ml-1;
+}
+
+.code-title {
+  @apply bg-pink-400 text-black font-mono px-3 py-2 rounded;
+}
+
+.dark-mode .code-title {
+  @apply bg-yellow;
+}
+
+.code-block pre[class*='language-'] {
+  @apply pt-8;
+}
+
+.code-block pre[class*='language-']:before {
+  @apply bg-white rounded-b text-black py-1 px-2 absolute text-right uppercase top-0 text-xs;
+  left: 1rem;
+}
+
+.code-block pre[class~='language-js']:before {
+  @apply text-black;
+  content: 'js';
+  background: #f7df1e;
+}
+
+.code-block pre[class~='language-jsx']:before {
+  @apply text-black;
+  content: 'jsx';
+  background: #61dafb;
+}
+
+.code-block pre[class~='language-ts']:before {
+  @apply text-black;
+  content: 'ts';
+  background: #61dafb;
+}
+
+.code-block pre[class~='language-tsx']:before {
+  @apply text-black;
+  content: 'tsx';
+  background: #61dafb;
+}
+
+.code-block pre[class~='language-html']:before {
+  @apply text-white;
+  content: 'html';
+  background: #005a9c;
+}
+
+.code-block pre[class~='language-xml']:before {
+  @apply text-white;
+  content: 'xml';
+  background: #005a9c;
+}
+
+.code-block pre[class~='language-svg']:before {
+  @apply text-white;
+  content: 'svg';
+  background: #005a9c;
+}
+
+.code-block pre[class~='language-graphql']:before {
+  content: 'GraphQL';
+  background: #e10098;
+}
+
+.code-block pre[class~='language-css']:before {
+  @apply text-black;
+  content: 'css';
+  background: #ff9800;
+}
+
+.code-block pre[class~='language-mdx']:before {
+  @apply text-black;
+  content: 'mdx';
+  background: #f9ac00;
+}
+
+.code-block pre[class~='language-php']:before {
+  @apply text-white;
+  content: 'php';
+  background: #8892bf;
+}
+
+.code-block pre[class~='language-text']:before {
+  content: 'text';
+}
+
+.code-block pre[class~='language-shell']:before {
+  content: 'shell';
+}
+
+.code-block pre[class~='language-sh']:before {
+  content: 'sh';
+}
+
+.code-block pre[class~='language-bash']:before {
+  content: 'bash';
+}
+
+.code-block pre[class~='language-yaml']:before {
+  content: 'yaml';
+  background: #ffa8df;
+}
+
+.code-block pre[class~='language-yml']:before {
+  content: 'yml';
+  background: #ffa8df;
+}
+
+.code-block pre[class~='language-markdown']:before {
+  content: 'md';
+}
+
+.code-block pre[class~='language-json']:before,
+.code-block pre[class~='language-json5']:before {
+  content: 'json';
+  background: 'linen';
+}
