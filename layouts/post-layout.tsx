@@ -1,7 +1,7 @@
 import React from 'react'
 import {NextSeo, ArticleJsonLd} from 'next-seo'
 
-import Container from 'components/container'
+import Container from 'layouts/container'
 import PostInfo from 'components/post-info'
 import {Frontmatter} from '@types'
 /* -------------------------------------------------------------------------- */

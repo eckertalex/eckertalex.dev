@@ -11,6 +11,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
+        serif: ['Parisienne', ...defaultTheme.fontFamily.serif],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },

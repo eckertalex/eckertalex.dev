@@ -1,7 +1,7 @@
 import React from 'react'
 import {NextSeo} from 'next-seo'
 
-import Container from 'components/container'
+import Container from 'layouts/container'
 import {Frontmatter} from '@types'
 /* -------------------------------------------------------------------------- */
 

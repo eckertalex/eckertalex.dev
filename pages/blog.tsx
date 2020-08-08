@@ -1,7 +1,7 @@
 import React from 'react'
 import {NextSeo} from 'next-seo'
 
-import Container from 'components/container'
+import Container from 'layouts/container'
 import Post from 'components/post-preview'
 // https://github.com/jescalan/babel-plugin-import-glob-array/issues/7
 // @ts-ignore
