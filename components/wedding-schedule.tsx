@@ -9,13 +9,14 @@ const schedule = [
   {
     time: 'August 13, 2020 09:30:00',
     title: 'Cassidy getting ready in Pilgerzell',
-    description: "Alex's sisters Sarah and Ricarda will help Cassidy to get ready; do her hair and makeup.",
+    description: "Alex's sister Sarah will do Cassidy's hair and makeup with the help of Nga, Cassidy's Maid of Honor.",
   },
   {
     time: 'August 13, 2020 11:25:00',
-    title: 'Cassidy leaves for the Residence in a Chevy',
+    title: 'Cassidy leaves for the Residence in a 1965 Chevrolet Impala',
     description:
       "Alex's sister's boyfriend, Niklas, will drive Cassidy in his '65 Chevrolet to the City Residence of Fulda.",
+    infoQuery: 'impala',
   },
   {
     time: 'August 13, 2020 11:50:00',
