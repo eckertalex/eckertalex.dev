@@ -10,7 +10,7 @@ The [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) is a
 ![Lazlo in Snow](/static/img/typescript-fetch-wrapper/kameron-kincade-lazlo-in-snow-unsplash.jpg)
 *Photo by [Kameron Kincade](https://unsplash.com/@kkincade)*
 
-### How to use fetch
+## How to use fetch
 
 It is very simple to get started with `fetch`:
 
@@ -26,7 +26,7 @@ const body = await response.json()
 
 Note, that we need to use the `await` keyword again because it is asynchronous. We need to *await* the reponse before calling `json`.
 
-### Creating a fetch wrapper with typed response data
+## Creating a fetch wrapper with typed response data
 
 Let's create a wrapper for `fetch` combining these two lines of code as well as adding types:
 
@@ -49,7 +49,7 @@ const data = await http<Todo[]>("https://jsonplaceholder.typicode.com/todos")
 
 Our `fetch` wrapper function takes in a generic parameter `T` for the type of the response body, hence `data` is strongly typed as `Todo[]` in our consuming code.
 
-### Catching errors for HTTP error codes
+## Catching errors for HTTP error codes
 
 So far our fetch wrapper does not handle errors very graciously, so let's improve that.
 
@@ -81,7 +81,7 @@ try {
 }
 ```
 
-### HTTP methods
+## HTTP methods
 
 We can also use other HTTP methods than `GET` with our fetch wrapper.
 

@@ -7,7 +7,7 @@ import Heading from 'components/heading'
 export default function Projects() {
   return (
     <div className="pt-16">
-      <Heading as="h3" query="projects">
+      <Heading as="h2" query="projects">
         Projects
       </Heading>
       <hr />

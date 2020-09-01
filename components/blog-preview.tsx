@@ -14,7 +14,7 @@ export default function BlogPreview() {
   return (
     <div className="pt-16">
       <div className="flex justify-between items-end">
-        <Heading as="h3" query="latest-posts">
+        <Heading as="h2" query="latest-posts">
           Latest Posts
         </Heading>
         <NextLink href="/blog">

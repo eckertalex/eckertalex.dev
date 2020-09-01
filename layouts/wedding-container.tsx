@@ -23,9 +23,9 @@ export default function WeddingContainer(props: WeddingContainerProps) {
                 <WeddingDay />
               </div>
               <h1 className="font-serif text-pink-300 text-center">Cassidy & Alexander</h1>
-              <h3 className="font-serif text-green-300 text-center">
+              <h2 className="font-serif text-green-300 text-center">
                 13<sup>th</sup> August 2020
-              </h3>
+              </h2>
             </div>
             <img src="/static/img/wedding/us_with_bushes.jpg" alt="Cassidy & Alex" />
             <WeddingSchedule />
