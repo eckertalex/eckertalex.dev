@@ -6,7 +6,7 @@ import Post from 'components/post-preview'
 // @ts-ignore
 import {frontMatter as posts} from '../pages/blog/*.mdx'
 import {Frontmatter} from '@types'
-import {sortByDate} from 'utils/sort'
+import {sortPostsByDate} from 'utils/sort'
 /* -------------------------------------------------------------------------- */
 
 export default function BlogPreview() {
@@ -19,7 +19,7 @@ export default function BlogPreview() {
         </NextLink>
       </div>
       <hr />
-      {sortByDate(posts)
+      {sortPostsByDate(posts)
         .slice(0, 3)
         .map((post: Frontmatter) => (
           <Post key={post.title} post={post} />

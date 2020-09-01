@@ -7,7 +7,7 @@ import Post from 'components/post-preview'
 // @ts-ignore
 import {frontMatter as posts} from './blog/*.mdx'
 import {Frontmatter} from '@types'
-import {sortByDate} from 'utils/sort'
+import {sortPostsByDate} from 'utils/sort'
 /* -------------------------------------------------------------------------- */
 
 export default function Blog() {
@@ -18,7 +18,7 @@ export default function Blog() {
       <NextSeo title="Blog" canonical={url} openGraph={{url, title: 'Blog | eckertalex.dev'}} />
       <Container>
         <h1>Blog</h1>
-        {sortByDate(posts).map((post: Frontmatter) => (
+        {sortPostsByDate(posts).map((post: Frontmatter) => (
           <Post key={post.title} post={post} />
         ))}
       </Container>
