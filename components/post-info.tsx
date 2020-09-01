@@ -1,11 +1,11 @@
 import React from 'react'
 import tinytime from 'tinytime'
 
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 /* -------------------------------------------------------------------------- */
 
 type PostInfoProps = {
-  post: Frontmatter
+  post: FrontMatter
 }
 
 const dateStamp = tinytime('Written by Alexander Eckert on {dddd}, {MMMM} {DD}, {YYYY}')

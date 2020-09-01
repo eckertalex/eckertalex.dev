@@ -39,7 +39,7 @@ type ReadingTime = {
   words: number
 }
 
-export type Frontmatter = {
+export type FrontMatter = {
   layout: string
   title: string
   date: string

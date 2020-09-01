@@ -5,7 +5,7 @@ import Post from 'components/post-preview'
 // https://github.com/jescalan/babel-plugin-import-glob-array/issues/7
 // @ts-ignore
 import {frontMatter as posts} from '../pages/blog/*.mdx'
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 import {sortByDate} from 'utils/sort'
 import Heading from 'components/heading'
 /* -------------------------------------------------------------------------- */
@@ -24,7 +24,7 @@ export default function BlogPreview() {
       <hr />
       {sortByDate(posts)
         .slice(0, 3)
-        .map((post: Frontmatter) => (
+        .map((post: FrontMatter) => (
           <Post key={post.title} post={post} />
         ))}
     </div>

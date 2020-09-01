@@ -2,31 +2,30 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 
 import Container from 'layouts/container'
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 /* -------------------------------------------------------------------------- */
 
 type DefaultLayoutProps = {
   children: React.ReactNode
+  frontMatter: FrontMatter
 }
 
-export default function DefaultLayout(frontmatter: Frontmatter) {
-  return (props: DefaultLayoutProps) => {
-    const {children} = props
+export default function DefaultLayout(props: DefaultLayoutProps) {
+  const {children, frontMatter} = props
 
-    const url = frontmatter.slug === 'index' ? 'https://eckertalex.dev' : `https://eckertalex.dev/${frontmatter.slug}`
+  const url = frontMatter.slug === 'index' ? 'https://eckertalex.dev' : `https://eckertalex.dev/${frontMatter.slug}`
 
-    return (
-      <>
-        <NextSeo
-          title={frontmatter.title}
-          canonical={url}
-          openGraph={{url, title: `${frontmatter.title} | eckertalex.dev`}}
-        />
-        <Container>
-          <h1>{frontmatter.title}</h1>
-          {children}
-        </Container>
-      </>
-    )
-  }
+  return (
+    <>
+      <NextSeo
+        title={frontMatter.title}
+        canonical={url}
+        openGraph={{url, title: `${frontMatter.title} | eckertalex.dev`}}
+      />
+      <Container>
+        <h1>{frontMatter.title}</h1>
+        {children}
+      </Container>
+    </>
+  )
 }

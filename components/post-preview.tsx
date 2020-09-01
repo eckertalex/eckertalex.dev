@@ -1,12 +1,12 @@
 import React from 'react'
 import NextLink from 'next/link'
 
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 import PostInfo from 'components/post-info'
 /* -------------------------------------------------------------------------- */
 
 type PostProps = {
-  post: Frontmatter
+  post: FrontMatter
 }
 
 export default function Post(props: PostProps) {
