@@ -4,6 +4,7 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   future: {
     removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
   purge: ['./components/**/*.+(js|jsx|ts|tsx)', './pages/**/*.+(js|jsx|ts|tsx)', './layouts/**/*.+(js|jsx|ts|tsx)'],
   theme: {
