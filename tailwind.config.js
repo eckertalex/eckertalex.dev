@@ -2,9 +2,16 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /* -------------------------------------------------------------------------- */
 
 module.exports = {
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
   purge: ['./components/**/*.+(js|jsx|ts|tsx)', './pages/**/*.+(js|jsx|ts|tsx)', './layouts/**/*.+(js|jsx|ts|tsx)'],
   theme: {
     darkSelector: '.dark-mode',
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         yellow: 'var(--color-yellow)',

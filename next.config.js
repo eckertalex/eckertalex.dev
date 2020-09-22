@@ -38,6 +38,7 @@ function extendFrontmatterProcess(mdxContent, frontmatter) {
 
 const nextConfig = {
   pageExtensions: ['ts', 'tsx'],
+
   webpack: (config, options) => {
     if (options.isServer) {
       require('./scripts/generate-sitemap')
@@ -45,6 +46,16 @@ const nextConfig = {
     }
 
     return config
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/wedding',
+        destination: 'https://wedding.eckertalex.dev',
+        permanent: true,
+      },
+    ]
   },
 }
 

@@ -1,8 +1,8 @@
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 import {LinkItem} from 'data/links'
 /* -------------------------------------------------------------------------- */
 
-export const sortPostsByDate = (posts: Frontmatter[]) =>
+export const sortPostsByDate = (posts: FrontMatter[]) =>
   posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
 
 export const sortLinksByDate = (links: LinkItem[]) =>

@@ -1,13 +1,14 @@
 import React from 'react'
 import {NextSeo} from 'next-seo'
 
-import Container from 'components/container'
+import Container from 'layouts/container'
 import Post from 'components/post-preview'
 // https://github.com/jescalan/babel-plugin-import-glob-array/issues/7
 // @ts-ignore
 import {frontMatter as posts} from './blog/*.mdx'
-import {Frontmatter} from '@types'
+
 import {sortPostsByDate} from 'utils/sort'
+import {FrontMatter} from '@types'
 /* -------------------------------------------------------------------------- */
 
 export default function Blog() {
@@ -18,7 +19,7 @@ export default function Blog() {
       <NextSeo title="Blog" canonical={url} openGraph={{url, title: 'Blog | eckertalex.dev'}} />
       <Container>
         <h1>Blog</h1>
-        {sortPostsByDate(posts).map((post: Frontmatter) => (
+        {sortPostsByDate(posts).map((post: FrontMatter) => (
           <Post key={post.title} post={post} />
         ))}
       </Container>

@@ -1,52 +1,51 @@
 import React from 'react'
 import {NextSeo, ArticleJsonLd} from 'next-seo'
 
-import Container from 'components/container'
+import Container from 'layouts/container'
 import PostInfo from 'components/post-info'
-import {Frontmatter} from '@types'
+import {FrontMatter} from '@types'
 /* -------------------------------------------------------------------------- */
 
 type PostLayoutProps = {
   children: React.ReactNode
+  frontMatter: FrontMatter
 }
 
-export default function PostLayout(frontmatter: Frontmatter) {
-  return (props: PostLayoutProps) => {
-    const {children} = props
+export default function PostLayout(props: PostLayoutProps) {
+  const {children, frontMatter} = props
 
-    const url = `https://eckertalex.dev/${frontmatter.slug}`
+  const url = `https://eckertalex.dev/${frontMatter.slug}`
 
-    return (
-      <>
-        <NextSeo
-          title={frontmatter.title}
-          canonical={url}
-          openGraph={{
-            type: 'article',
-            article: {
-              publishedTime: frontmatter.date,
-            },
-            url,
-            title: `${frontmatter.title} | eckertalex.dev`,
-          }}
-        />
-        <ArticleJsonLd
-          authorName="Alexander Eckert"
-          dateModified={frontmatter.date}
-          datePublished={frontmatter.date}
-          description={frontmatter.summary}
-          images={[]}
-          publisherLogo="/static/favicons/android-chrome-192x192.png"
-          publisherName="Alexander Eckert"
-          title={frontmatter.title}
-          url={url}
-        />
-        <Container>
-          <h1>{frontmatter.title}</h1>
-          <PostInfo post={frontmatter} />
-          {children}
-        </Container>
-      </>
-    )
-  }
+  return (
+    <>
+      <NextSeo
+        title={frontMatter.title}
+        canonical={url}
+        openGraph={{
+          type: 'article',
+          article: {
+            publishedTime: frontMatter.date,
+          },
+          url,
+          title: `${frontMatter.title} | eckertalex.dev`,
+        }}
+      />
+      <ArticleJsonLd
+        authorName="Alexander Eckert"
+        dateModified={frontMatter.date}
+        datePublished={frontMatter.date}
+        description={frontMatter.summary}
+        images={[]}
+        publisherLogo="/static/favicons/android-chrome-192x192.png"
+        publisherName="Alexander Eckert"
+        title={frontMatter.title}
+        url={url}
+      />
+      <Container>
+        <h1>{frontMatter.title}</h1>
+        <PostInfo post={frontMatter} />
+        <article>{children}</article>
+      </Container>
+    </>
+  )
 }
