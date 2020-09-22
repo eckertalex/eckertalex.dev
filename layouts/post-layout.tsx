@@ -44,7 +44,7 @@ export default function PostLayout(props: PostLayoutProps) {
       <Container>
         <h1>{frontMatter.title}</h1>
         <PostInfo post={frontMatter} />
-        {children}
+        <article>{children}</article>
       </Container>
     </>
   )

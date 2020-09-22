@@ -9,13 +9,15 @@ module.exports = {
   purge: ['./components/**/*.+(js|jsx|ts|tsx)', './pages/**/*.+(js|jsx|ts|tsx)', './layouts/**/*.+(js|jsx|ts|tsx)'],
   theme: {
     darkSelector: '.dark-mode',
+    container: {
+      center: true,
+    },
     extend: {
       colors: {
         yellow: 'var(--color-yellow)',
       },
       fontFamily: {
         sans: ['IBM Plex Sans', ...defaultTheme.fontFamily.sans],
-        serif: ['Parisienne', ...defaultTheme.fontFamily.serif],
         mono: ['JetBrainsMono', ...defaultTheme.fontFamily.mono],
       },
     },

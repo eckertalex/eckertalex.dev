@@ -1,7 +1,12 @@
 {
-  "name": "eckertalex.dev-next",
+  "name": "eckertalex.dev",
   "version": "2.1.0",
   "license": "MIT",
+  "author": {
+    "name": "Alexander Eckert",
+    "email": "eckertalex@protonmail.com",
+    "url": "https://eckertalex.dev"
+  },
   "scripts": {
     "// --- DEVELOP ---": "",
     "dev": "next",
@@ -14,7 +19,7 @@
     "export": "npm run build && next export",
     "// --- CLEAN ---": "",
     "clean": "rimraf .mdx-data .next out",
-    "clean:dangerous": "rimraf node_modules package_lock.json .mdx-data .next out",
+    "clean:dangerous": "rimraf node_modules package-lock.json .mdx-data .next out",
     "// --- RELEASING ---": "",
     "release": "HUSKY_SKIP_HOOKS=1 CI=true standard-version --no-verify",
     "// --- CODE STYLE ---": "",
