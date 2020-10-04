@@ -7,7 +7,7 @@ import Post from 'components/post-preview'
 // @ts-ignore
 import {frontMatter as posts} from './blog/*.mdx'
 
-import {sortPostsByDate} from 'utils/sort'
+import {sortPostsByDate} from 'utils/utils'
 import {FrontMatter} from '@types'
 /* -------------------------------------------------------------------------- */
 

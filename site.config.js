@@ -38,8 +38,8 @@ const config = {
       slug: '/blog',
     },
     {
-      title: 'Reading List',
-      slug: '/reading',
+      title: 'Links',
+      slug: '/links',
     },
     {
       title: 'Uses',

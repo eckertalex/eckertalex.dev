@@ -253,7 +253,7 @@ const links: LinkItem[] = [
   },
   {
     title: 'Should I useState or useReducer',
-    url: 'https://kentcdodds.com/blog/javascript-to-know-for-react',
+    url: 'https://kentcdodds.com/blog/should-i-usestate-or-usereducer',
     author: 'Kent C. Dodds',
     dateAdded: 'June 1, 2020',
     tags: [],
@@ -602,15 +602,6 @@ const links: LinkItem[] = [
   {
     title: 'Thinking in Ramda: Combining Functions',
     url: 'https://randycoulman.com/blog/2016/05/31/thinking-in-ramda-combining-functions/',
-    author: 'Randy Coulman',
-    dateAdded: 'June 1, 2020',
-    tags: [],
-    category: 'blog-post',
-    series: 'Thinking in Ramda',
-  },
-  {
-    title: 'Thinking in Ramda: Partial Application',
-    url: 'https://randycoulman.com/blog/2016/06/07/thinking-in-ramda-partial-application/',
     author: 'Randy Coulman',
     dateAdded: 'June 1, 2020',
     tags: [],

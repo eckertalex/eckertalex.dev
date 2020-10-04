@@ -5,7 +5,7 @@ import Post from 'components/post-preview'
 // https://github.com/jescalan/babel-plugin-import-glob-array/issues/7
 // @ts-ignore
 import {frontMatter as posts} from '../pages/blog/*.mdx'
-import {sortPostsByDate} from 'utils/sort'
+import {sortPostsByDate} from 'utils/utils'
 import {FrontMatter} from '@types'
 import Heading from 'components/heading'
 /* -------------------------------------------------------------------------- */
