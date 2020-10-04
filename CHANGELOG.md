@@ -1,7 +1,16 @@
 # Changelog
 
-All notable changes to this project will be documented in this file. See
-[standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.2.0](https://github.com/eckertalex/eckertalex.dev/compare/v2.1.0...v2.2.0) (2020-10-04)
+
+
+### Features
+
+* ✨ add filters ([6aca831](https://github.com/eckertalex/eckertalex.dev/commit/6aca8314d3a28bfcfb9c9feff0d8a0d39c86bc11))
+* ✨ add links pages ([f807352](https://github.com/eckertalex/eckertalex.dev/commit/f8073520ad0c4caf96c6e47c94c85e87c13135a1))
+* ✨ add new links ([a38f487](https://github.com/eckertalex/eckertalex.dev/commit/a38f4876f2dcb2cc6a878250389c106f7d4e7554))
+* ✨ simplify containers ([339c2d5](https://github.com/eckertalex/eckertalex.dev/commit/339c2d5619e3ce44f5abbccd1372dcc0c4b8e0b6))
 
 ## [2.1.0](https://github.com/eckertalex/eckertalex.dev/compare/v2.0.0...v2.1.0) (2020-09-20)
 
