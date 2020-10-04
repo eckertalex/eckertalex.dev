@@ -2,7 +2,7 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 
 import Container from 'layouts/container'
-import dataLinks, {LinkItem} from 'data/links'
+import links, {LinkItem} from 'data/links'
 import {sortLinksByDateAdded} from 'utils/utils'
 import Heading from 'components/heading'
 /* -------------------------------------------------------------------------- */
@@ -62,9 +62,9 @@ export default function Others(props: OthersProps) {
 }
 
 export async function getStaticProps() {
-  const papers = sortLinksByDateAdded(dataLinks).filter((link) => link.category === 'paper')
-  const podcasts = sortLinksByDateAdded(dataLinks).filter((link) => link.category === 'podcast')
-  const blogs = sortLinksByDateAdded(dataLinks).filter((link) => link.category === 'blog')
+  const papers = sortLinksByDateAdded(links.papers)
+  const podcasts = sortLinksByDateAdded(links.podcasts)
+  const blogs = sortLinksByDateAdded(links.blogs)
 
   return {
     props: {papers, podcasts, blogs},

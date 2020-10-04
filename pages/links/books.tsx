@@ -2,7 +2,7 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 
 import Container from 'layouts/container'
-import dataLinks, {LinkItem} from 'data/links'
+import links, {LinkItem} from 'data/links'
 import {sortLinksByDateAdded} from 'utils/utils'
 /* -------------------------------------------------------------------------- */
 
@@ -34,7 +34,7 @@ export default function Books(props: BooksProps) {
 }
 
 export async function getStaticProps() {
-  const books = sortLinksByDateAdded(dataLinks).filter((link) => link.category === 'book')
+  const books = sortLinksByDateAdded(links.books)
 
   return {
     props: {

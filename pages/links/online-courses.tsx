@@ -2,7 +2,7 @@ import React from 'react'
 import {NextSeo} from 'next-seo'
 
 import Container from 'layouts/container'
-import dataLinks, {LinkItem} from 'data/links'
+import links, {LinkItem} from 'data/links'
 import {sortLinksByDateAdded} from 'utils/utils'
 /* -------------------------------------------------------------------------- */
 
@@ -38,7 +38,7 @@ export default function OnlineCourses(props: OnlineCoursesProps) {
 }
 
 export async function getStaticProps() {
-  const onlineCourses = sortLinksByDateAdded(dataLinks).filter((link) => link.category === 'online-course')
+  const onlineCourses = sortLinksByDateAdded(links.onlineCourses)
 
   return {
     props: {
