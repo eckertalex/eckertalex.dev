@@ -10,6 +10,6 @@ module.exports = {
     'no-descending-specificity': null,
     'no-duplicate-selectors': null,
     'font-family-no-duplicate-names': null,
-    'unit-whitelist': ['px', 'deg', 'ms', '%', 'fr', 'vh', 'vw', 'em', 'rem', 's'],
+    'unit-allowed-list': ['px', 'deg', 'ms', '%', 'fr', 'vh', 'vw', 'em', 'rem', 's'],
   },
 }
