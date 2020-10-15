@@ -66,6 +66,11 @@ const config = {
   ],
   projects: [
     {
+      name: 'Eckertalex.dev - Personal Blog',
+      url: 'https://github.com/eckertalex/eckertalex.dev',
+      tags: ['React', 'Next.js', 'TypeScript'],
+    },
+    {
       name: 'platform.react',
       url: 'https://github.com/eckertalex/platform.react',
       tags: ['React', 'JavaScript', 'TypeScript'],
