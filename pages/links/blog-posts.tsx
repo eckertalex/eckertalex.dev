@@ -143,12 +143,22 @@ export default function BlogPosts(props: BlogPostsProps) {
                 {month.date}
               </Heading>
               {month.posts.map((post) => (
-                <p key={post.url}>
-                  <strong>
-                    <a href={post.url}>{post.title}</a>
-                  </strong>{' '}
-                  by <strong>{post.author}</strong>
-                </p>
+                <div key={post.url} className="py-1">
+                  <p>
+                    <strong>
+                      <a href={post.url}>{post.title}</a>
+                    </strong>{' '}
+                    by <strong>{post.author}</strong>
+                  </p>
+                  {post.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="-mt-6 mr-2 py-1 px-2 cursor-pointer font-mono text-lg inline-block leading-none align-middle rounded shadow text-gray-700 dark:text-gray-200 bg-gray-100 dark:bg-gray-800 capitalize"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               ))}
             </React.Fragment>
           )
