@@ -5,6 +5,8 @@ date: 2018-08-03
 summary: "How to create a AJAX Form in PHP with Google Recaptcha."
 ---
 
+import Image from 'next/image'
+
 Recently, at my software development internship I was tasked to redo our company webpage with a new design. It is a static website that includes a contact form which will send an email through PHP's mail function to our company. The old contact form did not give the user any feedback whether the email has been sent successfully or not. As part of the redesign I wanted to improve the user experience.
 
 First things first, we will need to write the skeleton of our form in HTML. Here is an example:
@@ -137,7 +139,7 @@ First things first, we will need to write the skeleton of our form in HTML. Here
 
 This is how the contact form will look like:
 
-![contactform](/static/img/ajax-php-recaptcha-form/contact-form.png)
+<Image src="/static/img/ajax-php-recaptcha-form/contact-form.png" height={375} width={1092} alt="Example contact form" />
 
 Before the user passed the recaptcha the submit button is disabled. Here is the code that triggers when the recaptcha is passed. Paste it into contact-form.js in the folder js at the root of your webpage.
 
@@ -322,6 +324,6 @@ The AJAX code communicates with the PHP code and displays an error message or a 
 
 If you did everything right, the resulting email will look like this:
 
-![resulting_email](/static/img/ajax-php-recaptcha-form/email.png)
+<Image src="/static/img/ajax-php-recaptcha-form/email.png" height={442} width={967} alt="Resulting email" />
 
 [Google Recaptcha]:https://www.google.com/recaptcha/intro/v3beta.html
