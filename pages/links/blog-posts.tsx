@@ -6,7 +6,6 @@ import Filters from 'components/filters'
 import blogPosts, {BlogPost} from 'data/blog-posts'
 import {groupBy, getCountOccurrences} from 'utils/utils'
 import Heading from 'components/heading'
-/* -------------------------------------------------------------------------- */
 
 type BlogPostsProps = {
   posts: {

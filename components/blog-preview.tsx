@@ -8,7 +8,6 @@ import {frontMatter as posts} from '../pages/blog/*.mdx'
 import {sortPostsByDate} from 'utils/utils'
 import {FrontMatter} from '@types'
 import Heading from 'components/heading'
-/* -------------------------------------------------------------------------- */
 
 export default function BlogPreview() {
   return (

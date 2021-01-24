@@ -3,7 +3,6 @@ import NextLink from 'next/link'
 
 import config from 'site.config'
 import ThemeToggle from 'components/theme-toggle'
-/* -------------------------------------------------------------------------- */
 
 export default function Header() {
   return (

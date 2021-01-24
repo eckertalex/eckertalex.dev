@@ -1,6 +1,5 @@
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
-/* -------------------------------------------------------------------------- */
 
 export default function ThemeToggle() {
   const {value: isDark, toggle: toggleTheme} = useDarkMode()

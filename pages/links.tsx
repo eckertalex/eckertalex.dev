@@ -7,7 +7,6 @@ import links, {LinkItem} from 'data/links'
 import {sortLinksByDateAdded} from 'utils/utils'
 import LinksList from 'components/links-list'
 import Heading from 'components/heading'
-/* -------------------------------------------------------------------------- */
 
 type LinksProps = {
   onlineCourses: LinkItem[]

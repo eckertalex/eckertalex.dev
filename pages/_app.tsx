@@ -9,7 +9,6 @@ import MDXComponents from 'components/mdx-components'
 import config from 'site.config'
 
 import 'styles/tailwind.css'
-/* -------------------------------------------------------------------------- */
 
 Router.events.on('routeChangeStart', () => NProgress.start())
 Router.events.on('routeChangeComplete', () => NProgress.done())

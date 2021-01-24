@@ -2,7 +2,6 @@ import React from 'react'
 import NextLink from 'next/link'
 
 import config from 'site.config'
-/* -------------------------------------------------------------------------- */
 
 export default function Footer() {
   return (

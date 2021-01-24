@@ -28,8 +28,3 @@ Give a ⭐️ if this project helped you!
 
 Copyright &copy; 2020 [eckertalex](https://github.com/eckertalex).<br /> This project is
 [MIT](https://github.com/eckertalex/eckertalex.dev/blob/dev/LICENSE) licensed.
-
----
-
-_The base of this README was generated with ❤️ by
-[readme-md-generator](https://github.com/kefranabg/readme-md-generator)_

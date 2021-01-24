@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-has-content */
 import React from 'react'
 import NextLink from 'next/link'
-/* -------------------------------------------------------------------------- */
 
 type AProps = React.AnchorHTMLAttributes<unknown>
 

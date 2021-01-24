@@ -1,5 +1,4 @@
 import {NextSeoProps} from 'next-seo'
-/* -------------------------------------------------------------------------- */
 
 type Meta = {
   title: string
@@ -29,8 +28,6 @@ export type Config = {
   externalLinks: ExternalLinksItem[]
   projects: Project[]
 }
-
-/* -------------------------------------------------------------------------- */
 
 type ReadingTime = {
   text: string

@@ -3,7 +3,6 @@ const {join} = require('path')
 const {promisify} = require('util')
 const matter = require('gray-matter')
 const {Feed} = require('feed')
-/* -------------------------------------------------------------------------- */
 
 const POSTS_DIR = join(process.cwd(), 'pages/blog')
 
@@ -34,7 +33,7 @@ function getPostBySlug(slug) {
 ;(async () => {
   const author = {
     name: 'Alexander Eckert',
-    email: 'eckertalex@protonmail.com',
+    email: 'me@eckertalex.dev',
     link: 'https://eckertalex.dev',
   }
 

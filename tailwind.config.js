@@ -1,5 +1,4 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
-/* -------------------------------------------------------------------------- */
 
 module.exports = {
   future: {
@@ -38,7 +37,7 @@ module.exports = {
             fontStyle: 'normal',
             fontNamedInstance: 'Regular',
             fontDisplay: 'swap',
-            src: 'url("/static/fonts/JetBrainsMono-Regular.woff2?3.13") format("woff2")',
+            src: 'url("/fonts/JetBrainsMono-Regular.woff2?3.13") format("woff2")',
           },
         },
         {
@@ -48,7 +47,7 @@ module.exports = {
             fontStyle: 'italic',
             fontNamedInstance: 'Italic',
             fontDisplay: 'swap',
-            src: 'url("/static/fonts/JetBrainsMono-Italic.woff2?3.13") format("woff2")',
+            src: 'url("/fonts/JetBrainsMono-Italic.woff2?3.13") format("woff2")',
           },
         },
       ])

@@ -3,7 +3,6 @@ import {NextSeo} from 'next-seo'
 
 import Container from 'layouts/container'
 import {FrontMatter} from '@types'
-/* -------------------------------------------------------------------------- */
 
 type DefaultLayoutProps = {
   children: React.ReactNode

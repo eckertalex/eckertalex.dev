@@ -3,7 +3,6 @@ import React from 'react'
 import Highlight, {defaultProps, Language} from 'prism-react-renderer'
 
 import borealis from 'styles/borealis-prism'
-/* -------------------------------------------------------------------------- */
 
 type CodeProps = {
   children: string

@@ -2,7 +2,6 @@ import React from 'react'
 import tinytime from 'tinytime'
 
 import {FrontMatter} from '@types'
-/* -------------------------------------------------------------------------- */
 
 type PostInfoProps = {
   post: FrontMatter

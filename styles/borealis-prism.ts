@@ -1,5 +1,4 @@
 import {PrismTheme} from 'prism-react-renderer'
-/* -------------------------------------------------------------------------- */
 
 const theme: PrismTheme = {
   plain: {

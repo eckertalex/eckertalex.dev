@@ -9,7 +9,6 @@ import {frontMatter as posts} from './blog/*.mdx'
 
 import {sortPostsByDate} from 'utils/utils'
 import {FrontMatter} from '@types'
-/* -------------------------------------------------------------------------- */
 
 export default function Blog() {
   const url = 'https://eckertalex.dev/blog'

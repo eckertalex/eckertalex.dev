@@ -2,7 +2,6 @@ import React from 'react'
 
 import Header from 'layouts/header'
 import Footer from 'layouts/footer'
-/* -------------------------------------------------------------------------- */
 
 type ContainerProps = {
   children: React.ReactNode

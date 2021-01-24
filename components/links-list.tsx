@@ -2,7 +2,6 @@ import React from 'react'
 
 import {LinkItem} from 'data/links'
 import Heading from 'components/heading'
-/* -------------------------------------------------------------------------- */
 
 type LinksListProps = {
   title: string

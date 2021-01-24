@@ -1,28 +1,22 @@
 {
   "name": "eckertalex.dev",
+  "description": "Personal blog by Alexander Eckert. I write about React, JavaScript, and TypeScript.",
   "version": "2.2.0",
-  "license": "MIT",
   "author": {
     "name": "Alexander Eckert",
-    "email": "eckertalex@protonmail.com",
+    "email": "me@eckertalex.dev",
     "url": "https://eckertalex.dev"
   },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eckertalex/eckertalex.dev.git"
+  },
   "scripts": {
-    "// --- DEVELOP ---": "",
     "dev": "next",
-    "// --- BUILD ---": "",
     "build": "next build",
     "start": "npm run build && next start",
-    "// --- ANALYZE ---": "",
     "analyze": "ANALYZE=true npm run build",
-    "// --- EXPORT ---": "",
-    "export": "npm run build && next export",
-    "// --- CLEAN ---": "",
-    "clean": "rimraf .mdx-data .next out",
-    "clean:dangerous": "rimraf node_modules package-lock.json .mdx-data .next out",
-    "// --- RELEASING ---": "",
-    "release": "HUSKY_SKIP_HOOKS=1 CI=true standard-version --no-verify",
-    "// --- CODE STYLE ---": "",
     "check-types": "tsc",
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx --fix .",
     "lint:css": "stylelint styles/**/*.css",
@@ -47,8 +41,6 @@
     "use-dark-mode": "^2.3.1"
   },
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
     "@next/bundle-analyzer": "^10.0.3",
     "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.13",
@@ -60,10 +52,6 @@
     "@zeit/next-source-maps": "0.0.3",
     "autoprefixer": "^10.1.0",
     "babel-plugin-import-glob-array": "^0.2.0",
-    "commitiquette": "^1.0.8",
-    "commitizen": "^4.2.2",
-    "cz-conventional-changelog": "^3.3.0",
-    "devmoji": "^2.1.13",
     "eslint": "^7.15.0",
     "eslint-config-prettier": "^7.0.0",
     "eslint-plugin-jsx-a11y": "^6.4.1",
@@ -83,8 +71,6 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.2.1",
     "pretty-quick": "^3.1.0",
-    "rimraf": "^3.0.2",
-    "standard-version": "^9.0.0",
     "stylelint": "^13.8.0",
     "stylelint-config-recommended": "^3.0.0",
     "tailwindcss": "^1.9.6",
@@ -93,19 +79,12 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run check-types && pretty-quick --staged && lint-staged",
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook && devmoji -e --lint || true",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "pre-commit": "npm run check-types && pretty-quick --staged && lint-staged"
     }
   },
   "lint-staged": {
     "*.+(js|jsx|ts|tsx)": [
       "eslint --fix"
     ]
-  },
-  "config": {
-    "commitizen": {
-      "path": "commitiquette"
-    }
   }
 }

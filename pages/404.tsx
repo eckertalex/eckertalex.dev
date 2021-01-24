@@ -3,7 +3,6 @@ import NextLink from 'next/link'
 
 import NotFoundIllustration from 'components/svgs/not-found'
 import Container from 'layouts/container'
-/* -------------------------------------------------------------------------- */
 
 export default function PageNotFound404() {
   return (

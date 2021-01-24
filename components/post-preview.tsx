@@ -3,7 +3,6 @@ import NextLink from 'next/link'
 
 import {FrontMatter} from '@types'
 import PostInfo from 'components/post-info'
-/* -------------------------------------------------------------------------- */
 
 type PostProps = {
   post: FrontMatter

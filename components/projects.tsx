@@ -2,7 +2,6 @@ import React from 'react'
 
 import config from 'site.config'
 import Heading from 'components/heading'
-/* -------------------------------------------------------------------------- */
 
 export default function Projects() {
   return (

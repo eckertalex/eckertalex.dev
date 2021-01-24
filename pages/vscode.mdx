@@ -134,15 +134,6 @@ title: "Visual Studio Code Configuration"
 
 ```json:title=js-ts.code-snippets
 {
-  "Insert Separator Line": {
-    "scope": "javascript, typescript, javascriptreact, typescriptreact",
-    "prefix": "sep",
-    "body": [
-      "/* -------------------------------------------------------------------------- */",
-      "$0"
-    ],
-    "description": "Inserts a separator line."
-  },
   "console.log": {
     "prefix": "cl",
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
@@ -223,10 +214,7 @@ title: "Visual Studio Code Configuration"
     "prefix": "comp",
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
     "body": [
-      "import React from 'react'",
-      "/* -------------------------------------------------------------------------- */",
-      "",
-      "export default function $1($2) {",
+      "export function $1($2) {",
       "  $3",
       "  return (",
       "    $0",

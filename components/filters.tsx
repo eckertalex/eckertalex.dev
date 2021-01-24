@@ -1,6 +1,5 @@
 import React from 'react'
 import classNames from 'classnames'
-/* -------------------------------------------------------------------------- */
 
 type FiltersProps = {
   filters: {

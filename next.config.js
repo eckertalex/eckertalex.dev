@@ -7,7 +7,6 @@ const withMdxEnhanced = require('next-mdx-enhanced')
 const readingTime = require('reading-time')
 const remarkSlug = require('remark-slug')
 const remarkAutolinkHeadings = require('remark-autolink-headings')
-/* -------------------------------------------------------------------------- */
 
 const autolinkHeadingsOptions = {
   behavior: 'append',

@@ -4,7 +4,6 @@ import {NextSeo, ArticleJsonLd} from 'next-seo'
 import Container from 'layouts/container'
 import PostInfo from 'components/post-info'
 import {FrontMatter} from '@types'
-/* -------------------------------------------------------------------------- */
 
 type PostLayoutProps = {
   children: React.ReactNode
