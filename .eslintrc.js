@@ -1,46 +1,42 @@
 module.exports = {
-  parser: '@typescript-eslint/parser',
-  plugins: ['jsx-a11y'],
+  root: true,
   parserOptions: {
-    ecmaVersion: 2019,
+    ecmaVersion: 2020,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
-  },
-  env: {
-    browser: true,
-    node: true,
-  },
-  extends: [
-    'plugin:react/recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:jsx-a11y/strict',
-    'plugin:prettier/recommended',
-    'prettier/react',
-    'prettier/@typescript-eslint',
-  ],
-  rules: {
-    // Include .prettierrc.js rules
-    'prettier/prettier': ['error', {}, {usePrettierrc: true}],
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/explicit-function-return-type': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
-    'react/prop-types': 'off',
-    'jsx-a11y/anchor-is-valid': 'off',
-    'react/display-name': 'off',
   },
   settings: {
     react: {
       version: 'detect',
     },
   },
-  overrides: [
-    {
-      files: ['*.js'],
-      rules: {
-        '@typescript-eslint/no-var-requires': 'off',
-      },
-    },
+  env: {
+    browser: true,
+    amd: true,
+    node: true,
+    es6: true,
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:react/recommended',
+    'plugin:jsx-a11y/recommended',
+    'plugin:prettier/recommended',
   ],
+  rules: {
+    'prettier/prettier': 'error',
+    'react/react-in-jsx-scope': 'off',
+    'jsx-a11y/anchor-is-valid': [
+      'error',
+      {
+        components: ['Link'],
+        specialLink: ['hrefLeft', 'hrefRight'],
+        aspects: ['invalidHref', 'preferButton'],
+      },
+    ],
+    'react/prop-types': 0,
+    'no-unused-vars': 0,
+    'react/no-unescaped-entities': 0,
+  },
 }

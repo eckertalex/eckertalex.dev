@@ -1,11 +1,22 @@
 const fs = require('fs')
 const globby = require('globby')
 const prettier = require('prettier')
-const {promisify} = require('util')
+const siteMetadata = require('../data/siteMetadata')
 
 ;(async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
-  const pages = await globby(['pages/**/*.+(js|jsx|ts|tsx|mdx)', '!pages/_*.+(js|jsx|ts|tsx|mdx)'])
+  const pages = await globby([
+    'pages/*.tsx',
+    'pages/*.jsx',
+    'pages/*.js',
+    'data/**/*.mdx',
+    'data/**/*.md',
+    'public/tags/**/*.xml',
+    '!pages/_*.tsx',
+    '!pages/_*.jsx',
+    '!pages/_*.js',
+    '!pages/api',
+  ])
 
   const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
@@ -14,17 +25,18 @@ const {promisify} = require('util')
               .map((page) => {
                 const path = page
                   .replace('pages', '')
+                  .replace('data', '')
+                  .replace('public', '')
+                  .replace('.tsx', '')
                   .replace('.jsx', '')
                   .replace('.js', '')
-                  .replace('.tsx', '')
-                  .replace('.ts', '')
                   .replace('.mdx', '')
-
+                  .replace('.md', '')
+                  .replace('/index.xml', '')
                 const route = path === '/index' ? '' : path
-
                 return `
                         <url>
-                            <loc>${`https://eckertalex.dev${route}`}</loc>
+                            <loc>${`${siteMetadata.siteUrl}${route}`}</loc>
                         </url>
                     `
               })
@@ -37,7 +49,6 @@ const {promisify} = require('util')
     parser: 'html',
   })
 
-  promisify(fs.writeFile)('public/sitemap.xml', formatted)
-    .then(() => console.log('✅ Sitemap successfully created!'))
-    .catch((err) => console.error(err))
+  // eslint-disable-next-line no-sync
+  fs.writeFileSync('public/sitemap.xml', formatted)
 })()

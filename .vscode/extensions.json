@@ -1,12 +1,10 @@
 {
   "recommendations": [
-    "eckertalex.borealis",
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "msjsdiag.debugger-for-chrome",
     "mgmcdermott.vscode-language-babel",
     "EditorConfig.EditorConfig",
-    "bradlc.vscode-tailwindcss",
-    "stylelint.vscode-stylelint"
+    "bradlc.vscode-tailwindcss"
   ]
 }

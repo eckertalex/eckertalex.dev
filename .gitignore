@@ -11,9 +11,14 @@
 # next.js
 /.next/
 /out/
+public/sitemap.xml
+public/tags/
+public/index.xml
+.vercel
 
 # production
 /build
+*.xml
 
 # misc
 .DS_Store
@@ -32,7 +37,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-
-# Ignore next-mdx-enhanced cache directory
-public/rss.xml
-public/sitemap.xml

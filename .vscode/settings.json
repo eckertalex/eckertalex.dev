@@ -15,6 +15,5 @@
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "css.validate": false,
-  "stylelint.enable": true
+  "css.validate": false
 }

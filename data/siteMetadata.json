@@ -1,0 +1,15 @@
+{
+  "title": "eckertalex.dev",
+  "author": "Alexander Eckert",
+  "headerTitle": "eckertalex.dev",
+  "description": "Personal blog by Alexander Eckert. I write about React, JavaScript, and TypeScript.",
+  "language": "en_US",
+  "siteUrl": "https://eckertalex.dev",
+  "siteRepo": "https://github.com/eckertalex/eckertalex.dev",
+  "image": "/static/img/portrait.jpg",
+  "socialBanner": "/static/img/og.png",
+  "email": "me@eckertalex.dev",
+  "github": "https://github.com/eckertalex",
+  "twitter": "https://twitter.com/eckertalex_",
+  "linkedin": "https://www.linkedin.com/in/eckertalex/"
+}

@@ -1,77 +1,42 @@
-const withPlugins = require('next-compose-plugins')
-const withSourceMaps = require('@zeit/next-source-maps')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 })
-const withMdxEnhanced = require('next-mdx-enhanced')
-const readingTime = require('reading-time')
-const remarkSlug = require('remark-slug')
-const remarkAutolinkHeadings = require('remark-autolink-headings')
-
-const autolinkHeadingsOptions = {
-  behavior: 'append',
-  content: {
-    type: 'element',
-    tagName: 'span',
-    properties: {
-      style: {
-        marginLeft: '0.5rem',
-      },
-    },
-    children: [
-      {
-        type: 'text',
-        value: '#',
-      },
-    ],
-  },
-}
-
-function extendFrontmatterProcess(mdxContent, frontmatter) {
-  return {
-    ...frontmatter,
-    slug: frontmatter.__resourcePath.replace('.mdx', ''),
-    readingTime: readingTime(mdxContent),
-  }
-}
 
 const nextConfig = {
-  pageExtensions: ['ts', 'tsx'],
+  pageExtensions: ['js', 'jsx', 'tsx', 'md', 'mdx'],
+  experimental: {
+    modern: true,
+  },
+  webpack: (config, {dev, isServer}) => {
+    config.module.rules.push({
+      test: /\.(png|jpe?g|gif|mp4)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            publicPath: '/_next',
+            name: 'static/media/[name].[hash].[ext]',
+          },
+        },
+      ],
+    })
 
-  webpack: (config, options) => {
-    if (options.isServer) {
-      require('./scripts/generate-sitemap')
-      require('./scripts/generate-rss-feed')
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    })
+
+    if (!dev && !isServer) {
+      // Replace React with Preact only in client production build
+      Object.assign(config.resolve.alias, {
+        react: 'preact/compat',
+        'react-dom/test-utils': 'preact/test-utils',
+        'react-dom': 'preact/compat',
+      })
     }
 
     return config
   },
-
-  async redirects() {
-    return [
-      {
-        source: '/wedding',
-        destination: 'https://wedding.eckertalex.dev',
-        permanent: true,
-      },
-    ]
-  },
 }
 
-module.exports = withPlugins(
-  [
-    withSourceMaps,
-    withBundleAnalyzer,
-    withMdxEnhanced({
-      layoutPath: 'layouts',
-      defaultLayout: true,
-      fileExtensions: ['mdx'],
-      remarkPlugins: [remarkSlug, [remarkAutolinkHeadings, autolinkHeadingsOptions]],
-      rehypePlugins: [],
-      extendFrontMatter: {
-        process: extendFrontmatterProcess,
-      },
-    }),
-  ],
-  nextConfig
-)
+module.exports = withBundleAnalyzer(nextConfig)
