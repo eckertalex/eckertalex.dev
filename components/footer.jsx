@@ -1,10 +1,14 @@
 import {CustomLink} from '@/components/link'
 import siteMetadata from '@/data/siteMetadata'
 import {SocialIcons} from '@/components/social-icons'
+import {NowPlaying} from '@/components/now-playing'
 
 export function Footer() {
   return (
     <footer className="flex flex-col items-center mt-16">
+      <div className="flex space-x-4">
+        <NowPlaying />
+      </div>
       <div className="flex mb-3 space-x-4">
         <SocialIcons kind="mail" href={`mailto:${siteMetadata.email}`} size="6" />
         <SocialIcons kind="github" href={siteMetadata.github} size="6" />
