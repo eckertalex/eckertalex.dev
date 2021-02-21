@@ -3,9 +3,14 @@ import {fetcher} from '@/lib/fetcher'
 import {Artist} from '@/components/artist'
 
 export function TopArtists() {
-  const {data} = useSWR('/api/top-artists', fetcher)
+  const {data: artists = []} = useSWR<
+    {
+      name: string
+      artistUrl: string
+    }[]
+  >('/api/top-artists', fetcher)
 
-  if (!data) {
+  if (!artists.length) {
     return null
   }
 
@@ -15,7 +20,7 @@ export function TopArtists() {
         Top Artists
       </h2>
       <p>Here&apos;s my top artists on Spotify.</p>
-      {data.artists.map((artist, index) => (
+      {artists.map((artist, index) => (
         <Artist key={artist.artistUrl} ranking={index + 1} {...artist} />
       ))}
     </>

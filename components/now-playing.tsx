@@ -2,7 +2,11 @@ import useSWR from 'swr'
 import {fetcher} from '@/lib/fetcher'
 
 export function NowPlaying() {
-  const {data} = useSWR('/api/now-playing', fetcher)
+  const {data: song} = useSWR<{
+    songUrl: string
+    title: string
+    artist: string
+  }>('/api/now-playing', fetcher)
 
   return (
     <div className="flex flex-row-reverse sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
@@ -13,20 +17,20 @@ export function NowPlaying() {
         />
       </svg>
       <div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
-        {data?.songUrl ? (
+        {song?.songUrl ? (
           <a
             className="text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
-            href={data.songUrl}
+            href={song.songUrl}
             rel="noopener noreferrer"
             target="_blank"
           >
-            {data.title}
+            {song.title}
           </a>
         ) : (
           <p className="text-gray-800 dark:text-gray-200 font-medium">Not Playing</p>
         )}
         <span className="mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">{' – '}</span>
-        <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">{data?.artist ?? 'Spotify'}</p>
+        <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">{song?.artist ?? 'Spotify'}</p>
       </div>
     </div>
   )

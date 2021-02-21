@@ -1,4 +1,10 @@
-export function Artist(props) {
+type ArtistProps = {
+  ranking: number
+  name: string
+  artistUrl: string
+}
+
+export function Artist(props: ArtistProps) {
   const {ranking, artistUrl, name} = props
 
   return (

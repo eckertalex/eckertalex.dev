@@ -1,4 +1,11 @@
-export function Track(props) {
+type TrackProps = {
+  ranking: number
+  artist: string
+  songUrl: string
+  title: string
+}
+
+export function Track(props: TrackProps) {
   const {ranking, songUrl, title, artist} = props
 
   return (

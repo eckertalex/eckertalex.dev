@@ -3,9 +3,15 @@ import {fetcher} from '@/lib/fetcher'
 import {Track} from '@/components/track'
 
 export function TopTracks() {
-  const {data} = useSWR('/api/top-tracks', fetcher)
+  const {data: tracks = []} = useSWR<
+    {
+      artist: string
+      songUrl: string
+      title: string
+    }[]
+  >('/api/top-tracks', fetcher)
 
-  if (!data) {
+  if (!tracks.length) {
     return null
   }
 
@@ -15,7 +21,7 @@ export function TopTracks() {
         Top Tracks
       </h2>
       <p>Here&apos;s my top tracks on Spotify updated daily.</p>
-      {data.tracks.map((track, index) => (
+      {tracks.map((track, index) => (
         <Track key={track.songUrl} ranking={index + 1} {...track} />
       ))}
     </>
