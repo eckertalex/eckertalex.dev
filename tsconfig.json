@@ -1,21 +1,20 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "target": "esnext",
     "module": "esnext",
-    "moduleResolution": "node",
+    "lib": ["dom", "es2019"],
+    "allowJs": true,
+    "jsx": "preserve",
     "noEmit": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "esnext",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
       "@/components/*": ["components/*"],
@@ -23,8 +22,10 @@
       "@/assets/*": ["assets/*"],
       "@/lib/*": ["lib/*"],
       "@/styles/*": ["styles/*"]
-    }
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"]
 }

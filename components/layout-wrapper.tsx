@@ -1,4 +1,4 @@
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import {headerNavLinks} from '@/data/headerNavLinks'
 import {CustomLink} from '@/components/link'
 import {SectionContainer} from '@/components/section-container'
@@ -6,7 +6,9 @@ import {Footer} from '@/components/footer'
 import {MobileNav} from '@/components/mobile-nav'
 import {ThemeSwitch} from '@/components/theme-switch'
 
-export function LayoutWrapper({children}) {
+export function LayoutWrapper(props: React.PropsWithChildren<unknown>) {
+  const {children} = props
+
   return (
     <SectionContainer>
       <div className="flex flex-col justify-between h-screen">

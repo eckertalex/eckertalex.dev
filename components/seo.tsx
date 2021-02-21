@@ -1,5 +1,21 @@
 import {ArticleJsonLd, NextSeo} from 'next-seo'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
+
+type PageSeoProps = {
+  title: string
+  description: string
+  url: string
+}
+
+type BlogSeoProps = {
+  title: string
+  summary: string
+  date: string
+  lastmod: string
+  url: string
+  tags: string[]
+  images: string | string[]
+}
 
 export const SEO = {
   title: siteMetadata.title,
@@ -32,7 +48,8 @@ export const SEO = {
   ],
 }
 
-export function PageSeo({title, description, url}) {
+export function PageSeo(props: PageSeoProps) {
+  const {title, description, url} = props
   return (
     <NextSeo
       canonical={url}
@@ -47,7 +64,8 @@ export function PageSeo({title, description, url}) {
   )
 }
 
-export function BlogSeo({title, summary, date, lastmod, url, tags, images = []}) {
+export function BlogSeo(props: BlogSeoProps) {
+  const {title, summary, date, lastmod, url, tags, images = []} = props
   const publishedAt = new Date(date).toISOString(),
     modifiedAt = new Date(lastmod || date).toISOString(),
     imagesArr = images.length === 0 ? [siteMetadata.socialBanner] : typeof images === 'string' ? [images] : images,
@@ -89,8 +107,9 @@ export function BlogSeo({title, summary, date, lastmod, url, tags, images = []})
         dateModified={publishedAt}
         datePublished={modifiedAt}
         description={summary}
-        images={featuredImages}
+        images={featuredImages.map((img) => img.url)}
         publisherName={siteMetadata.author}
+        publisherLogo={`${siteMetadata.siteUrl}${siteMetadata.socialBanner}`}
         title={title}
         url={url}
       />

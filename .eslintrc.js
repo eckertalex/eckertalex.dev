@@ -29,6 +29,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
+    'jsx-a11y/anchor-has-content': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -46,6 +47,12 @@ module.exports = {
       files: ['*.js'],
       rules: {
         '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+    {
+      files: ['*.d.ts'],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
       },
     },
   ],

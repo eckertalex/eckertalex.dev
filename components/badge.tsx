@@ -1,7 +1,7 @@
 import React from 'react'
 /* -------------------------------------------------------------------------- */
 
-export function Badge(props) {
+export function Badge(props: React.PropsWithChildren<unknown>) {
   const {children} = props
 
   return (

@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import {kebabCase} from '@/lib/utils'
 
-export function Tag({text}) {
+export function Tag(props: {text: string}) {
+  const {text} = props
+
   return (
     <Link href={`/tags/${kebabCase(text)}`}>
       <a className="text-sm font-medium text-pink-500 uppercase hover:text-pink-600 dark:hover:text-pink-400">

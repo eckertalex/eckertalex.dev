@@ -1,7 +1,7 @@
-import Document, {Head, Html, Main, NextScript} from 'next/document'
+import Document, {Head, Html, Main, NextScript, DocumentContext} from 'next/document'
 
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx) {
+  static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx)
     return {...initialProps}
   }
@@ -29,8 +29,8 @@ export default class MyDocument extends Document {
           <link
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
             media="print"
-            onLoad="this.media='all'"
             // @ts-ignore
+            onLoad="this.media='all'"
             rel="stylesheet"
           />
           <noscript>

@@ -1,5 +1,5 @@
 import {CustomLink} from '@/components/link'
-import siteMetadata from '@/data/siteMetadata'
+import siteMetadata from '@/data/siteMetadata.json'
 import {SocialIcons} from '@/components/social-icons'
 import {NowPlaying} from '@/components/now-playing'
 
@@ -10,10 +10,10 @@ export function Footer() {
         <NowPlaying />
       </div>
       <div className="flex mb-3 space-x-4">
-        <SocialIcons href={`mailto:${siteMetadata.email}`} kind="mail" size="6" />
-        <SocialIcons href={siteMetadata.github} kind="github" size="6" />
-        <SocialIcons href={siteMetadata.linkedin} kind="linkedin" size="6" />
-        <SocialIcons href={siteMetadata.twitter} kind="twitter" size="6" />
+        <SocialIcons href={`mailto:${siteMetadata.email}`} kind="mail" size={6} />
+        <SocialIcons href={siteMetadata.github} kind="github" size={6} />
+        <SocialIcons href={siteMetadata.linkedin} kind="linkedin" size={6} />
+        <SocialIcons href={siteMetadata.twitter} kind="twitter" size={6} />
       </div>
       <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
         <div>{siteMetadata.author}</div>
