@@ -1,22 +1,21 @@
 import {getFileBySlug} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import hydrate from 'next-mdx-remote/hydrate'
-import {SocialIcons} from '@/components/social-icons'
 import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
 export default function Articles({articles}) {
-  const {mdxSource, frontMatter} = articles
-  const content = hydrate(mdxSource, {
-    components: MDXComponents,
-  })
+  const {mdxSource, frontMatter} = articles,
+    content = hydrate(mdxSource, {
+      components: MDXComponents,
+    })
 
   return (
     <>
       <PageSeo
-        title={`${frontMatter.title} - ${siteMetadata.author}`}
         description={`${frontMatter.title} - ${siteMetadata.author}`}
+        title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/articles`}
       />
       <div className="divide-y">
@@ -31,7 +30,7 @@ export default function Articles({articles}) {
   )
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps() {
   const articles = await getFileBySlug('articles')
 
   return {props: {articles}}

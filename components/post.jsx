@@ -7,11 +7,10 @@ import {BlogSeo} from '@/components/seo'
 import {Tag} from '@/components/tag'
 import siteMetadata from '@/data/siteMetadata'
 
-const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`
-const discussUrl = (slug) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)}`
-
-const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
+const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`,
+  discussUrl = (slug) =>
+    `https://mobile.twitter.com/search?q=${encodeURIComponent(`${siteMetadata.siteUrl}/blog/${slug}`)}`,
+  postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
 
 export function Post({children, frontMatter, next, prev}) {
   const {slug, fileName, date, title, tags} = frontMatter
@@ -44,15 +43,15 @@ export function Post({children, frontMatter, next, prev}) {
             <dd>
               <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
                 <li className="flex items-center space-x-2">
-                  <img src={siteMetadata.image} alt="avatar" className="w-10 h-10 rounded-full" />
+                  <img alt="avatar" className="w-10 h-10 rounded-full" src={siteMetadata.image} />
                   <dl className="text-sm font-medium leading-5 whitespace-nowrap">
                     <dt className="sr-only">Name</dt>
                     <dd className="text-gray-900 dark:text-gray-100">{siteMetadata.author}</dd>
                     <dt className="sr-only">Twitter</dt>
                     <dd>
                       <CustomLink
-                        href={siteMetadata.twitter}
                         className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+                        href={siteMetadata.twitter}
                       >
                         {siteMetadata.twitter.replace('https://twitter.com/', '@')}
                       </CustomLink>
@@ -66,10 +65,10 @@ export function Post({children, frontMatter, next, prev}) {
             <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">{children}</div>
             <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
               <CustomLink href={discussUrl(slug)} rel="nofollow">
-                {'Discuss on Twitter'}
+                Discuss on Twitter
               </CustomLink>
               {` • `}
-              <CustomLink href={editUrl(fileName)}>{'View on GitHub'}</CustomLink>
+              <CustomLink href={editUrl(fileName)}>View on GitHub</CustomLink>
             </div>
           </div>
           <footer className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
@@ -106,7 +105,7 @@ export function Post({children, frontMatter, next, prev}) {
               </div>
             )}
             <div className="pt-4 xl:pt-8">
-              <CustomLink href="/blog" className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400">
+              <CustomLink className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400" href="/blog">
                 &larr; Back to the blog
               </CustomLink>
             </div>

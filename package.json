@@ -18,9 +18,10 @@
     "prestart": "npm run build",
     "start": "next start",
     "analyze": "ANALYZE=true next build",
+    "check-types": "tsc",
     "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx --fix .",
     "format": "prettier --ignore-path .gitignore \"**/*.+(js|jsx|json|ts|tsx)\" --write",
-    "validate": "npm-run-all --parallel format lint",
+    "validate": "npm-run-all --parallel check-types format lint",
     "postinstall": "husky install"
   },
   "dependencies": {
@@ -51,6 +52,11 @@
     "@next/bundle-analyzer": "10.0.7",
     "@next/mdx": "10.0.7",
     "@svgr/webpack": "5.5.0",
+    "@types/node": "14.14.31",
+    "@types/react": "17.0.2",
+    "@types/react-dom": "17.0.1",
+    "@typescript-eslint/eslint-plugin": "4.15.1",
+    "@typescript-eslint/parser": "4.15.1",
     "eslint": "7.20.0",
     "eslint-config-prettier": "8.0.0",
     "eslint-plugin-jsx-a11y": "6.4.1",
@@ -70,6 +76,7 @@
     "remark-frontmatter": "3.0.0",
     "remark-parse": "9.0.0",
     "remark-stringify": "9.0.1",
+    "typescript": "4.1.5",
     "unified": "9.2.0",
     "unist-util-visit": "2.0.3"
   },

@@ -1,4 +1,4 @@
-import {NextSeo, ArticleJsonLd} from 'next-seo'
+import {ArticleJsonLd, NextSeo} from 'next-seo'
 import siteMetadata from '@/data/siteMetadata'
 
 export const SEO = {
@@ -35,36 +35,40 @@ export const SEO = {
 export function PageSeo({title, description, url}) {
   return (
     <NextSeo
-      title={`${title} – ${siteMetadata.title}`}
-      description={description}
       canonical={url}
+      description={description}
       openGraph={{
         url,
         title,
         description,
       }}
+      title={`${title} – ${siteMetadata.title}`}
     />
   )
 }
 
 export function BlogSeo({title, summary, date, lastmod, url, tags, images = []}) {
-  const publishedAt = new Date(date).toISOString()
-  const modifiedAt = new Date(lastmod || date).toISOString()
-  let imagesArr = images.length === 0 ? [siteMetadata.socialBanner] : typeof images === 'string' ? [images] : images
-
-  const featuredImages = imagesArr.map((img) => {
-    return {
-      url: `${siteMetadata.siteUrl}${img}`,
-      alt: title,
-    }
-  })
+  const publishedAt = new Date(date).toISOString(),
+    modifiedAt = new Date(lastmod || date).toISOString(),
+    imagesArr = images.length === 0 ? [siteMetadata.socialBanner] : typeof images === 'string' ? [images] : images,
+    featuredImages = imagesArr.map((img) => {
+      return {
+        url: `${siteMetadata.siteUrl}${img}`,
+        alt: title,
+      }
+    })
 
   return (
     <>
       <NextSeo
-        title={`${title} – ${siteMetadata.title}`}
-        description={summary}
+        additionalMetaTags={[
+          {
+            name: 'twitter:image',
+            content: featuredImages[0].url,
+          },
+        ]}
         canonical={url}
+        description={summary}
         openGraph={{
           type: 'article',
           article: {
@@ -78,12 +82,7 @@ export function BlogSeo({title, summary, date, lastmod, url, tags, images = []})
           description: summary,
           images: featuredImages,
         }}
-        additionalMetaTags={[
-          {
-            name: 'twitter:image',
-            content: featuredImages[0].url,
-          },
-        ]}
+        title={`${title} – ${siteMetadata.title}`}
       />
       <ArticleJsonLd
         authorName={siteMetadata.author}

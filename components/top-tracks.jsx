@@ -14,9 +14,9 @@ export function TopTracks() {
       <h2 className="text-xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-3xl md:leading-14">
         Top Tracks
       </h2>
-      <p>Here's my top tracks on Spotify updated daily.</p>
+      <p>Here&apos;s my top tracks on Spotify updated daily.</p>
       {data.tracks.map((track, index) => (
-        <Track ranking={index + 1} key={track.songUrl} {...track} />
+        <Track key={track.songUrl} ranking={index + 1} {...track} />
       ))}
     </>
   )

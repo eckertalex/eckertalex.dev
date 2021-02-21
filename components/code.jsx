@@ -4,10 +4,9 @@ import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
 
 function getParams(className = '') {
-  const data = className.split(':')
-
-  const lang = data[0].replace('language-', '')
-  const title = data[1]?.replace('title=', '')
+  const data = className.split(':'),
+    lang = data[0].replace('language-', ''),
+    title = data[1]?.replace('title=', '')
 
   return [lang, title]
 }
@@ -29,18 +28,17 @@ function calculateLinesToHighlight(meta) {
 }
 
 export function Code(props) {
-  const {theme} = useTheme()
-  const {children: codeString, className: blockClassName, metastring = ''} = props
-  const [language, title] = getParams(blockClassName)
-
-  const shouldHighlightLine = calculateLinesToHighlight(metastring)
+  const {theme} = useTheme(),
+    {children: codeString, className: blockClassName, metastring = ''} = props,
+    [language, title] = getParams(blockClassName),
+    shouldHighlightLine = calculateLinesToHighlight(metastring)
 
   return (
     <Highlight
       {...defaultProps}
-      theme={theme === 'dark' ? nightOwl : nightOwlLight}
       code={codeString}
       language={language}
+      theme={theme === 'dark' ? nightOwl : nightOwlLight}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (
         <>
@@ -50,9 +48,8 @@ export function Code(props) {
           <div className="code-block" data-language={language}>
             <pre className={className} style={style}>
               {tokens.map((line, lineKey) => {
-                const lineProps = getLineProps({line, key: lineKey, className: 'pl-2'})
-
-                const isHighlighted = shouldHighlightLine(lineKey + 1)
+                const lineProps = getLineProps({line, key: lineKey, className: 'pl-2'}),
+                  isHighlighted = shouldHighlightLine(lineKey + 1)
                 if (isHighlighted) {
                   lineProps.className = `${lineProps.className} -mx-3`
                   lineProps.style = {

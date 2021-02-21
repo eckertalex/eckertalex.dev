@@ -12,7 +12,7 @@ export function LayoutWrapper({children}) {
       <div className="flex flex-col justify-between h-screen">
         <header className="flex items-center justify-between py-10">
           <div>
-            <CustomLink href="/" aria-label="eckertalex.dev" className="hover:no-underline">
+            <CustomLink aria-label="eckertalex.dev" className="hover:no-underline" href="/">
               <div className="flex items-center justify-between">
                 {typeof siteMetadata.headerTitle === 'string' ? (
                   <div className="h-6 text-4xl font-semibold text-pink-500">{siteMetadata.headerTitle}</div>
@@ -26,9 +26,9 @@ export function LayoutWrapper({children}) {
             <div className="hidden sm:block">
               {headerNavLinks.map((link) => (
                 <CustomLink
-                  key={link.title}
-                  href={link.href}
                   className="p-1 font-medium text-gray-700 sm:p-4 dark:text-gray-400"
+                  href={link.href}
+                  key={link.title}
                 >
                   {link.title}
                 </CustomLink>

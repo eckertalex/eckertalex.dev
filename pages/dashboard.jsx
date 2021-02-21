@@ -8,8 +8,8 @@ export default function Dashboard() {
   return (
     <>
       <PageSeo
-        title={`Dashboard - ${siteMetadata.author}`}
         description={`Dashboard - ${siteMetadata.author}`}
+        title={`Dashboard - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/dashboard`}
       />
       <div className="pt-6 pb-8 space-y-2 md:space-y-5">

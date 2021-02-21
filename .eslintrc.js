@@ -1,7 +1,7 @@
 module.exports = {
-  root: true,
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020,
+    ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -14,19 +14,21 @@ module.exports = {
   },
   env: {
     browser: true,
-    amd: true,
     node: true,
-    es6: true,
   },
+  plugins: [],
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
-    'plugin:jsx-a11y/recommended',
+    'plugin:jsx-a11y/strict',
+    'plugin:react-hooks/recommended',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
     'plugin:prettier/recommended',
   ],
   rules: {
-    'prettier/prettier': 'error',
     'react/react-in-jsx-scope': 'off',
+    'react/prop-types': 'off',
     'jsx-a11y/anchor-is-valid': [
       'error',
       {
@@ -35,8 +37,16 @@ module.exports = {
         aspects: ['invalidHref', 'preferButton'],
       },
     ],
-    'react/prop-types': 0,
-    'no-unused-vars': 0,
-    'react/no-unescaped-entities': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
   },
+  overrides: [
+    {
+      files: ['*.js'],
+      rules: {
+        '@typescript-eslint/no-var-requires': 'off',
+      },
+    },
+  ],
 }

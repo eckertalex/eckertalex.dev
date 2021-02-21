@@ -1,22 +1,21 @@
 import {getFileBySlug} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import hydrate from 'next-mdx-remote/hydrate'
-import {SocialIcons} from '@/components/social-icons'
 import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
 export default function VSCode({vscode}) {
-  const {mdxSource, frontMatter} = vscode
-  const content = hydrate(mdxSource, {
-    components: MDXComponents,
-  })
+  const {mdxSource, frontMatter} = vscode,
+    content = hydrate(mdxSource, {
+      components: MDXComponents,
+    })
 
   return (
     <>
       <PageSeo
-        title={`${frontMatter.title} - ${siteMetadata.author}`}
         description={`${frontMatter.title} - ${siteMetadata.author}`}
+        title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/vscode`}
       />
       <div className="divide-y">
@@ -31,7 +30,7 @@ export default function VSCode({vscode}) {
   )
 }
 
-export async function getStaticProps({params}) {
+export async function getStaticProps() {
   const vscode = await getFileBySlug('vscode')
 
   return {props: {vscode}}

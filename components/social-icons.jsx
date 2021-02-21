@@ -18,9 +18,9 @@ export function SocialIcons({kind, href, size = 8}) {
   return (
     <a
       className="text-sm text-gray-500 transition hover:text-gray-600"
-      target="_blank"
-      rel="noopener noreferrer"
       href={href}
+      rel="noopener noreferrer"
+      target="_blank"
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg

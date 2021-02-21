@@ -8,8 +8,8 @@ export function Track(props) {
         <a
           className="font-medium text-gray-900 dark:text-gray-100 truncate w-60 sm:w-96 md:w-full"
           href={songUrl}
-          target="_blank"
           rel="noopener noreferrer"
+          target="_blank"
         >
           {title}
         </a>

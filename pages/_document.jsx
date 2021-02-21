@@ -1,4 +1,4 @@
-import Document, {Html, Head, Main, NextScript} from 'next/document'
+import Document, {Head, Html, Main, NextScript} from 'next/document'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,33 +10,33 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta name="theme-color" content="#000000" />
-          <meta name="msapplication-TileColor" content="#000000" />
+          <meta content="#000000" name="theme-color" />
+          <meta content="#000000" name="msapplication-TileColor" />
           <meta content="/static/favicons/browserconfig.xml" name="msapplication-config" />
           <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
-          <link rel="manifest" href="/static/favicons/site.webmanifest" />
-          <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/favicon-16x16.png" />
-          <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
-          <link rel="alternate" type="application/rss+xml" href="/index.xml" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          <link href="/static/favicons/site.webmanifest" rel="manifest" />
+          <link href="/static/favicons/apple-touch-icon.png" rel="apple-touch-icon" sizes="76x76" />
+          <link href="/static/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+          <link href="/static/favicons/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <link color="#5bbad5" href="/static/favicons/safari-pinned-tab.svg" rel="mask-icon" />
+          <link href="/index.xml" rel="alternate" type="application/rss+xml" />
+          <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
           <link
-            rel="preload"
             as="style"
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
+            rel="preload"
           />
           <link
-            rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
             media="print"
-            // @ts-ignore
             onLoad="this.media='all'"
+            // @ts-ignore
+            rel="stylesheet"
           />
           <noscript>
             <link
-              rel="stylesheet"
               href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
+              rel="stylesheet"
             />
           </noscript>
         </Head>

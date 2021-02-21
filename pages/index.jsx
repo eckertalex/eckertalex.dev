@@ -1,5 +1,5 @@
 import tinytime from 'tinytime'
-import {getFileBySlug, getAllFilesFrontMatter} from '@/lib/mdx'
+import {getAllFilesFrontMatter, getFileBySlug} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import {Tag} from '@/components/tag'
 import {CustomLink} from '@/components/link'
@@ -8,22 +8,22 @@ import {PageTitle} from '@/components/page-title'
 import {MDXComponents} from '@/components/mdx-components'
 import hydrate from 'next-mdx-remote/hydrate'
 
-const MAX_DISPLAY = 3
-const postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
+const MAX_DISPLAY = 3,
+  postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
 
 export default function Home({posts, projects, hero}) {
-  const {mdxSource: projectsMdxSource, frontMatter: projectsFrontMatter} = projects
-  const projectsContent = hydrate(projectsMdxSource, {
-    components: MDXComponents,
-  })
-  const {mdxSource: heroMdxSource, frontMatter: heroFrontMatter} = hero
-  const heroContent = hydrate(heroMdxSource, {
-    components: MDXComponents,
-  })
+  const {mdxSource: projectsMdxSource, frontMatter: projectsFrontMatter} = projects,
+    projectsContent = hydrate(projectsMdxSource, {
+      components: MDXComponents,
+    }),
+    {mdxSource: heroMdxSource, frontMatter: heroFrontMatter} = hero,
+    heroContent = hydrate(heroMdxSource, {
+      components: MDXComponents,
+    })
 
   return (
     <>
-      <PageSeo title={siteMetadata.title} description={siteMetadata.description} url={siteMetadata.siteUrl} />
+      <PageSeo description={siteMetadata.description} title={siteMetadata.title} url={siteMetadata.siteUrl} />
 
       <div className="pt-6 pb-8 space-y-2 md:space-y-5">
         <PageTitle>{heroFrontMatter.title}</PageTitle>
@@ -42,7 +42,7 @@ export default function Home({posts, projects, hero}) {
           {posts.slice(0, MAX_DISPLAY).map((frontMatter) => {
             const {slug, date, title, summary, tags} = frontMatter
             return (
-              <li key={slug} className="py-12">
+              <li className="py-12" key={slug}>
                 <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                   <dl>
                     <dt className="sr-only">Published on</dt>
@@ -54,7 +54,7 @@ export default function Home({posts, projects, hero}) {
                     <div className="space-y-6">
                       <div>
                         <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                          <CustomLink href={`/blog/${slug}`} className="text-gray-900 dark:text-gray-100">
+                          <CustomLink className="text-gray-900 dark:text-gray-100" href={`/blog/${slug}`}>
                             {title}
                           </CustomLink>
                         </h2>
@@ -68,9 +68,9 @@ export default function Home({posts, projects, hero}) {
                     </div>
                     <div className="text-base font-medium leading-6">
                       <CustomLink
-                        href={`/blog/${slug}`}
-                        className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
                         aria-label={`Read "${title}"`}
+                        className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+                        href={`/blog/${slug}`}
                       >
                         Read more &rarr;
                       </CustomLink>
@@ -85,9 +85,9 @@ export default function Home({posts, projects, hero}) {
       {posts.length > MAX_DISPLAY && (
         <div className="flex justify-end text-base font-medium leading-6">
           <CustomLink
-            href="/blog"
-            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
             aria-label="all posts"
+            className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
+            href="/blog"
           >
             All Posts &rarr;
           </CustomLink>
@@ -106,9 +106,9 @@ export default function Home({posts, projects, hero}) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog')
-  const projects = await getFileBySlug('projects')
-  const hero = await getFileBySlug('hero')
+  const posts = await getAllFilesFrontMatter('blog'),
+    projects = await getFileBySlug('projects'),
+    hero = await getFileBySlug('hero')
 
   return {props: {posts, projects, hero}}
 }

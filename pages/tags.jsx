@@ -11,8 +11,8 @@ export default function Tags({tags}) {
   return (
     <>
       <PageSeo
-        title={`Tags - ${siteMetadata.author}`}
         description="Things I blog about"
+        title={`Tags - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/tags`}
       />
       <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 md:justify-center md:items-center md:divide-y-0 md:flex-row md:space-x-6 md:mt-24">
@@ -23,11 +23,11 @@ export default function Tags({tags}) {
           {Object.keys(tags).length === 0 && 'No tags found.'}
           {sortedTags.map((t) => {
             return (
-              <div key={t} className="m-2">
+              <div className="m-2" key={t}>
                 <Tag text={t} />
                 <CustomLink
-                  href={`/tags/${kebabCase(t)}`}
                   className="mx-1 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
+                  href={`/tags/${kebabCase(t)}`}
                 >
                   {` (${tags[t]})`}
                 </CustomLink>

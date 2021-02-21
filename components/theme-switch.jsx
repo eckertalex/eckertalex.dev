@@ -13,15 +13,15 @@ export function ThemeSwitch() {
   }
 
   return (
-    <label htmlFor="theme-toggle" className="theme-toggle">
+    <label className="theme-toggle" htmlFor="theme-toggle">
       <input
-        id="theme-toggle"
-        type="checkbox"
         checked={theme === 'dark'}
+        id="theme-toggle"
         onChange={() => {
           setDarkModeTransition()
           toggleTheme()
         }}
+        type="checkbox"
       />
       <div />
     </label>

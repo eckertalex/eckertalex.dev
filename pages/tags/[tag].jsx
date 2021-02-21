@@ -16,8 +16,8 @@ export default function Blog({posts, tag}) {
   return (
     <>
       <PageSeo
-        title={`${tag} - ${siteMetadata.title}`}
         description={`${tag} tags - ${siteMetadata.title}`}
+        title={`${tag} - ${siteMetadata.title}`}
         url={`${siteMetadata.siteUrl}/tags/${tag}`}
       />
       <PostList posts={posts} title={title} />
@@ -39,14 +39,13 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  const allPosts = await getAllFilesFrontMatter('blog')
-  const filteredPosts = allPosts.filter(
-    (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
-  )
-
-  // rss
-  const rss = generateRss(filteredPosts, `tags/${params.tag}/index.xml`)
-  const rssPath = path.join(root, 'public', 'tags', params.tag)
+  const allPosts = await getAllFilesFrontMatter('blog'),
+    filteredPosts = allPosts.filter(
+      (post) => post.draft !== true && post.tags.map((t) => kebabCase(t)).includes(params.tag)
+    ),
+    // Rss
+    rss = generateRss(filteredPosts, `tags/${params.tag}/index.xml`),
+    rssPath = path.join(root, 'public', 'tags', params.tag)
   fs.mkdirSync(rssPath, {recursive: true})
   fs.writeFileSync(path.join(rssPath, 'index.xml'), rss)
 
