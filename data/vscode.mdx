@@ -48,12 +48,85 @@ title: "Visual Studio Code Configuration"
 - [wmaurer.change-case](https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case)
 - [yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 
+### Projects+ Configuration
+
+```json
+{
+  "projects": [
+    {
+      "name": "Quokka",
+      "path": "~/.quokka"
+    },
+    {
+      "name": "eckertalex.dev",
+      "path": "~/private/dev/eckertalex.dev"
+    },
+  ],
+  "groups": [
+    {
+      "name": "Courses",
+      "groups": [
+        {
+          "name": "Epic React",
+          "projects": [
+            {
+              "name": "01 React Fundamentals",
+              "path": "~/private/dev/courses/epic-react/react-fundamentals"
+            },
+            {
+              "name": "02 React Hooks",
+              "path": "~/private/dev/courses/epic-react/react-hooks"
+            },
+            {
+              "name": "03 Advanced React Hooks",
+              "path": "~/private/dev/courses/epic-react/advanced-react-hooks"
+            },
+            {
+              "name": "04 Advanced React Patterns",
+              "path": "~/private/dev/courses/epic-react/advanced-react-patterns"
+            },
+            {
+              "name": "05 React Performance",
+              "path": "~/private/dev/courses/epic-react/react-performance"
+            },
+            {
+              "name": "06 Testing React Apps",
+              "path": "~/private/dev/courses/epic-react/testing-react-apps"
+            },
+            {
+              "name": "07 React Suspense",
+              "path": "~/private/dev/courses/epic-react/react-suspense"
+            },
+            {
+              "name": "08 Bookshelf",
+              "path": "~/private/dev/courses/epic-react/bookshelf"
+            }
+          ]
+        },
+        {
+          "name": "Testing JavaScript",
+          "projects": [
+            {
+              "name": "07 Install, Configure, and Script Cypress for JavaScript Web Applications",
+              "path": "~/private/dev/courses/testingjavascript/jest-cypress-react-babel-webpack"
+            }
+          ]
+        },
+        {
+          "name": "Vim for VSCode",
+          "path": "~/private/dev/courses/vim-for-vscode"
+        }
+      ]
+    }
+  ]
+}
+```
 
 ### Quokka.js Configuration
 
 Here is my custom Quokka.js configuration
 
-```json:title:~/.qokka/config.json
+```json:title=~/.qokka/config.json
 {
   "pro": false,
   "node": "~/.fnm/node-versions/v14.15.5/installation/bin/node",
