@@ -10,9 +10,11 @@ title: "Visual Studio Code Configuration"
 
 ## Extensions
 
+- [bierner.markdown-emoji](https://marketplace.visualstudio.com/items?itemName=bierner.markdown-emoji)
 - [bradgashler.htmltagwrap](https://marketplace.visualstudio.com/items?itemName=bradgashler.htmltagwrap)
 - [bradlc.vscode-tailwindcss](https://marketplace.visualstudio.com/items?itemName=bradlc.vscode-tailwindcss)
 - [BriteSnow.vscode-toggle-quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
+- [bungcip.better-toml](https://marketplace.visualstudio.com/items?itemName=bungcip.better-toml)
 - [christian-kohler.npm-intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.npm-intellisense)
 - [christian-kohler.path-intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense)
 - [CoenraadS.bracket-pair-colorizer-2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2)
@@ -30,17 +32,45 @@ title: "Visual Studio Code Configuration"
 - [mgmcdermott.vscode-language-babel](https://marketplace.visualstudio.com/items?itemName=mgmcdermott.vscode-language-babel)
 - [mikestead.dotenv](https://marketplace.visualstudio.com/items?itemName=mikestead.dotenv)
 - [mrmlnc.vscode-duplicate](https://marketplace.visualstudio.com/items?itemName=mrmlnc.vscode-duplicate)
+- [ms-vsliveshare.vsliveshare](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare)
+- [ms-vsliveshare.vsliveshare-audio](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare-audio)
+- [ms-vsliveshare.vsliveshare-pack](https://marketplace.visualstudio.com/items?itemName=ms-vsliveshare.vsliveshare-pack)
 - [msjsdiag.debugger-for-chrome](https://marketplace.visualstudio.com/items?itemName=msjsdiag.debugger-for-chrome)
 - [naumovs.color-highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
 - [oderwat.indent-rainbow](https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow)
 - [PKief.material-icon-theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [sdras.night-owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
 - [silvenon.mdx](https://marketplace.visualstudio.com/items?itemName=silvenon.mdx)
+- [sleistner.vscode-fileutils](https://marketplace.visualstudio.com/items?itemName=sleistner.vscode-fileutils)
 - [steoates.autoimport](https://marketplace.visualstudio.com/items?itemName=steoates.autoimport)
-- [stylelint.vscode-stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
 - [VisualStudioExptTeam.vscodeintellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
 - [WallabyJs.quokka-vscode](https://marketplace.visualstudio.com/items?itemName=WallabyJs.quokka-vscode)
+- [wmaurer.change-case](https://marketplace.visualstudio.com/items?itemName=wmaurer.change-case)
+- [yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 
-## Snippets
+
+### Quokka.js Configuration
+
+Here is my custom Quokka.js configuration
+
+```json:title:~/.qokka/config.json
+{
+  "pro": false,
+  "node": "~/.fnm/node-versions/v14.15.5/installation/bin/node",
+  "plugins": ["jsdom-quokka-plugin"],
+  "jsdom": {
+    "userAgent": "quokka.js",
+    "html": "<html><head></head><body><div id=\"root\"></div></body></html>",
+    "config": {
+      "pretendToBeVisual": true,
+      "runScripts": "dangerously",
+      "url": "http://localhost/"
+    }
+  }
+}
+```
+
+## Keybindings
 
 ```json:title=keybindings.json
 [
@@ -119,15 +149,52 @@ title: "Visual Studio Code Configuration"
     "key": "cmd+r",
     "command": "workbench.files.action.refreshFilesExplorer",
     "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  /**
+   * Emmet
+   **/
+  {
+    "key": "cmd+m cmd+i",
+    "command": "editor.emmet.action.balanceIn",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+o",
+    "command": "editor.emmet.action.balanceOut",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+w",
+    "command": "editor.emmet.action.wrapWithAbbreviation",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+m",
+    "command": "editor.emmet.action.matchTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+e",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+r",
+    "command": "editor.emmet.action.updateTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+backspace",
+    "command": "editor.emmet.action.removeTag",
+    "when": "editorTextFocus"
   }
 ]
 ```
 
-## Keybindings
+## Snippets
 
 ```json:title=js-ts.code-snippets
-{
-  "console.log": {
+"console.log": {
     "prefix": "cl",
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
     "body": "console.log(${1:'here'})$0"
@@ -245,7 +312,12 @@ title: "Visual Studio Code Configuration"
   "useMemo": {
     "prefix": "um",
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
-    "body": ["const memoized$0 = React.useMemo(() => $1, [])"]
+    "body": ["const $0 = React.useMemo(() => $1, [])"]
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const $0 = React.useCallback(() => $1, [])"]
   },
   "useRef": {
     "prefix": "urf",
@@ -272,7 +344,6 @@ title: "Visual Studio Code Configuration"
     "scope": "javascript, typescript, javascriptreact, typescriptreact",
     "body": ["describe('$1', () => {", "  $2", "})"]
   }
-}
 ```
 
 ## Settings
@@ -283,15 +354,17 @@ title: "Visual Studio Code Configuration"
    * Window
    **/
   "window.title": "${activeEditorMedium}${separator}${rootName} ${dirty}",
+  "window.newWindowDimensions": "inherit",
   /**
-   * Explorer
-   **/
+  * Explorer
+  **/
   "explorer.openEditors.visible": 0,
   /**
-   * Workbench
-   **/
-  "workbench.colorTheme": "Borealis",
-  "workbench.preferredDarkColorTheme": "Borealis",
+  * Workbench
+  **/
+  "workbench.colorTheme": "Night Owl",
+  "workbench.preferredDarkColorTheme": "Night Owl",
+  "workbench.preferredLightColorTheme": "Night Owl Light",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.editor.enablePreview": false,
   "workbench.editor.limit.enabled": true,
@@ -300,10 +373,10 @@ title: "Visual Studio Code Configuration"
   "workbench.activityBar.visible": false,
   "workbench.settings.editor": "json",
   "workbench.panel.defaultLocation": "right",
-  "workbench.editor.showTabs": false,
   "workbench.sideBar.location": "right",
   "workbench.statusBar.visible": false,
   "workbench.startupEditor": "none",
+  "workbench.editor.showTabs": false,
   /**
    * Editor
    **/
@@ -311,8 +384,12 @@ title: "Visual Studio Code Configuration"
   "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
   "editor.quickSuggestionsDelay": 0,
   "editor.formatOnPaste": true,
-  "diffEditor.ignoreTrimWhitespace": false,
-  "editor.codeLens": false,
+  "editor.codeLens": true,
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
   "editor.minimap.enabled": false,
   "editor.snippetSuggestions": "top",
   "editor.suggestSelection": "first",
@@ -327,6 +404,10 @@ title: "Visual Studio Code Configuration"
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  /**
+   * Diff Editor
+   **/
+  "diffEditor.ignoreTrimWhitespace": false,
   /**
    * Editor Font
    **/
@@ -364,6 +445,7 @@ title: "Visual Studio Code Configuration"
    * Zen mode
    **/
   "zenMode.fullScreen": false,
+  "zenMode.centerLayout": false,
   /**
    * Files
    **/
@@ -381,11 +463,7 @@ title: "Visual Studio Code Configuration"
     "*.mdx": "mdx"
   },
   "files.exclude": {
-    "USE_GITIGNORE": true,
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
+    "USE_GITIGNORE": true
   },
   /**
    * Debug
@@ -431,7 +509,8 @@ title: "Visual Studio Code Configuration"
   // Markdown
   "[markdown]": {
     "editor.quickSuggestions": true,
-    "files.trimTrailingWhitespace": false
+    "files.trimTrailingWhitespace": false,
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "markdown.preview.breaks": true,
   // JavaScript
@@ -479,46 +558,7 @@ title: "Visual Studio Code Configuration"
     "typescriptreact",
     "HTML (Eex)"
   ],
-  "auto-close-tag.SublimeText3Mode": true,
-  // Eslint
-  "eslint.alwaysShowStatus": true,
-  "eslint.format.enable": true,
-  "eslint.lintTask.enable": true,
-  "eslint.run": "onSave",
-  "eslint.packageManager": "npm",
-  "npm.packageManager": "npm",
-  "eslint.validate": [
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact"
-  ],
-  "eslint.options": {
-    "env": {
-      "browser": true,
-      "jest/globals": true,
-      "es6": true
-    },
-    "parserOptions": {
-      "ecmaVersion": 2019,
-      "sourceType": "module",
-      "ecmaFeatures": {
-        "jsx": true
-      }
-    },
-    "rules": {
-      "no-debugger": "off"
-    }
-  },
-  // Prettier
-  "prettier.endOfLine": "lf",
-  "prettier.jsxSingleQuote": true,
-  "prettier.printWidth": 80,
-  "prettier.bracketSpacing": false,
-  "prettier.proseWrap": "always",
-  "prettier.semi": false,
-  "prettier.singleQuote": true,
-  "prettier.trailingComma": "all"
+  "auto-close-tag.SublimeText3Mode": true
 }
 ```
 

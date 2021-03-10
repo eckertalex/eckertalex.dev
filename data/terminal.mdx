@@ -1,0 +1,122 @@
+---
+title: "Terminal Configuration"
+---
+
+## Table of Contents
+
+## Themes
+- Color Scheme: Custom Night Owl Theme for Kitty
+  ```:title=~/.config/kitty/night-owl.conf
+  # font
+  font_family             Dank Mono
+  font_size               16.0
+
+  # cursor
+  cursor_shape            beam
+
+  # colors
+  color0                  #011627
+  color1                  #ef5350
+  color2                  #22da6e
+  color3                  #c5e478
+  color4                  #82aaff
+  color5                  #c792ea
+  color6                  #21c7a8
+  color7                  #ffffff
+  color8                  #575656
+  color9                  #ef5350
+  color10                 #22da6e
+  color11                 #ffeb95
+  color12                 #82aaff
+  color13                 #c792ea
+  color14                 #7fdbca
+  color15                 #ffffff
+  background              #011627
+  foreground              #d6deeb
+  selection-background    #1b90dd
+  # selection-foreground
+  cursor                  #d6deeb
+  ```
+- zsh-theme: [spaceship](https://github.com/denysdovhan/spaceship-prompt)
+- bat and delta theme: [Night-Owlish](https://github.com/batpigandme/night-owlish)
+
+## Shell
+- [zsh with Oh My Zsh](https://ohmyz.sh/)
+  ```bash:title=~/.zshrc
+  export ZSH="/Users/<username>/.oh-my-zsh"
+  ZSH_THEME="spaceship"
+
+  VSCODE=code-insiders
+
+  plugins=(
+      git
+      npm
+      colored-man-pages
+      colorize
+      brew
+      osx
+      common-aliases
+      history-substring-search
+      zsh-completions
+      zsh-autosuggestions
+      zsh-syntax-highlighting
+      you-should-use
+      thefuck
+      themes
+      vscode
+      wd
+  )
+
+  source $ZSH/oh-my-zsh.sh
+
+  fpath=(/usr/local/share/zsh-completions $fpath)
+
+  DEFAULT_USER=`whoami`
+
+  eval "$(fnm env --multi)"
+
+  eval $(thefuck --alias)
+
+  autoload -Uz compinit
+  compinit
+
+  # Completion for kitty
+  kitty + complete setup zsh | source /dev/stdin
+  ```
+
+### Extensions
+- [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git) - See my [git configuration](/git)
+- [npm](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/npm)
+- [colored-man-pages](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colored-man-pages)
+- [colorize](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/colorize)
+  - Requires [Pygments](https://pygments.org/download/)
+- [brew](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/brew)
+- [osx](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/osx)
+- [common-aliases](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/common-aliases)
+- [history-substring-search](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/history-substring-search)
+- [zsh-completions](https://github.com/zsh-users/zsh-completions)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+- [you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use)
+- [thefuck](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/thefuck)
+- [themes](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/themes)
+- [vscode](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/vscode)
+- [wd](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/wd)
+
+### CLIs
+- [git](https://git-scm.com/) - See my [git configuration](/git)
+- [gh](https://cli.github.com/) - Official GitHub CLI tool
+- [bat](https://github.com/sharkdp/bat) - a better cat
+  - Save [night-owlish.tmTheme](https://github.com/batpigandme/night-owlish/blob/master/tmTheme/night-owlish.tmTheme) to `~/.config/bat/themes/`
+  - Run `bat cache --build`
+  - Edit `~/.config/bat/config`
+    ```:title=~/.config/bat/config {1-3}
+    --theme="night-owlish"
+    --italic-text=always
+    --map-syntax "*.mdx:Markdown"
+    ```
+- [delta](https://github.com/dandavison/delta) - a better git diff. See my delta configuration at my [git configuration](/git#git-diff-delta-theme)
+- [ripgrep](https://github.com/BurntSushi/ripgrep) - a better grep
+- [fnm](https://github.com/Schniz/fnm) - a node.js version manager
+- [homebrew](https://brew.sh/) (on MacOS)
+- [tldr](https://tldr.sh/)
