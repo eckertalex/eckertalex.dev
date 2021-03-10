@@ -7,6 +7,9 @@ title: "Terminal Configuration"
 ## Themes
 - Color Scheme: Custom Night Owl Theme for Kitty
   ```:title=~/.config/kitty/night-owl.conf
+  # bell
+  enable_audio_bell   no
+
   # font
   font_family             Dank Mono
   font_size               16.0
@@ -120,3 +123,40 @@ title: "Terminal Configuration"
 - [fnm](https://github.com/Schniz/fnm) - a node.js version manager
 - [homebrew](https://brew.sh/) (on MacOS)
 - [tldr](https://tldr.sh/)
+
+
+### Configuration
+
+Putting it all together. Under `~/.config/kitty/` create a `kitty.conf` and add the following:
+
+```:title:~/.config/kitty/kitty.conf
+# theme
+include             night_owl.conf
+
+# startup session
+startup_session     startup_session
+```
+
+In `start_session` we can configure how many windows and tabs are open and in which layout, and much, much more.
+
+This is my simple `startup_session`:
+
+```:title:~/.config/kitty/startup_session
+# Create media Tab
+new_tab media
+layout tall
+# Create a window
+launch
+
+# Create dev Tab
+new_tab dev
+focus
+layout tall
+# Create a window
+cd ~/dev/
+launch
+
+# Create a window
+cd ~/dev/
+launch
+```
