@@ -2,7 +2,7 @@ import {getTopTracks} from '@/lib/spotify'
 
 export default async function fetchTopTracks(_, res) {
   const {parsedBody} = await getTopTracks()
-  const tracks = parsedBody.slice(0, 10).map((track) => ({
+  const tracks = parsedBody.map((track) => ({
     artist: track.artists.map((artist) => artist.name).join(', '),
     songUrl: track.external_urls.spotify,
     title: track.name,

@@ -3,7 +3,7 @@ import {getTopArtists} from '@/lib/spotify'
 export default async function fetchTopArtists(_, res) {
   const {parsedBody} = await getTopArtists()
 
-  const artists = parsedBody.slice(0, 10).map((artist) => ({
+  const artists = parsedBody.map((artist) => ({
     name: artist.name,
     artistUrl: artist.external_urls.spotify,
   }))
