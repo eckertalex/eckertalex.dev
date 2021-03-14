@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* kbd */
+
+kbd {
+  @apply text-white bg-gray-900 rounded-md border-2 border-b-4 border-gray-700 text-sm font-bold px-2 whitespace-nowrap shadow-md;
+}
+
 /* Theme Switch - START */
 
 .theme-transition * {
