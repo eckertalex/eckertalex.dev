@@ -46,8 +46,9 @@ title: "Terminal Configuration"
 ## Shell
 - [zsh with Oh My Zsh](https://ohmyz.sh/)
   ```bash:title=~/.zshrc
-  export ZSH="/Users/<username>/.oh-my-zsh"
-  ZSH_THEME="spaceship"
+  export ZSH="$HOME/.oh-my-zsh"
+  ZSH_THEME="spaces
+  hip"
 
   VSCODE=code-insiders
 
@@ -75,9 +76,14 @@ title: "Terminal Configuration"
 
   DEFAULT_USER=`whoami`
 
-  eval "$(fnm env)"
-
   eval $(thefuck --alias)
+
+  source $ZSH_CUSTOM/plugins/zsh-z/zsh-z/plugin.zsh
+
+  export PATH=/home/lex/.fnm:$PATH
+  eval "`fnm env`"
+
+  zstyle ':completion:*' menu select
 
   autoload -Uz compinit
   compinit
@@ -107,10 +113,7 @@ title: "Terminal Configuration"
 ### CLIs
 - [git](https://git-scm.com/) - See my [git configuration](/git)
 - [gh](https://cli.github.com/) - Official GitHub CLI tool
-- [z](https://github.com/rupa/z) - smart `cd`
-  ```bash:title=~/.zshrc
-  . $(brew --prefix)/etc/profile.d/z.sh
-  ```
+- [zsh-z](https://github.com/agkozak/zsh-z) - smart `cd`
 - [wget](https://www.gnu.org/software/wget/)
 - [fzf](https://github.com/junegunn/fzf) - a command-line fuzzy finder
 - [fd](https://github.com/sharkdp/fd) - a better find
