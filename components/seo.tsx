@@ -18,18 +18,18 @@ type BlogSeoProps = {
 }
 
 export const SEO = {
-  title: siteMetadata.title,
+  title: siteMetadata.author,
   description: siteMetadata.description,
   openGraph: {
     type: 'website',
     locale: siteMetadata.language,
     url: siteMetadata.siteUrl,
-    title: siteMetadata.title,
+    title: siteMetadata.author,
     description: siteMetadata.description,
     images: [
       {
         url: `${siteMetadata.siteUrl}${siteMetadata.socialBanner}`,
-        alt: siteMetadata.title,
+        alt: siteMetadata.author,
         width: 1200,
         height: 600,
       },
@@ -59,7 +59,7 @@ export function PageSeo(props: PageSeoProps) {
         title,
         description,
       }}
-      title={`${title} – ${siteMetadata.title}`}
+      title={title}
     />
   )
 }
@@ -100,7 +100,7 @@ export function BlogSeo(props: BlogSeoProps) {
           description: summary,
           images: featuredImages,
         }}
-        title={`${title} – ${siteMetadata.title}`}
+        title={`${title} – ${siteMetadata.author}`}
       />
       <ArticleJsonLd
         authorName={siteMetadata.author}

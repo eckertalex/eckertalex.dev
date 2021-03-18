@@ -16,11 +16,9 @@ export function Footer() {
         <SocialIcons href={siteMetadata.twitter} kind="twitter" size={6} />
       </div>
       <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
-        <div>{siteMetadata.author}</div>
+        <CustomLink href="/">{siteMetadata.author}</CustomLink>
         <div>{` • `}</div>
         <div>{`© ${new Date().getFullYear()}`}</div>
-        <div>{` • `}</div>
-        <CustomLink href="/">{siteMetadata.title}</CustomLink>
       </div>
       <div className="flex mb-2 space-x-2 text-sm text-gray-500 dark:text-gray-400">
         <CustomLink href="/impressum">Impressum</CustomLink>

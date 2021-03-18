@@ -23,7 +23,11 @@ export default function Home({posts, projects, hero}) {
 
   return (
     <>
-      <PageSeo description={siteMetadata.description} title={siteMetadata.title} url={siteMetadata.siteUrl} />
+      <PageSeo
+        description={siteMetadata.description}
+        title={`${siteMetadata.author} - ${siteMetadata.description}`}
+        url={siteMetadata.siteUrl}
+      />
 
       <div className="pt-6 pb-8 space-y-2 md:space-y-5">
         <PageTitle>{heroFrontMatter.title}</PageTitle>

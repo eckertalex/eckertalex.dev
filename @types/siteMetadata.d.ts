@@ -1,8 +1,6 @@
 declare module 'siteMetadata.json' {
   type SiteMetadata = {
-    title: string
     author: string
-    headerTitle: string
     description: string
     language: string
     siteUrl: string

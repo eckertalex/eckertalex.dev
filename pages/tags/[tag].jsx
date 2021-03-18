@@ -16,8 +16,8 @@ export default function Blog({posts, tag}) {
   return (
     <>
       <PageSeo
-        description={`${tag} tags - ${siteMetadata.title}`}
-        title={`${tag} - ${siteMetadata.title}`}
+        description={`${tag} tags - ${siteMetadata.author}`}
+        title={`${tag} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/tags/${tag}`}
       />
       <PostList posts={posts} title={title} />

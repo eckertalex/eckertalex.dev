@@ -16,16 +16,12 @@ export function LayoutWrapper(props: React.PropsWithChildren<unknown>) {
           <div>
             <CustomLink aria-label="eckertalex.dev" className="hover:no-underline" href="/">
               <div className="flex items-center justify-between">
-                {typeof siteMetadata.headerTitle === 'string' ? (
-                  <div className="h-6 text-4xl font-semibold text-pink-500">{siteMetadata.headerTitle}</div>
-                ) : (
-                  siteMetadata.headerTitle
-                )}
+                <div className="h-6 text-4xl font-semibold text-pink-500">{siteMetadata.author}</div>
               </div>
             </CustomLink>
           </div>
           <div className="flex items-center text-base leading-5">
-            <div className="hidden sm:block">
+            <div className="hidden md:block">
               {headerNavLinks.map((link) => (
                 <CustomLink
                   className="p-1 font-medium text-gray-700 sm:p-4 dark:text-gray-400"
