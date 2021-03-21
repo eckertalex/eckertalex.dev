@@ -18,7 +18,7 @@
   "theme_color": "#1F2937",
   "display": "standalone",
   "dir": "ltr",
-  "lang": "en_US",
+  "lang": "en-US",
   "orientation": "portrait-primary",
-  "start_url": "../../index.html"
+  "start_url": "/"
 }
