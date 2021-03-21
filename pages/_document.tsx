@@ -10,8 +10,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <meta content="#000000" name="theme-color" />
-          <meta content="#000000" name="msapplication-TileColor" />
+          <meta content="#1F2937" name="theme-color" />
+          <meta content="#1F2937" name="msapplication-TileColor" />
           <meta content="/static/favicons/browserconfig.xml" name="msapplication-config" />
           <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
           <link href="/static/favicons/site.webmanifest" rel="manifest" />
