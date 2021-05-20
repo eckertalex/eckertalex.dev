@@ -1,4 +1,4 @@
-import {Divider, VStack, useColorModeValue as mode} from '@chakra-ui/react'
+import {VStack, Divider, useColorModeValue as mode} from '@chakra-ui/react'
 import {getFileBySlug} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
 import {MDXRemote} from 'next-mdx-remote'
@@ -6,15 +6,15 @@ import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
-export default function Datenschutz({datenschutz}) {
-  const {mdxSource, frontMatter} = datenschutz
+export default function Credit({credit}) {
+  const {mdxSource, frontMatter} = credit
 
   return (
-    <VStack alignItems="start" spacing={4}>
+    <VStack alignItems="start" spacing={8}>
       <PageSeo
         description={`${frontMatter.title} - ${siteMetadata.author}`}
         title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/datenschutz`}
+        url={`${siteMetadata.siteUrl}/credit`}
       />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
@@ -26,7 +26,7 @@ export default function Datenschutz({datenschutz}) {
 }
 
 export async function getStaticProps() {
-  const datenschutz = await getFileBySlug('datenschutz')
+  const credit = await getFileBySlug('credit')
 
-  return {props: {datenschutz}}
+  return {props: {credit}}
 }

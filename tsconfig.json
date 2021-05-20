@@ -19,9 +19,8 @@
     "paths": {
       "@/components/*": ["components/*"],
       "@/data/*": ["data/*"],
-      "@/assets/*": ["assets/*"],
       "@/lib/*": ["lib/*"],
-      "@/styles/*": ["styles/*"]
+      "@/hooks/*": ["hooks/*"]
     },
     "resolveJsonModule": true,
     "esModuleInterop": true

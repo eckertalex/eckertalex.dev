@@ -1,70 +1,79 @@
 import {useState} from 'react'
+import {Box, Text, IconButton, useColorModeValue as mode} from '@chakra-ui/react'
 import {CustomLink} from '@/components/link'
 import {headerNavLinks} from '@/data/headerNavLinks'
+import {Menu as MenuIcon, X as XIcon} from 'lucide-react'
 
 export function MobileNav() {
-  const [navShow, setNavShow] = useState(false),
-    onToggleNav = () => {
-      setNavShow((status) => {
-        if (status) {
-          document.body.style.overflow = 'auto'
-        } else {
-          // Prevent scrolling
-          document.body.style.overflow = 'hidden'
-        }
-        return !status
-      })
-    }
+  const [navShow, setNavShow] = useState(false)
+  function onToggleNav() {
+    setNavShow((status) => {
+      if (status) {
+        document.body.style.overflow = 'auto'
+      } else {
+        // Prevent scrolling
+        document.body.style.overflow = 'hidden'
+      }
+      return !status
+    })
+  }
 
   return (
-    <div className="md:hidden">
-      <button aria-label="Toggle Menu" className="w-8 h-8 ml-1 mr-1 rounded" onClick={onToggleNav} type="button">
-        <svg
-          className="text-gray-900 dark:text-gray-100"
-          fill="currentColor"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {navShow ? (
-            <path
-              clipRule="evenodd"
-              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-              fillRule="evenodd"
-            />
-          ) : (
-            <path
-              clipRule="evenodd"
-              d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-              fillRule="evenodd"
-            />
-          )}
-        </svg>
-      </button>
-      <div
-        className={`fixed w-full h-full top-24 right-0 bg-gray-200 dark:bg-gray-800 opacity-95 z-10 transform ease-in-out duration-300 ${
-          navShow ? 'translate-x-0' : 'translate-x-full'
-        }`}
+    <Box display={{md: 'none'}}>
+      <IconButton
+        aria-label="Toggle Menu"
+        onClick={onToggleNav}
+        type="button"
+        icon={navShow ? <XIcon /> : <MenuIcon />}
+        height={8}
+        width={8}
+      />
+      <Box
+        position="fixed"
+        width="full"
+        height="full"
+        top="24"
+        right="0"
+        backgroundColor={mode('gray.200', 'gray.800')}
+        opacity={0.95}
+        zIndex={10}
+        transform={`translateX(${
+          navShow ? '0' : '100%'
+        }) translateY(0) rotate(0) skewX(0) skewY(0) scaleX(1) scaleY(1)`}
+        transitionTimingFunction="cubic-bezier(0.4, 0, 0.2, 1)"
+        transitionDuration="300ms"
       >
-        <button
+        <Box
+          as="button"
           aria-label="toggle modal"
-          className="fixed w-full h-full cursor-auto focus:outline-none"
+          position="fixed"
+          width="full"
+          height="full"
+          cursor="auto"
+          _focus={{
+            outline: 'none',
+          }}
           onClick={onToggleNav}
           type="button"
         />
-        <nav className="fixed h-full mt-8">
+        <Box as="nav" position="fixed" height="full" marginTop={8}>
           {headerNavLinks.map((link) => (
-            <div className="px-12 py-4" key={link.title}>
-              <CustomLink
-                className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100"
+            <Box key={link.title} paddingX={12} paddingY={4}>
+              <Text
+                as={CustomLink}
                 href={link.href}
                 onClick={onToggleNav}
+                fontSize="2xl"
+                fontWeight="bold"
+                letterSpacing="widest"
+                color={mode('gray.900', 'gray.100')}
               >
                 {link.title}
-              </CustomLink>
-            </div>
+              </Text>
+            </Box>
           ))}
-        </nav>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   )
 }

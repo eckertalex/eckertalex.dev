@@ -9,6 +9,7 @@ declare module 'siteMetadata.json' {
     socialBanner: string
     email: string
     github: string
+    keybase: string
     twitter: string
     linkedin: string
   }

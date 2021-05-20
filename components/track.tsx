@@ -1,29 +1,32 @@
+import {VStack, Text} from '@chakra-ui/react'
+import {useColorModeValue as mode} from '@chakra-ui/react'
+import {CustomLink} from '@/components/link'
+
 type TrackProps = {
-  ranking: number
   artist: string
   songUrl: string
   title: string
 }
 
 export function Track(props: TrackProps) {
-  const {ranking, songUrl, title, artist} = props
+  const {songUrl, title, artist} = props
 
   return (
-    <div className="flex flex-row items-baseline max-w-3xl w-full mt-2">
-      <p className="text-sm font-bold text-gray-400 dark:text-gray-600">{ranking}</p>
-      <div className="flex flex-col pl-3">
-        <a
-          className="font-medium text-gray-900 dark:text-gray-100 truncate w-60 sm:w-96 md:w-full"
-          href={songUrl}
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          {title}
-        </a>
-        <p className="text-gray-500 mb-4 truncate w-60 sm:w-96 md:w-full" color="gray.500">
-          {artist}
-        </p>
-      </div>
-    </div>
+    <VStack alignItems="start">
+      <CustomLink
+        as="span"
+        fontWeight="medium"
+        color={mode('gray.900', 'gray.100')}
+        href={songUrl}
+        isTruncated
+        isExternal
+        maxW={{sm: 64, md: 'full'}}
+      >
+        {title}
+      </CustomLink>
+      <Text as="span" color="gray.500" isTruncated maxW={{sm: 64, md: 'full'}}>
+        {artist}
+      </Text>
+    </VStack>
   )
 }
