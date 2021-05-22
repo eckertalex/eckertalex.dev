@@ -1,4 +1,5 @@
 import Document, {Head, Html, Main, NextScript, DocumentContext} from 'next/document'
+import {ColorModeScript} from '@chakra-ui/react'
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -21,26 +22,11 @@ export default class MyDocument extends Document {
           <link color="#5bbad5" href="/static/favicons/safari-pinned-tab.svg" rel="mask-icon" />
           <link href="/index.xml" rel="alternate" type="application/rss+xml" />
           <link crossOrigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect" />
-          <link
-            as="style"
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
-            rel="preload"
-          />
-          <link
-            href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
-            media="print"
-            // @ts-ignore
-            onLoad="this.media='all'"
-            rel="stylesheet"
-          />
-          <noscript>
-            <link
-              href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&display=swap"
-              rel="stylesheet"
-            />
-          </noscript>
+          <link href="https://fonts.googleapis.com/css2?family=Inter" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono" rel="stylesheet" />
         </Head>
-        <body className="antialiased text-black bg-white dark:bg-gray-900 dark:text-white">
+        <body>
+          <ColorModeScript />
           <Main />
           <NextScript />
         </body>

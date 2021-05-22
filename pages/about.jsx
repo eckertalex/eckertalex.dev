@@ -1,45 +1,55 @@
+import {
+  Grid,
+  GridItem,
+  VStack,
+  HStack,
+  Heading,
+  Text,
+  Image,
+  Divider,
+  useColorModeValue as mode,
+} from '@chakra-ui/react'
 import {getFileBySlug} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import hydrate from 'next-mdx-remote/hydrate'
+import {MDXRemote} from 'next-mdx-remote'
 import {SocialIcons} from '@/components/social-icons'
-import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
+import {MDXComponents} from '@/components/mdx-components'
 
 export default function About({about}) {
-  const {mdxSource, frontMatter} = about,
-    content = hydrate(mdxSource, {
-      components: MDXComponents,
-    })
+  const {mdxSource, frontMatter} = about
 
   return (
-    <>
+    <VStack alignItems="start" spacing={8}>
       <PageSeo
         description={`${frontMatter.title} - ${siteMetadata.author}`}
         title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/about`}
       />
-      <div className="divide-y">
-        <div className="pt-6 pb-8 space-y-2 md:space-y-5">
-          <PageTitle>{frontMatter.title}</PageTitle>
-        </div>
-        <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center pt-8 space-x-2">
-            <img alt="avatar" className="w-48 h-48 rounded-full" src={siteMetadata.image} />
-            <h3 className="pt-4 pb-2 text-2xl font-bold leading-8 tracking-tight">{siteMetadata.author}</h3>
-            <div className="text-gray-500 dark:text-gray-400">Software Developer (Frontend)</div>
-            <div className="text-gray-500 dark:text-gray-400">EDAG Engineering GmbH</div>
-            <div className="flex pt-6 space-x-3">
-              <SocialIcons href={`mailto:${siteMetadata.email}`} kind="mail" />
-              <SocialIcons href={siteMetadata.github} kind="github" />
-              <SocialIcons href={siteMetadata.linkedin} kind="linkedin" />
-              <SocialIcons href={siteMetadata.twitter} kind="twitter" />
-            </div>
-          </div>
-          <div className="pt-8 pb-8 prose dark:prose-dark max-w-none xl:col-span-2">{content}</div>
-        </div>
-      </div>
-    </>
+      <PageTitle as="h1">{frontMatter.title}</PageTitle>
+      <Divider borderColor={mode('gray.700', 'gray.200')} />
+      <Grid templateColumns={{md: 'repeat(3, 1fr)'}}>
+        <VStack spacing={2} marginTop={8}>
+          <Image borderRadius="full" boxSize={48} alt="Alexander Eckert" src={siteMetadata.image} />
+          <Heading as="h3" fontSize="2xl" fontWeight="bold" letterSpacing="tight">
+            {siteMetadata.author}
+          </Heading>
+          <Text color={mode('gray.500', 'gray.400')}>Senior Software Engineer</Text>
+          <Text color={mode('gray.500', 'gray.400')}>LogMeIn Germany GmbH</Text>
+          <HStack spacing={3} paddingTop={4}>
+            <SocialIcons href={siteMetadata.twitter} kind="twitter" />
+            <SocialIcons href={siteMetadata.github} kind="github" />
+            <SocialIcons href={siteMetadata.keybase} kind="keybase" />
+            <SocialIcons href={siteMetadata.linkedin} kind="linkedin" />
+            <SocialIcons href={`mailto:${siteMetadata.email}`} kind="mail" />
+          </HStack>
+        </VStack>
+        <GridItem colSpan={2} as={VStack} alignItems="start" spacing={2}>
+          <MDXRemote {...mdxSource} components={MDXComponents} />
+        </GridItem>
+      </Grid>
+    </VStack>
   )
 }
 

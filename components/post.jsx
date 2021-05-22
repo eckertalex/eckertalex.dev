@@ -1,11 +1,27 @@
+import {
+  Stack,
+  VStack,
+  HStack,
+  Image,
+  Divider,
+  VisuallyHidden,
+  Heading,
+  Text,
+  Icon,
+  useColorModeValue as mode,
+} from '@chakra-ui/react'
+import {Container} from '@chakra-ui/react'
 import tinytime from 'tinytime'
 import {CustomLink} from '@/components/link'
-
-import {SectionContainer} from '@/components/section-container'
 import {PageTitle} from '@/components/page-title'
 import {BlogSeo} from '@/components/seo'
-import {Tag} from '@/components/tag'
+import {PostLinkTag} from '@/components/tag'
 import siteMetadata from '@/data/siteMetadata'
+import {
+  ArrowLeft as ArrowLeftIcon,
+  ArrowRight as ArrowRightIcon,
+  CornerDownRight as CornerDownRightIcon,
+} from 'lucide-react'
 
 const editUrl = (fileName) => `${siteMetadata.siteRepo}/blob/master/data/blog/${fileName}`,
   discussUrl = (slug) =>
@@ -16,102 +32,119 @@ export function Post({children, frontMatter, next, prev}) {
   const {slug, fileName, date, title, tags} = frontMatter
 
   return (
-    <SectionContainer>
+    <Container maxW="container.lg">
       <BlogSeo url={`${siteMetadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
-      <article className="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700">
-        <header className="pt-6 xl:pb-6">
-          <div className="space-y-1 text-center">
-            <dl className="space-y-10">
-              <div>
-                <dt className="sr-only">Published on</dt>
-                <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                  <time dateTime={date}>{postDateTemplate.render(new Date(date))}</time>
-                </dd>
-              </div>
-            </dl>
-            <div>
-              <PageTitle>{title}</PageTitle>
-            </div>
-          </div>
-        </header>
-        <div
-          className="pb-8 divide-y divide-gray-200 xl:divide-y-0 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6"
-          style={{gridTemplateRows: 'auto 1fr'}}
-        >
-          <dl className="pt-6 pb-10 xl:pt-11 xl:border-b xl:border-gray-200 xl:dark:border-gray-700">
-            <dt className="sr-only">Authors</dt>
+      <article>
+        <VStack as="header" marginY={6}>
+          <dl>
+            <VisuallyHidden as="dt">Published on</VisuallyHidden>
             <dd>
-              <ul className="flex justify-center space-x-8 xl:block sm:space-x-12 xl:space-x-0 xl:space-y-8">
-                <li className="flex items-center space-x-2">
-                  <img alt="avatar" className="w-10 h-10 rounded-full" src={siteMetadata.image} />
-                  <dl className="text-sm font-medium leading-5 whitespace-nowrap">
-                    <dt className="sr-only">Name</dt>
-                    <dd className="text-gray-900 dark:text-gray-100">{siteMetadata.author}</dd>
-                    <dt className="sr-only">Twitter</dt>
-                    <dd>
-                      <CustomLink
-                        className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400"
-                        href={siteMetadata.twitter}
-                      >
-                        {siteMetadata.twitter.replace('https://twitter.com/', '@')}
-                      </CustomLink>
-                    </dd>
-                  </dl>
-                </li>
-              </ul>
+              <Text as="time" fontSize="base" fontWeight="medium" color={mode('gray.500', 'gray.400')} dateTime={date}>
+                {postDateTemplate.render(new Date(date))}
+              </Text>
             </dd>
           </dl>
-          <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
-            <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">{children}</div>
-            <div className="pt-6 pb-6 text-sm text-gray-700 dark:text-gray-300">
-              <CustomLink href={discussUrl(slug)} rel="nofollow">
-                Discuss on Twitter
-              </CustomLink>
-              {` • `}
-              <CustomLink href={editUrl(fileName)}>View on GitHub</CustomLink>
-            </div>
-          </div>
-          <footer className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
-            {tags && (
-              <div className="py-4 xl:py-8">
-                <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Tags</h2>
-                <div className="space-x-3 xl:flex xl:flex-col xl:space-x-0">
-                  {tags.map((tag) => (
-                    <Tag key={tag} text={tag} />
-                  ))}
-                </div>
-              </div>
-            )}
-            {(next || prev) && (
-              <div className="flex justify-between py-4 xl:block xl:space-y-8 xl:py-8">
-                {prev && (
+          <PageTitle as="h1">{title}</PageTitle>
+          <dl>
+            <VisuallyHidden as="dt">Author</VisuallyHidden>
+            <HStack as="dd">
+              <Image alt="Alexander Eckert" boxSize={10} borderRadius="full" src={siteMetadata.image} />
+              <dl fontSize="small" fontWeight="medium">
+                <VisuallyHidden as="dt">Name</VisuallyHidden>
+                <dd color={mode('gray.900', 'gray.100')}>{siteMetadata.author}</dd>
+                <VisuallyHidden as="dt">Twitter</VisuallyHidden>
+                <dd>
+                  <CustomLink color="accent.400" href={siteMetadata.twitter}>
+                    {siteMetadata.twitter.replace('https://twitter.com/', '@')}
+                  </CustomLink>
+                </dd>
+              </dl>
+            </HStack>
+          </dl>
+        </VStack>
+        <Divider borderColor={mode('gray.700', 'gray.200')} />
+        <VStack alignItems="start" spacing={2} paddingY={8}>
+          {children}
+        </VStack>
+        <Divider borderColor={mode('gray.700', 'gray.200')} />
+        <Text color={mode('gray.700', 'gray.300')} paddingY={4}>
+          <CustomLink href={discussUrl(slug)}>Discuss on Twitter</CustomLink>
+          {` • `}
+          <CustomLink href={editUrl(fileName)}>View on GitHub</CustomLink>
+        </Text>
+        <Divider borderColor={mode('gray.700', 'gray.200')} />
+        <VStack as="footer" spacing={4} alignItems="start" fontSize="small" fontWeight="medium" paddingY={4}>
+          {tags.length ? (
+            <>
+              <Heading
+                as="h2"
+                fontSize="x-small"
+                letterSpacing="wide"
+                color={mode('gray.500', 'gray.400')}
+                textTransform="uppercase"
+              >
+                Tags
+              </Heading>
+              <HStack spacing={3}>
+                {tags.map((tag) => (
+                  <PostLinkTag key={tag} tag={tag} />
+                ))}
+              </HStack>
+            </>
+          ) : null}
+          {next || prev ? (
+            <Stack flexDirection={{base: 'column', md: 'row'}} justifyContent="space-between" width="full">
+              {prev ? (
+                <HStack>
+                  <Icon as={ArrowLeftIcon} height={4} width={4} />
                   <div>
-                    <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">
+                    <Text
+                      fontSize="x-small"
+                      letterSpacing="wide"
+                      textTransform="uppercase"
+                      color={mode('gray.500', 'gray.400')}
+                    >
                       Previous Article
-                    </h2>
-                    <div className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400">
-                      <CustomLink href={`/blog/${prev.slug}`}>{prev.title}</CustomLink>
-                    </div>
+                    </Text>
+                    <CustomLink color="accent.400" href={`/blog/${prev.slug}`}>
+                      {prev.title}
+                    </CustomLink>
                   </div>
-                )}
-                {next && (
+                </HStack>
+              ) : (
+                <div />
+              )}
+              {next ? (
+                <HStack justifyContent="end">
                   <div>
-                    <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Next Article</h2>
-                    <div className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400">
-                      <CustomLink href={`/blog/${next.slug}`}>{next.title}</CustomLink>
-                    </div>
+                    <Text
+                      textAlign="right"
+                      fontSize="x-small"
+                      letterSpacing="wide"
+                      textTransform="uppercase"
+                      color={mode('gray.500', 'gray.400')}
+                    >
+                      Next Article
+                    </Text>
+                    <CustomLink color="accent.400" textAlign="right" href={`/blog/${next.slug}`}>
+                      {next.title}
+                    </CustomLink>
                   </div>
-                )}
-              </div>
-            )}
-            <div className="pt-4 xl:pt-8">
-              <CustomLink className="text-pink-500 hover:text-pink-600 dark:hover:text-pink-400" href="/blog">
-                &larr; Back to the blog
-              </CustomLink>
-            </div>
-          </footer>
-        </div>
+                  <Icon as={ArrowRightIcon} height={4} width={4} />
+                </HStack>
+              ) : (
+                <div />
+              )}
+            </Stack>
+          ) : null}
+          <HStack justifyContent="center" width="full">
+            <Icon as={CornerDownRightIcon} height={4} width={4} />
+            <CustomLink color="accent.400" fontSize="small" fontWeight="medium" href="/blog">
+              Back to the blog
+            </CustomLink>
+          </HStack>
+        </VStack>
       </article>
-    </SectionContainer>
+    </Container>
   )
 }

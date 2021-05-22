@@ -1,5 +1,6 @@
+import {Center} from '@chakra-ui/react'
 import fs from 'fs'
-import hydrate from 'next-mdx-remote/hydrate'
+import {MDXRemote} from 'next-mdx-remote'
 import {formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles} from '@/lib/mdx'
 import {Post} from '@/components/post'
 import {MDXComponents} from '@/components/mdx-components'
@@ -7,26 +8,23 @@ import {PageTitle} from '@/components/page-title'
 import {generateRss} from '@/lib/generate-rss'
 
 export default function Blog({post, prev, next}) {
-  const {mdxSource, frontMatter} = post,
-    content = hydrate(mdxSource, {
-      components: MDXComponents,
-    })
+  const {mdxSource, frontMatter} = post
 
   return (
     <>
       {frontMatter.draft !== true ? (
         <Post frontMatter={frontMatter} next={next} prev={prev}>
-          {content}
+          <MDXRemote {...mdxSource} components={MDXComponents} />
         </Post>
       ) : (
-        <div className="mt-24 text-center">
-          <PageTitle>
+        <Center marginTop={24}>
+          <PageTitle as="h1">
             Under Construction{' '}
             <span aria-label="roadwork sign" role="img">
               🚧
             </span>
           </PageTitle>
-        </div>
+        </Center>
       )}
     </>
   )

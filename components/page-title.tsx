@@ -1,9 +1,19 @@
-export function PageTitle(props: React.PropsWithChildren<unknown>) {
-  const {children} = props
+import {Heading, HeadingProps, useColorModeValue as mode} from '@chakra-ui/react'
+
+function PageTitle(props: HeadingProps) {
+  const {children, ...rest} = props
 
   return (
-    <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14">
+    <Heading
+      fontSize={{base: '3xl', sm: '4xl', md: '5xl'}}
+      fontWeight="extrabold"
+      letterSpacing="tight"
+      color={mode('gray.900', 'gray.100')}
+      {...rest}
+    >
       {children}
-    </h1>
+    </Heading>
   )
 }
+
+export {PageTitle}

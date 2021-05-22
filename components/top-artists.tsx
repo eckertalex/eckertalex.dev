@@ -1,4 +1,5 @@
 import useSWR from 'swr'
+import {Heading, Text, OrderedList, ListItem, useColorModeValue as mode} from '@chakra-ui/react'
 import {fetcher} from '@/lib/fetcher'
 import {Artist} from '@/components/artist'
 
@@ -16,13 +17,23 @@ export function TopArtists() {
 
   return (
     <>
-      <h2 className="text-xl font-bold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-2xl sm:leading-10 md:text-3xl md:leading-14">
+      <Heading
+        as="h2"
+        fontSize={{base: 'xl', sm: '2xl', md: '3xl'}}
+        fontWeight="bold"
+        letterSpacing="tight"
+        color={mode('gray.900', 'gray.100')}
+      >
         Top Artists
-      </h2>
-      <p>Here&apos;s my top artists on Spotify.</p>
-      {artists.map((artist, index) => (
-        <Artist key={artist.artistUrl} ranking={index + 1} {...artist} />
-      ))}
+      </Heading>
+      <Text>Here&apos;s my top artists on Spotify.</Text>
+      <OrderedList spacing={4} my={4}>
+        {artists.map((artist) => (
+          <ListItem key={artist.artistUrl} color="gray.500" marginLeft={6}>
+            <Artist {...artist} />
+          </ListItem>
+        ))}
+      </OrderedList>
     </>
   )
 }

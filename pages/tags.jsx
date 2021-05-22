@@ -1,8 +1,8 @@
+import React from 'react'
+import {SimpleGrid} from '@chakra-ui/react'
 import siteMetadata from '@/data/siteMetadata'
-import {kebabCase} from '@/lib/utils'
 import {getAllTags} from '@/lib/tags'
-import {Tag} from '@/components/tag'
-import {CustomLink} from '@/components/link'
+import {PostLinkTag} from '@/components/tag'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
@@ -15,27 +15,16 @@ export default function Tags({tags}) {
         title={`Tags - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/tags`}
       />
-      <div className="flex flex-col items-start justify-start divide-y divide-gray-200 dark:divide-gray-700 md:justify-center md:items-center md:divide-y-0 md:flex-row md:space-x-6 md:mt-24">
-        <div className="pt-6 pb-8 space-x-2 md:space-y-5">
-          <PageTitle>Tags</PageTitle>
-        </div>
-        <div className="flex flex-wrap max-w-lg">
-          {Object.keys(tags).length === 0 && 'No tags found.'}
-          {sortedTags.map((t) => {
-            return (
-              <div className="m-2" key={t}>
-                <Tag text={t} />
-                <CustomLink
-                  className="mx-1 text-sm font-semibold text-gray-600 uppercase dark:text-gray-300"
-                  href={`/tags/${kebabCase(t)}`}
-                >
-                  {` (${tags[t]})`}
-                </CustomLink>
-              </div>
-            )
-          })}
-        </div>
-      </div>
+      <PageTitle as="h1">Tags</PageTitle>
+      <SimpleGrid columns={{sm: 2, md: 4, xl: 6}} spacing={2} marginTop={4}>
+        {!sortedTags ? 'No tags found.' : null}
+        {sortedTags.map((t) => (
+          <div key={t}>
+            <PostLinkTag tag={t} />
+            {` (${tags[t]})`}
+          </div>
+        ))}
+      </SimpleGrid>
     </>
   )
 }

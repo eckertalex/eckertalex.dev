@@ -1,6 +1,6 @@
 import {getAllFilesFrontMatter} from '@/lib/mdx'
 import siteMetadata from '@/data/siteMetadata'
-import {PostList} from '@/components/post-list'
+import {SearchablePostList} from '@/components/searchable-post-list'
 import {PageSeo} from '@/components/seo'
 
 export default function Blog({posts}) {
@@ -11,7 +11,7 @@ export default function Blog({posts}) {
         title={`Blog - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/blog`}
       />
-      <PostList posts={posts} title="All Posts" />
+      <SearchablePostList posts={posts} title="All Posts" />
     </>
   )
 }

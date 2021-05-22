@@ -1,24 +1,33 @@
 import Link from 'next/link'
+import {Link as CuiLink, LinkProps as CuiLinkProps} from '@chakra-ui/react'
 
-type CustomLinkProps = React.DetailedHTMLProps<React.AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>
-
-export function CustomLink(props: CustomLinkProps) {
-  const {href = '#', ...rest} = props
+function CustomLink(props: CuiLinkProps) {
+  const {href = '#', children, ...rest} = props
 
   const isInternalLink = href && href.startsWith('/')
   const isAnchorLink = href && href.startsWith('#')
 
   if (isInternalLink) {
     return (
-      <Link href={href}>
-        <a {...rest} />
-      </Link>
+      <CuiLink {...rest}>
+        <Link href={href}>{children}</Link>
+      </CuiLink>
     )
   }
 
   if (isAnchorLink) {
-    return <a href={href} {...rest} />
+    return (
+      <CuiLink href={href} {...rest}>
+        {children}
+      </CuiLink>
+    )
   }
 
-  return <a href={href} rel="noopener noreferrer" target="_blank" {...rest} />
+  return (
+    <CuiLink href={href} isExternal {...rest}>
+      {children}
+    </CuiLink>
+  )
 }
+
+export {CustomLink}

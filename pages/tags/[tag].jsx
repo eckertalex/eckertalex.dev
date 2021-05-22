@@ -4,7 +4,7 @@ import {kebabCase} from '@/lib/utils'
 import {getAllFilesFrontMatter} from '@/lib/mdx'
 import {getAllTags} from '@/lib/tags'
 import siteMetadata from '@/data/siteMetadata'
-import {PostList} from '@/components/post-list'
+import {SearchablePostList} from '@/components/searchable-post-list'
 import {PageSeo} from '@/components/seo'
 import {generateRss} from '@/lib/generate-rss'
 
@@ -20,7 +20,7 @@ export default function Blog({posts, tag}) {
         title={`${tag} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/tags/${tag}`}
       />
-      <PostList posts={posts} title={title} />
+      <SearchablePostList posts={posts} title={title} />
     </>
   )
 }

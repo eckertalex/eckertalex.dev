@@ -1,4 +1,4 @@
-import {useTheme} from 'next-themes'
+import {Box, Text, useColorMode, useColorModeValue} from '@chakra-ui/react'
 import Highlight, {defaultProps} from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
@@ -28,53 +28,65 @@ function calculateLinesToHighlight(meta) {
 }
 
 export function Code(props) {
-  const {theme} = useTheme(),
-    {children: codeString, className: blockClassName, metastring = ''} = props,
-    [language, title] = getParams(blockClassName),
-    shouldHighlightLine = calculateLinesToHighlight(metastring)
+  const {colorMode} = useColorMode()
+  const {children: codeString, className: blockClassName, metastring = ''} = props
+  const [language, title] = getParams(blockClassName)
+  const shouldHighlightLine = calculateLinesToHighlight(metastring)
+
+  const titleColor = useColorModeValue('gray.700', 'gray.200')
+  const titleBackgroundColor = useColorModeValue('gray.200', 'gray.700')
 
   return (
     <Highlight
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme === 'dark' ? nightOwl : nightOwlLight}
+      theme={colorMode === 'dark' ? nightOwl : nightOwlLight}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (
-        <>
-          {title && (
-            <div className="px-3 py-2 bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-200">{title}</div>
-          )}
+        <Box marginTop={5}>
+          {title ? (
+            <Text color={titleColor} backgroundColor={titleBackgroundColor} paddingY={2} paddingX={3}>
+              {title}
+            </Text>
+          ) : null}
           <div className="code-block" data-language={language}>
-            <pre className={className} style={style}>
+            <Box as="pre" display="inline-block" paddingRight={3} className={className} minWidth="full" style={style}>
               {tokens.map((line, lineKey) => {
-                const lineProps = getLineProps({line, key: lineKey, className: 'pl-2'}),
-                  isHighlighted = shouldHighlightLine(lineKey + 1)
-                if (isHighlighted) {
-                  lineProps.className = `${lineProps.className} -mx-3`
-                  lineProps.style = {
-                    ...lineProps.style,
-                    backgroundColor: theme === 'dark' ? '#034072' : '#f1f1f1',
-                  }
-                }
-
-                let lineNumberStyle = 'inline-block select-none opacity-25 text-right relative w-8 mr-4'
-                lineNumberStyle = isHighlighted ? `${lineNumberStyle} ml-1` : `${lineNumberStyle} -ml-2`
+                const lineProps = getLineProps({line, key: lineKey})
+                const isHighlighted = shouldHighlightLine(lineKey + 1)
 
                 return (
                   // eslint-disable-next-line react/jsx-key
-                  <div {...lineProps}>
-                    <span className={lineNumberStyle}>{lineKey + 1}</span>
+                  <Box
+                    {...lineProps}
+                    paddingLeft={2}
+                    marginX={isHighlighted ? -3 : undefined}
+                    backgroundColor={isHighlighted ? (colorMode ? '#034072' : '#f1f1f1') : undefined}
+                  >
+                    <Box
+                      as="span"
+                      display="inline-block"
+                      userSelect="none"
+                      opacity={0.25}
+                      textAlign="right"
+                      position="relative"
+                      width={8}
+                      marginRight={4}
+                      marginLeft={isHighlighted ? 1 : -2}
+                    >
+                      {lineKey + 1}
+                    </Box>
                     {line.map((token, tokenKey) => (
                       // eslint-disable-next-line react/jsx-key
                       <span {...getTokenProps({token, key: tokenKey})} />
                     ))}
-                  </div>
+                  </Box>
                 )
               })}
-            </pre>
+            </Box>
           </div>
-        </>
+        </Box>
       )}
     </Highlight>
   )
