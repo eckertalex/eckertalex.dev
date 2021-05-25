@@ -27,7 +27,7 @@ function Footer() {
         <Text>{` • `}</Text>
         <CustomLink href="/datenschutz">Datenschutz</CustomLink>
         <Text>{` • `}</Text>
-        <CustomLink href="/credit">Credit</CustomLink>
+        <CustomLink href="/credits">Credits</CustomLink>
       </HStack>
     </VStack>
   )

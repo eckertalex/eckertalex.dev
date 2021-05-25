@@ -6,15 +6,15 @@ import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
-export default function Credit({credit}) {
-  const {mdxSource, frontMatter} = credit
+export default function Credits({credits}) {
+  const {mdxSource, frontMatter} = credits
 
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
         description={`${frontMatter.title} - ${siteMetadata.author}`}
         title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/credit`}
+        url={`${siteMetadata.siteUrl}/credits`}
       />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
@@ -26,7 +26,7 @@ export default function Credit({credit}) {
 }
 
 export async function getStaticProps() {
-  const credit = await getFileBySlug('credit')
+  const credits = await getFileBySlug('credits')
 
-  return {props: {credit}}
+  return {props: {credits}}
 }
