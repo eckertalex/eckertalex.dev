@@ -1,58 +1,107 @@
+/*
+  adapted from https://github.com/streamich/react-use (licensed under `The Unlicense`)
+ */
 import React from 'react'
 
-function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
-  const readValue = React.useCallback(() => {
-    if (typeof window === 'undefined') {
-      return initialValue
+const isBrowser = typeof window !== 'undefined'
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const noop = () => {}
+
+type parserOptions<T> =
+  | {
+      raw: true
+    }
+  | {
+      raw: false
+      serializer: (value: T) => string
+      deserializer: (value: string) => T
     }
 
-    try {
-      const item = window.localStorage.getItem(key)
-      return item ? JSON.parse(item) : initialValue
-    } catch (error) {
-      return initialValue
-    }
-  }, [initialValue, key])
-
-  const [storedValue, setStoredValue] = React.useState<T>(readValue)
-
-  const setValue = (value: T) => {
-    try {
-      const newValue = value instanceof Function ? value(storedValue) : value
-
-      window.localStorage.setItem(key, JSON.stringify(newValue))
-
-      setStoredValue(newValue)
-
-      // dispatch a custom event so every useLocalStorage hook are notified
-      window.dispatchEvent(new Event('local-storage'))
-    } catch (error) {
-      return
-    }
+const useLocalStorage = <T,>(
+  key: string,
+  initialValue?: T,
+  options?: parserOptions<T>
+): [T | undefined, React.Dispatch<React.SetStateAction<T | undefined>>, () => void] => {
+  if (!isBrowser) {
+    return [initialValue as T, noop, noop]
+  }
+  if (!key) {
+    throw new Error('useLocalStorage key may not be falsy')
   }
 
-  React.useEffect(() => {
-    setStoredValue(readValue())
-  }, [readValue])
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const deserializer = React.useMemo(
+    () => (options ? (options.raw ? (value: string) => value : options.deserializer) : JSON.parse),
+    [options]
+  )
 
-  React.useEffect(() => {
-    const handleStorageChange = () => {
-      setStoredValue(readValue())
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const initializer = React.useRef((key: string) => {
+    try {
+      const serializer = options ? (options.raw ? String : options.serializer) : JSON.stringify
+
+      const localStorageValue = localStorage.getItem(key)
+      if (localStorageValue !== null) {
+        return deserializer(localStorageValue)
+      } else {
+        initialValue && localStorage.setItem(key, serializer(initialValue))
+        return initialValue
+      }
+    } catch {
+      // If user is in private mode or has storage restriction
+      // localStorage can throw. JSON.parse and JSON.stringify
+      // can throw, too.
+      return initialValue
     }
+  })
 
-    // this only works for other documents, not the current one
-    window.addEventListener('storage', handleStorageChange)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [state, setState] = React.useState<T | undefined>(() => initializer.current(key))
 
-    // this is a custom event, triggered in writeValueToLocalStorage
-    window.addEventListener('local-storage', handleStorageChange)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  React.useLayoutEffect(() => setState(initializer.current(key)), [key])
 
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-      window.removeEventListener('local-storage', handleStorageChange)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const set: React.Dispatch<React.SetStateAction<T | undefined>> = React.useCallback(
+    (valOrFunc) => {
+      try {
+        const newState =
+          typeof valOrFunc === 'function'
+            ? (valOrFunc as (prevState: T | undefined) => T | undefined)(state)
+            : valOrFunc
+        if (typeof newState === 'undefined') return
+        let value: string
+
+        if (options)
+          if (options.raw)
+            if (typeof newState === 'string') value = newState
+            else value = JSON.stringify(newState)
+          else if (options.serializer) value = options.serializer(newState)
+          else value = JSON.stringify(newState)
+        else value = JSON.stringify(newState)
+
+        localStorage.setItem(key, value)
+        setState(deserializer(value))
+      } catch {
+        // If user is in private mode or has storage restriction
+        // localStorage can throw. Also JSON.stringify can throw.
+      }
+    },
+    [deserializer, key, options, state]
+  )
+
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const remove = React.useCallback(() => {
+    try {
+      localStorage.removeItem(key)
+      setState(undefined)
+    } catch {
+      // If user is in private mode or has storage restriction
+      // localStorage can throw.
     }
-  }, [readValue])
+  }, [key, setState])
 
-  return [storedValue, setValue]
+  return [state, set, remove]
 }
 
 export {useLocalStorage}
