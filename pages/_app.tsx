@@ -3,6 +3,7 @@ import {ChakraProvider, extendTheme} from '@chakra-ui/react'
 import {DefaultSeo} from 'next-seo'
 import {AppProps} from 'next/app'
 import Head from 'next/head'
+import splitbee from '@splitbee/web'
 import {SEO} from '@/components/seo'
 import {LayoutWrapper} from '@/components/layout-wrapper'
 import {MDXComponents} from '@/components/mdx-components'
@@ -28,6 +29,12 @@ const theme = extendTheme({
       900: '#521B41',
     },
   },
+})
+
+splitbee.init({
+  disableCookie: true,
+  scriptUrl: '/bee.js',
+  apiUrl: '/_hive',
 })
 
 export default function App(props: AppProps) {
