@@ -18,6 +18,7 @@ module.exports = {
   },
   plugins: [],
   extends: [
+    'next',
     'eslint:recommended',
     'plugin:react/recommended',
     'plugin:jsx-a11y/strict',
