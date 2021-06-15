@@ -6,15 +6,15 @@ import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
-export default function Articles({articles}) {
-  const {mdxSource, frontMatter} = articles
+export default function Reading({reading}) {
+  const {mdxSource, frontMatter} = reading
 
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
         description={`${frontMatter.title} - ${siteMetadata.author}`}
         title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/articles`}
+        url={`${siteMetadata.siteUrl}/reading`}
       />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
@@ -26,7 +26,7 @@ export default function Articles({articles}) {
 }
 
 export async function getStaticProps() {
-  const articles = await getFileBySlug('articles')
+  const reading = await getFileBySlug('reading')
 
-  return {props: {articles}}
+  return {props: {reading}}
 }

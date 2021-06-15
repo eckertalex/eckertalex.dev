@@ -6,15 +6,15 @@ import {MDXComponents} from '@/components/mdx-components'
 import {PageSeo} from '@/components/seo'
 import {PageTitle} from '@/components/page-title'
 
-export default function Links({links}) {
-  const {mdxSource, frontMatter} = links
+export default function Bookmarks({bookmarks}) {
+  const {mdxSource, frontMatter} = bookmarks
 
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
         description={`${frontMatter.title} - ${siteMetadata.author}`}
         title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/links`}
+        url={`${siteMetadata.siteUrl}/bookmarks`}
       />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
@@ -26,7 +26,7 @@ export default function Links({links}) {
 }
 
 export async function getStaticProps() {
-  const links = await getFileBySlug('links')
+  const bookmarks = await getFileBySlug('bookmarks')
 
-  return {props: {links}}
+  return {props: {bookmarks}}
 }

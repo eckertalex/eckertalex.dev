@@ -12,8 +12,8 @@ export const headerNavLinks = [
     href: '/tags',
   },
   {
-    title: 'Links',
-    href: '/links',
+    title: 'Bookmarks',
+    href: '/bookmarks',
   },
   {
     title: 'Uses',
