@@ -1,7 +1,9 @@
+import {NextApiRequest, NextApiResponse} from 'next'
 import {getTopTracks} from '@/lib/spotify'
 
-export default async function fetchTopTracks(_, res) {
+export default async function fetchTopTracks(_: NextApiRequest, res: NextApiResponse) {
   const {parsedBody} = await getTopTracks()
+
   const tracks = parsedBody.map((track) => ({
     artist: track.artists.map((artist) => artist.name).join(', '),
     songUrl: track.external_urls.spotify,

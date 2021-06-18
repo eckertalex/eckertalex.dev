@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import {Heading, Text, OrderedList, ListItem, useColorModeValue as mode} from '@chakra-ui/react'
+import {Heading, Text, OrderedList, ListItem, Spinner, useColorModeValue as mode} from '@chakra-ui/react'
 import {fetcher} from '@/lib/fetcher'
 import {Track} from '@/components/track'
 
@@ -11,10 +11,6 @@ export function TopTracks() {
       title: string
     }[]
   >('/api/top-tracks', fetcher)
-
-  if (!tracks.length) {
-    return null
-  }
 
   return (
     <>
@@ -28,13 +24,17 @@ export function TopTracks() {
         Top Tracks
       </Heading>
       <Text>Here&apos;s my top tracks on Spotify updated daily.</Text>
-      <OrderedList spacing={4} marginY={4}>
-        {tracks.map((track) => (
-          <ListItem key={track.songUrl} color="gray.500" marginLeft={6}>
-            <Track {...track} />
-          </ListItem>
-        ))}
-      </OrderedList>
+      {tracks.length ? (
+        <OrderedList spacing={4} marginY={4}>
+          {tracks.map((track) => (
+            <ListItem key={track.songUrl} color="gray.500" marginLeft={6}>
+              <Track {...track} />
+            </ListItem>
+          ))}
+        </OrderedList>
+      ) : (
+        <Spinner />
+      )}
     </>
   )
 }

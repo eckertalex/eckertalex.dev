@@ -39,8 +39,8 @@ const {
   SPOTIFY_REFRESH_TOKEN: refresh_token,
 } = process.env
 const TOKEN_ENDPOINT = 'https://accounts.spotify.com/api/token'
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=long_term`
-const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?limit=10&time_range=long_term`
+const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks?limit=10&time_range=medium_term`
+const TOP_ARTISTS_ENDPOINT = `https://api.spotify.com/v1/me/top/artists?limit=10&time_range=medium_term`
 const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString('base64')
 

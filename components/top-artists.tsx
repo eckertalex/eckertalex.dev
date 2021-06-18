@@ -1,5 +1,5 @@
 import useSWR from 'swr'
-import {Heading, Text, OrderedList, ListItem, useColorModeValue as mode} from '@chakra-ui/react'
+import {Heading, Text, OrderedList, ListItem, Spinner, useColorModeValue as mode} from '@chakra-ui/react'
 import {fetcher} from '@/lib/fetcher'
 import {Artist} from '@/components/artist'
 
@@ -10,10 +10,6 @@ export function TopArtists() {
       artistUrl: string
     }[]
   >('/api/top-artists', fetcher)
-
-  if (!artists.length) {
-    return null
-  }
 
   return (
     <>
@@ -27,13 +23,17 @@ export function TopArtists() {
         Top Artists
       </Heading>
       <Text>Here&apos;s my top artists on Spotify.</Text>
-      <OrderedList spacing={4} my={4}>
-        {artists.map((artist) => (
-          <ListItem key={artist.artistUrl} color="gray.500" marginLeft={6}>
-            <Artist {...artist} />
-          </ListItem>
-        ))}
-      </OrderedList>
+      {artists.length ? (
+        <OrderedList spacing={4} my={4}>
+          {artists.map((artist) => (
+            <ListItem key={artist.artistUrl} color="gray.500" marginLeft={6}>
+              <Artist {...artist} />
+            </ListItem>
+          ))}
+        </OrderedList>
+      ) : (
+        <Spinner />
+      )}
     </>
   )
 }

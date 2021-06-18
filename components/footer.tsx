@@ -17,6 +17,27 @@ function Footer() {
         <SocialIcons href={siteMetadata.linkedin} kind="linkedin" />
         <SocialIcons href={`mailto:${siteMetadata.email}`} kind="mail" />
       </HStack>
+      <HStack spacing={{base: 8, md: 32}} alignItems="start">
+        <VStack alignItems="start">
+          <CustomLink href="/">Home</CustomLink>
+          <CustomLink href="/about">About</CustomLink>
+          <CustomLink href="/dashboard">Dashboard</CustomLink>
+          <CustomLink href="/timeline">Timeline</CustomLink>
+        </VStack>
+        <VStack alignItems="start">
+          <CustomLink href="/blog">Blog</CustomLink>
+          <CustomLink href="/tags">Tags</CustomLink>
+          <CustomLink href="/bookmarks">Bookmarks</CustomLink>
+          <CustomLink href="/bookmarks/reading">Reading</CustomLink>
+        </VStack>
+        <VStack alignItems="start">
+          <CustomLink href="/uses">Uses</CustomLink>
+          <CustomLink href="/git">Git</CustomLink>
+          <CustomLink href="/terminal">Terminal</CustomLink>
+          <CustomLink href="/vscode">VSCode</CustomLink>
+          <CustomLink href="/keyboard">Keyboard</CustomLink>
+        </VStack>
+      </HStack>
       <HStack spacing={2} color={mode('gray.500', 'gray.400')} fontSize="small">
         <CustomLink href="/">{siteMetadata.author}</CustomLink>
         <Text>{` • `}</Text>

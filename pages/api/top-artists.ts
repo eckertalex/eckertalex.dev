@@ -1,6 +1,7 @@
+import {NextApiRequest, NextApiResponse} from 'next'
 import {getTopArtists} from '@/lib/spotify'
 
-export default async function fetchTopArtists(_, res) {
+export default async function fetchTopArtists(_: NextApiRequest, res: NextApiResponse) {
   const {parsedBody} = await getTopArtists()
 
   const artists = parsedBody.map((artist) => ({

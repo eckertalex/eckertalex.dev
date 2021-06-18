@@ -1,6 +1,16 @@
+import {NextApiRequest, NextApiResponse} from 'next'
 import {getNowPlaying} from '@/lib/spotify'
 
-export default async function fetchNowPlaying(_, res) {
+type NowPlaying = {
+  album?: string
+  albumImageUrl?: string
+  artist?: string
+  isPlaying?: boolean
+  songUrl?: string
+  title?: string
+}
+
+export default async function fetchNowPlaying(_: NextApiRequest, res: NextApiResponse<NowPlaying>) {
   const response = await getNowPlaying()
 
   if (response.status === 204 || response.status > 400) {
