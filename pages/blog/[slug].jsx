@@ -44,13 +44,14 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({params}) {
-  const allPosts = await getAllFilesFrontMatter('blog'),
-    postIndex = allPosts.findIndex((post) => post.slug === params.slug),
-    prev = allPosts[postIndex + 1] || null,
-    next = allPosts[postIndex - 1] || null,
-    post = await getFileBySlug('blog', params.slug),
-    // Rss
-    rss = generateRss(allPosts)
+  const allPosts = await getAllFilesFrontMatter('blog')
+  const postIndex = allPosts.findIndex((post) => post.slug === params.slug)
+  const prev = allPosts[postIndex + 1] || null
+  const next = allPosts[postIndex - 1] || null
+  const post = await getFileBySlug('blog', params.slug)
+
+  // Rss
+  const rss = generateRss(allPosts)
   fs.writeFileSync('./public/index.xml', rss)
 
   return {props: {post, prev, next}}

@@ -9,9 +9,9 @@ function CustomLink(props: CuiLinkProps) {
 
   if (isInternalLink) {
     return (
-      <CuiLink as="span" {...rest}>
-        <Link href={href}>{children}</Link>
-      </CuiLink>
+      <Link href={href} passHref>
+        <CuiLink {...rest}>{children}</CuiLink>
+      </Link>
     )
   }
 

@@ -5,7 +5,7 @@ export const headerNavLinks = [
   },
   {
     title: 'Bookmarks',
-    href: '/bookmarks',
+    href: '/bookmarks/reading',
   },
   {
     title: 'Uses',

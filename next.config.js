@@ -53,6 +53,10 @@ const nextConfig = {
         source: '/_hive/:slug',
         destination: 'https://hive.splitbee.io/:slug',
       },
+      {
+        source: '/bookmarks',
+        destination: '/bookmarks/reading',
+      },
     ]
   },
 }
