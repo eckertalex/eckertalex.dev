@@ -12,7 +12,7 @@ export default function Terminal({terminal}) {
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
-        description={`${frontMatter.title} - ${siteMetadata.author}`}
+        description="My terminal configuration."
         title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/terminal`}
       />

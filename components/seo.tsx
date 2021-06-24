@@ -3,7 +3,7 @@ import siteMetadata from '@/data/siteMetadata.json'
 
 type PageSeoProps = {
   title: string
-  description: string
+  description?: string
   url: string
 }
 

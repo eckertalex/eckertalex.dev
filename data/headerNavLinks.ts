@@ -4,8 +4,8 @@ export const headerNavLinks = [
     href: '/blog',
   },
   {
-    title: 'Bookmarks',
-    href: '/bookmarks/reading',
+    title: 'Reading',
+    href: '/reading',
   },
   {
     title: 'Uses',

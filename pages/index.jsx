@@ -17,11 +17,7 @@ export default function Home({posts, projects, hero}) {
 
   return (
     <VStack alignItems="start" spacing={4}>
-      <PageSeo
-        description={siteMetadata.description}
-        title={`${siteMetadata.author} - ${siteMetadata.description}`}
-        url={siteMetadata.siteUrl}
-      />
+      <PageSeo title={`${siteMetadata.author} - ${siteMetadata.description}`} url={siteMetadata.siteUrl} />
       <PageTitle as="h1">{heroFrontMatter.title}</PageTitle>
       <MDXRemote {...heroMdxSource} components={MDXComponents} />
       <VStack alignItems="start" spacing={4}>

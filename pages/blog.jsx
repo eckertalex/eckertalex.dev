@@ -6,11 +6,7 @@ import {PageSeo} from '@/components/seo'
 export default function Blog({posts}) {
   return (
     <>
-      <PageSeo
-        description={siteMetadata.description}
-        title={`Blog - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/blog`}
-      />
+      <PageSeo title={`Blog - ${siteMetadata.author}`} url={`${siteMetadata.siteUrl}/blog`} />
       <SearchablePostList posts={posts} title="All Posts" />
     </>
   )

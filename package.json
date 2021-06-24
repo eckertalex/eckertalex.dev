@@ -65,6 +65,7 @@
     "eslint-plugin-react": "7.24.0",
     "eslint-plugin-react-hooks": "4.2.0",
     "file-loader": "6.2.0",
+    "gitrows": "0.8.0",
     "globby": "11.0.3",
     "husky": "^6.0.0",
     "lint-staged": "11.0.0",
