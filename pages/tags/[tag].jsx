@@ -15,11 +15,7 @@ export default function Tag({posts, tag}) {
   const title = tag[0].toUpperCase() + tag.split(' ').join('-').slice(1)
   return (
     <>
-      <PageSeo
-        description={`${tag} tags - ${siteMetadata.author}`}
-        title={`${tag} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/tags/${tag}`}
-      />
+      <PageSeo title={`${tag} - ${siteMetadata.author}`} url={`${siteMetadata.siteUrl}/tags/${tag}`} />
       <SearchablePostList posts={posts} title={title} />
     </>
   )

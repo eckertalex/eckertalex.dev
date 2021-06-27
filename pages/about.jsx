@@ -22,11 +22,7 @@ export default function About({about}) {
 
   return (
     <VStack alignItems="start" spacing={8}>
-      <PageSeo
-        description={`${frontMatter.title} - ${siteMetadata.author}`}
-        title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/about`}
-      />
+      <PageSeo title={`${frontMatter.title} - ${siteMetadata.author}`} url={`${siteMetadata.siteUrl}/about`} />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
       <Grid templateColumns={{md: 'repeat(3, 1fr)'}}>

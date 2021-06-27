@@ -22,18 +22,19 @@ function Footer() {
           <CustomLink href="/">Home</CustomLink>
           <CustomLink href="/about">About</CustomLink>
           <CustomLink href="/dashboard">Dashboard</CustomLink>
-          <CustomLink href="/timeline">Timeline</CustomLink>
+          <CustomLink href="/reading">Reading</CustomLink>
         </VStack>
         <VStack alignItems="start">
+          <CustomLink href="/timeline">Timeline</CustomLink>
           <CustomLink href="/blog">Blog</CustomLink>
           <CustomLink href="/tags">Tags</CustomLink>
-          <CustomLink href="/bookmarks/reading">Bookmarks</CustomLink>
-          <CustomLink href="/uses">Uses</CustomLink>
+          <CustomLink href="/bookmarks">Bookmarks</CustomLink>
         </VStack>
         <VStack alignItems="start">
-          <CustomLink href="/git">Git</CustomLink>
-          <CustomLink href="/terminal">Terminal</CustomLink>
+          <CustomLink href="/uses">Uses</CustomLink>
           <CustomLink href="/vscode">VSCode</CustomLink>
+          <CustomLink href="/terminal">Terminal</CustomLink>
+          <CustomLink href="/git">Git</CustomLink>
           <CustomLink href="/keyboard">Keyboard</CustomLink>
         </VStack>
       </HStack>

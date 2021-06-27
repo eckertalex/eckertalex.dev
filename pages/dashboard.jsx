@@ -9,7 +9,7 @@ export default function Dashboard() {
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
-        description={`Dashboard - ${siteMetadata.author}`}
+        description="My recent Spotify statistics. See my top artists, tracks, and what I am currently listening to."
         title={`Dashboard - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/dashboard`}
       />

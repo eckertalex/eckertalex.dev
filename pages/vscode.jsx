@@ -12,7 +12,7 @@ export default function VSCode({vscode}) {
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
-        description={`${frontMatter.title} - ${siteMetadata.author}`}
+        description="My Visual Studio Code configuration."
         title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/vscode`}
       />

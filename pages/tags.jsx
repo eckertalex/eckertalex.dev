@@ -11,7 +11,7 @@ export default function Tags({tags}) {
   return (
     <>
       <PageSeo
-        description="Things I blog about"
+        description="Things I blog about."
         title={`Tags - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/tags`}
       />

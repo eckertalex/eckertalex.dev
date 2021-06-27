@@ -11,11 +11,7 @@ export default function Impressum({impressum}) {
 
   return (
     <VStack alignItems="start" spacing={8}>
-      <PageSeo
-        description={`${frontMatter.title} - ${siteMetadata.author}`}
-        title={`${frontMatter.title} - ${siteMetadata.author}`}
-        url={`${siteMetadata.siteUrl}/impressum`}
-      />
+      <PageSeo title={`${frontMatter.title} - ${siteMetadata.author}`} url={`${siteMetadata.siteUrl}/impressum`} />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
       <VStack alignItems="start" spacing={2}>

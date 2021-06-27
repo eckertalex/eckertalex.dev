@@ -12,7 +12,7 @@ export default function Uses({uses}) {
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
-        description={`${frontMatter.title} - ${siteMetadata.author}`}
+        description="All the hardware and software I am using."
         title={`${frontMatter.title} - ${siteMetadata.author}`}
         url={`${siteMetadata.siteUrl}/uses`}
       />
