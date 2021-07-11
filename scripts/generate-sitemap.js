@@ -1,21 +1,20 @@
 const fs = require('fs')
 const globby = require('globby')
 const prettier = require('prettier')
-const siteMetadata = require('../data/siteMetadata')
 
 ;(async () => {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js'),
     pages = await globby([
-      'pages/*.tsx',
-      'pages/*.jsx',
-      'pages/*.js',
-      'data/**/*.mdx',
-      'data/**/*.md',
+      'src/pages/*.tsx',
+      'src/pages/*.jsx',
+      'src/pages/*.js',
+      'src/data/**/*.mdx',
+      'src/data/**/*.md',
       'public/tags/**/*.xml',
-      '!pages/_*.tsx',
-      '!pages/_*.jsx',
-      '!pages/_*.js',
-      '!pages/api',
+      '!src/pages/_*.tsx',
+      '!src/pages/_*.jsx',
+      '!src/pages/_*.js',
+      '!src/pages/api',
     ]),
     sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
@@ -23,8 +22,8 @@ const siteMetadata = require('../data/siteMetadata')
             ${pages
               .map((page) => {
                 const path = page
-                    .replace('pages', '')
-                    .replace('data', '')
+                    .replace('src/pages', '')
+                    .replace('src/data', '')
                     .replace('public', '')
                     .replace('.tsx', '')
                     .replace('.jsx', '')
@@ -35,7 +34,7 @@ const siteMetadata = require('../data/siteMetadata')
                   route = path === '/index' ? '' : path
                 return `
                         <url>
-                            <loc>${`${siteMetadata.siteUrl}${route}`}</loc>
+                            <loc>${`https://eckertalex.dev${route}`}</loc>
                         </url>
                     `
               })
