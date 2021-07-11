@@ -13,10 +13,11 @@ import {
 import tinytime from 'tinytime'
 import {Link} from 'components/link'
 import {PostLinkTag} from 'features/blog/tag'
+import {FrontMatter} from 'lib/mdx'
 
 const postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
 
-export function PostList({posts}) {
+export function PostList({posts}: {posts: FrontMatter[]}) {
   return (
     <List marginTop={4} spacing={4}>
       {!posts.length ? <ListItem>No posts found.</ListItem> : null}
@@ -24,7 +25,7 @@ export function PostList({posts}) {
         const {slug, date, title, summary, tags} = frontMatter
         return (
           <ListItem key={slug}>
-            <Grid as="article" spacing={{base: 2, xl: 0}} templateColumns={{md: 'repeat(4, 1fr)'}}>
+            <Grid as="article" gap={{base: 2, xl: 0}} templateColumns={{md: 'repeat(4, 1fr)'}}>
               <dl>
                 <VisuallyHidden as="dt">Published on</VisuallyHidden>
                 <Text as="dd" fontSize="base" fontWeight="bold" color={mode('gray.500', 'gray.500')}>

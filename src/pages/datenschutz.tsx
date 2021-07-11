@@ -1,21 +1,17 @@
-import {VStack, Divider, useColorModeValue as mode} from '@chakra-ui/react'
-import {getFileBySlug} from 'lib/mdx'
+import {Divider, VStack, useColorModeValue as mode} from '@chakra-ui/react'
+import {getFileBySlug, MDXPage} from 'lib/mdx'
 import metadata from 'metadata'
 import {MDXRemote} from 'next-mdx-remote'
 import {MDXComponents} from 'features/mdx/mdx-components'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 
-export default function Uses({uses}) {
-  const {mdxSource, frontMatter} = uses
+export default function Datenschutz({datenschutz}: {datenschutz: MDXPage}) {
+  const {mdxSource, frontMatter} = datenschutz
 
   return (
-    <VStack alignItems="start" spacing={8}>
-      <PageSeo
-        description="All the hardware and software I am using."
-        title={`${frontMatter.title} - ${metadata.author}`}
-        url={`${metadata.siteUrl}/uses`}
-      />
+    <VStack alignItems="start" spacing={4}>
+      <PageSeo title={`${frontMatter.title} - ${metadata.author}`} url={`${metadata.siteUrl}/datenschutz`} />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
       <VStack alignItems="start" spacing={2}>
@@ -26,7 +22,7 @@ export default function Uses({uses}) {
 }
 
 export async function getStaticProps() {
-  const uses = await getFileBySlug('uses')
+  const datenschutz = await getFileBySlug('datenschutz')
 
-  return {props: {uses}}
+  return {props: {datenschutz}}
 }

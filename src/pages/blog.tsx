@@ -1,9 +1,9 @@
-import {getAllFilesFrontMatter} from 'lib/mdx'
+import {getAllBlogPostsFrontMatter, FrontMatter} from 'lib/mdx'
 import metadata from 'metadata'
 import {SearchablePostList} from 'features/blog/searchable-post-list'
 import {PageSeo} from 'features/seo/seo'
 
-export default function Blog({posts}) {
+export default function Blog({posts}: {posts: FrontMatter[]}) {
   return (
     <>
       <PageSeo title={`Blog - ${metadata.author}`} url={`${metadata.siteUrl}/blog`} />
@@ -13,7 +13,7 @@ export default function Blog({posts}) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog')
+  const posts = await getAllBlogPostsFrontMatter()
 
   return {props: {posts}}
 }

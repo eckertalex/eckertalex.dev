@@ -301,6 +301,9 @@ function BlockQuote({children, ...rest}: {children: React.ReactNode}) {
       as="blockquote"
       fontWeight="medium"
       fontStyle="italic"
+      rounded="md"
+      padding={4}
+      backgroundColor={mode('gray.100', 'gray.700')}
       color={mode('gray.900', 'gray.100')}
       borderLeftWidth="thick"
       borderLeftColor={mode('accent.200', 'accent.700')}

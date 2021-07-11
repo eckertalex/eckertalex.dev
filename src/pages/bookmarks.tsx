@@ -1,12 +1,12 @@
 import {MDXRemote} from 'next-mdx-remote'
-import {getFileBySlug} from 'lib/mdx'
+import {getFileBySlug, MDXPage} from 'lib/mdx'
 import {MDXComponents} from 'features/mdx/mdx-components'
 import {Divider, VStack, useColorModeValue as mode} from '@chakra-ui/react'
 import metadata from 'metadata'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 
-export default function Page({bookmarks}) {
+export default function Page({bookmarks}: {bookmarks: MDXPage}) {
   const {mdxSource, frontMatter} = bookmarks
 
   return (

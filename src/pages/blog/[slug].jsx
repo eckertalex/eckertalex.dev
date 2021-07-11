@@ -1,7 +1,7 @@
 import {Center} from '@chakra-ui/react'
 import fs from 'fs'
 import {MDXRemote} from 'next-mdx-remote'
-import {formatSlug, getAllFilesFrontMatter, getFileBySlug, getFiles} from 'lib/mdx'
+import {formatSlug, getAllBlogPostsFrontMatter, getFileBySlug, getBlogPosts} from 'lib/mdx'
 import {Post} from 'features/blog/post'
 import {MDXComponents} from 'features/mdx/mdx-components'
 import {PageTitle} from 'layout/page-title'
@@ -31,7 +31,7 @@ export default function Blog({post, prev, next}) {
 }
 
 export async function getStaticPaths() {
-  const posts = await getFiles('blog')
+  const posts = await getBlogPosts()
 
   return {
     paths: posts.map((p) => ({
@@ -43,8 +43,9 @@ export async function getStaticPaths() {
   }
 }
 
+// https://github.com/vercel/next.js/issues/12053
 export async function getStaticProps({params}) {
-  const allPosts = await getAllFilesFrontMatter('blog')
+  const allPosts = await getAllBlogPostsFrontMatter()
   const postIndex = allPosts.findIndex((post) => post.slug === params.slug)
   const prev = allPosts[postIndex + 1] || null
   const next = allPosts[postIndex - 1] || null

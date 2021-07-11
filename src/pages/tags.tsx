@@ -6,7 +6,7 @@ import {PostLinkTag} from 'features/blog/tag'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 
-export default function Tags({tags}) {
+export default function Tags({tags}: {tags: Record<string, number>}) {
   const sortedTags = Object.keys(tags).sort((a, b) => tags[b] - tags[a])
   return (
     <>
@@ -16,13 +16,13 @@ export default function Tags({tags}) {
         url={`${metadata.siteUrl}/tags`}
       />
       <PageTitle as="h1">Tags</PageTitle>
-      <SimpleGrid columns={{sm: 2, md: 4, xl: 6}} spacing={2} marginTop={4}>
+      <SimpleGrid columns={{sm: 2, md: 4, xl: 6}} spacing={2} marginTop={4} alignItems="end">
         {!sortedTags ? 'No tags found.' : null}
         {sortedTags.map((t) => (
-          <div key={t}>
+          <React.Fragment key={t}>
             <PostLinkTag tag={t} />
             {` (${tags[t]})`}
-          </div>
+          </React.Fragment>
         ))}
       </SimpleGrid>
     </>
@@ -30,7 +30,7 @@ export default function Tags({tags}) {
 }
 
 export async function getStaticProps() {
-  const tags = await getAllTags('blog')
+  const tags = await getAllTags()
 
   return {props: {tags}}
 }

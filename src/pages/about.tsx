@@ -9,7 +9,7 @@ import {
   Divider,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import {getFileBySlug} from 'lib/mdx'
+import {getFileBySlug, MDXPage} from 'lib/mdx'
 import metadata from 'metadata'
 import {MDXRemote} from 'next-mdx-remote'
 import {SocialIcons} from 'components/social-icons'
@@ -17,7 +17,7 @@ import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 import {MDXComponents} from 'features/mdx/mdx-components'
 
-export default function About({about}) {
+export default function About({about}: {about: MDXPage}) {
   const {mdxSource, frontMatter} = about
 
   return (

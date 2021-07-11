@@ -1,5 +1,5 @@
 import {Divider, Text, VStack, HStack, Icon, useColorModeValue as mode} from '@chakra-ui/react'
-import {getAllFilesFrontMatter, getFileBySlug} from 'lib/mdx'
+import {getAllBlogPostsFrontMatter, getFileBySlug, FrontMatter, MDXPage} from 'lib/mdx'
 import {PostList} from 'features/blog/post-list'
 import {Link} from 'components/link'
 import {PageSeo} from 'features/seo/seo'
@@ -11,7 +11,7 @@ import metadata from 'metadata'
 
 const MAX_DISPLAY = 3
 
-export default function Home({posts, projects, hero}) {
+export default function Home({posts, projects, hero}: {posts: FrontMatter[]; projects: MDXPage; hero: MDXPage}) {
   const {mdxSource: projectsMdxSource, frontMatter: projectsFrontMatter} = projects
   const {mdxSource: heroMdxSource, frontMatter: heroFrontMatter} = hero
 
@@ -48,9 +48,9 @@ export default function Home({posts, projects, hero}) {
 }
 
 export async function getStaticProps() {
-  const posts = await getAllFilesFrontMatter('blog'),
-    projects = await getFileBySlug('projects'),
-    hero = await getFileBySlug('hero')
+  const posts = await getAllBlogPostsFrontMatter()
+  const projects = await getFileBySlug('projects')
+  const hero = await getFileBySlug('hero')
 
   return {props: {posts, projects, hero}}
 }

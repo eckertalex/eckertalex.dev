@@ -1,5 +1,5 @@
 import {Box, Text, useColorMode, useColorModeValue} from '@chakra-ui/react'
-import Highlight, {defaultProps} from 'prism-react-renderer'
+import Highlight, {defaultProps, Language} from 'prism-react-renderer'
 import nightOwl from 'prism-react-renderer/themes/nightOwl'
 import nightOwlLight from 'prism-react-renderer/themes/nightOwlLight'
 
@@ -13,7 +13,7 @@ function getParams(className = '') {
 
 const hasSurroundingBracesRegex = /{([\d,-]+)}/
 
-function calculateLinesToHighlight(meta) {
+function calculateLinesToHighlight(meta: string) {
   if (!hasSurroundingBracesRegex.test(meta)) {
     return () => false
   }
@@ -23,11 +23,11 @@ function calculateLinesToHighlight(meta) {
     .split(`,`)
     .map((v) => v.split(`-`).map((x) => parseInt(x, 10)))
 
-  return (lineNumber) =>
+  return (lineNumber: number) =>
     lineNumbers?.some(([start, end]) => (end ? lineNumber >= start && lineNumber <= end : lineNumber === start))
 }
 
-export function Code(props) {
+export function Code(props: {children: string; className: string; metastring?: string}) {
   const {colorMode} = useColorMode()
   const {children: codeString, className: blockClassName, metastring = ''} = props
   const [language, title] = getParams(blockClassName)
@@ -40,7 +40,7 @@ export function Code(props) {
     <Highlight
       {...defaultProps}
       code={codeString}
-      language={language}
+      language={language as Language}
       theme={colorMode === 'dark' ? nightOwl : nightOwlLight}
     >
       {({className, style, tokens, getLineProps, getTokenProps}) => (

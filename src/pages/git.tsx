@@ -1,17 +1,17 @@
 import {VStack, Divider, useColorModeValue as mode} from '@chakra-ui/react'
-import {getFileBySlug} from 'lib/mdx'
+import {getFileBySlug, MDXPage} from 'lib/mdx'
 import metadata from 'metadata'
 import {MDXRemote} from 'next-mdx-remote'
 import {MDXComponents} from 'features/mdx/mdx-components'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 
-export default function Impressum({impressum}) {
-  const {mdxSource, frontMatter} = impressum
+export default function Git({git}: {git: MDXPage}) {
+  const {mdxSource, frontMatter} = git
 
   return (
     <VStack alignItems="start" spacing={8}>
-      <PageSeo title={`${frontMatter.title} - ${metadata.author}`} url={`${metadata.siteUrl}/impressum`} />
+      <PageSeo title={`${frontMatter.title} - ${metadata.author}`} url={`${metadata.siteUrl}/git`} />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
       <VStack alignItems="start" spacing={2}>
@@ -22,7 +22,7 @@ export default function Impressum({impressum}) {
 }
 
 export async function getStaticProps() {
-  const impressum = await getFileBySlug('impressum')
+  const git = await getFileBySlug('git')
 
-  return {props: {impressum}}
+  return {props: {git}}
 }

@@ -11,7 +11,6 @@ type PostSeoProps = {
   title: string
   summary: string
   date: string
-  lastmod: string
   url: string
   tags: string[]
   images: string | string[]
@@ -68,9 +67,8 @@ function PageSeo(props: PageSeoProps) {
 }
 
 function PostSeo(props: PostSeoProps) {
-  const {title, summary, date, lastmod, url, tags, images = []} = props
+  const {title, summary, date, url, tags, images = []} = props
   const publishedAt = new Date(date).toISOString()
-  const modifiedAt = new Date(lastmod || date).toISOString()
   const imagesArr = images.length === 0 ? [metadata.socialBanner] : typeof images === 'string' ? [images] : images
   const featuredImages = imagesArr.map((img) => {
     return {
@@ -99,7 +97,6 @@ function PostSeo(props: PostSeoProps) {
           url,
           article: {
             publishedTime: publishedAt,
-            modifiedTime: modifiedAt,
             authors: [`${metadata.siteUrl}/about`],
             tags,
           },
@@ -108,8 +105,7 @@ function PostSeo(props: PostSeoProps) {
       />
       <ArticleJsonLd
         authorName={metadata.author}
-        dateModified={publishedAt}
-        datePublished={modifiedAt}
+        datePublished={publishedAt}
         description={summary}
         images={featuredImages.map((img) => img.url)}
         publisherName={metadata.author}

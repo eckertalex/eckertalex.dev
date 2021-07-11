@@ -1,3 +1,4 @@
+import React from 'react'
 import {
   Stack,
   VStack,
@@ -7,6 +8,7 @@ import {
   VisuallyHidden,
   Heading,
   Text,
+  Box,
   Icon,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
@@ -22,13 +24,24 @@ import {
   CornerDownRight as CornerDownRightIcon,
 } from 'lucide-react'
 import metadata from 'metadata'
+import {FrontMatter} from 'lib/mdx'
 
-const editUrl = (fileName) => `${metadata.siteRepo}/blob/dev/data/blog/${fileName}`,
-  discussUrl = (slug) =>
-    `https://mobile.twitter.com/search?q=${encodeURIComponent(`${metadata.siteUrl}/blog/${slug}`)}`,
-  postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
+const editUrl = (fileName: string) => `${metadata.siteRepo}/blob/dev/data/blog/${fileName}`
+const discussUrl = (slug: string | null) =>
+  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${metadata.siteUrl}/blog/${slug}`)}`
+const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
 
-export function Post({children, frontMatter, next, prev}) {
+export function Post({
+  children,
+  frontMatter,
+  next,
+  prev,
+}: {
+  children: React.ReactNode
+  frontMatter: FrontMatter
+  next: FrontMatter
+  prev: FrontMatter
+}) {
   const {slug, fileName, date, title, tags} = frontMatter
 
   return (
@@ -49,16 +62,18 @@ export function Post({children, frontMatter, next, prev}) {
             <VisuallyHidden as="dt">Author</VisuallyHidden>
             <HStack as="dd">
               <Image alt={metadata.author} boxSize={10} borderRadius="full" src={metadata.image} />
-              <dl fontSize="small" fontWeight="medium">
+              <Box as="dl" fontSize="small" fontWeight="medium">
                 <VisuallyHidden as="dt">Name</VisuallyHidden>
-                <dd color={mode('gray.900', 'gray.100')}>{metadata.author}</dd>
+                <Box as="dd" color={mode('gray.900', 'gray.100')}>
+                  {metadata.author}
+                </Box>
                 <VisuallyHidden as="dt">Twitter</VisuallyHidden>
                 <dd>
                   <Link color="accent.400" href={metadata.twitter}>
                     {metadata.twitterHandle}
                   </Link>
                 </dd>
-              </dl>
+              </Box>
             </HStack>
           </dl>
         </VStack>

@@ -1,21 +1,17 @@
 import {VStack, Divider, useColorModeValue as mode} from '@chakra-ui/react'
-import {getFileBySlug} from 'lib/mdx'
+import {getFileBySlug, MDXPage} from 'lib/mdx'
 import metadata from 'metadata'
 import {MDXRemote} from 'next-mdx-remote'
 import {MDXComponents} from 'features/mdx/mdx-components'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 
-export default function VSCode({vscode}) {
-  const {mdxSource, frontMatter} = vscode
+export default function Impressum({impressum}: {impressum: MDXPage}) {
+  const {mdxSource, frontMatter} = impressum
 
   return (
     <VStack alignItems="start" spacing={8}>
-      <PageSeo
-        description="My Visual Studio Code configuration."
-        title={`${frontMatter.title} - ${metadata.author}`}
-        url={`${metadata.siteUrl}/vscode`}
-      />
+      <PageSeo title={`${frontMatter.title} - ${metadata.author}`} url={`${metadata.siteUrl}/impressum`} />
       <PageTitle as="h1">{frontMatter.title}</PageTitle>
       <Divider borderColor={mode('gray.700', 'gray.200')} />
       <VStack alignItems="start" spacing={2}>
@@ -26,7 +22,7 @@ export default function VSCode({vscode}) {
 }
 
 export async function getStaticProps() {
-  const vscode = await getFileBySlug('vscode')
+  const impressum = await getFileBySlug('impressum')
 
-  return {props: {vscode}}
+  return {props: {impressum}}
 }

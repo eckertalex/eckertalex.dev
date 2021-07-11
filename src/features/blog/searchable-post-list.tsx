@@ -3,8 +3,9 @@ import {InputGroup, Input, InputRightElement, VStack, Divider, useColorModeValue
 import {Search as SearchIcon} from 'lucide-react'
 import {PageTitle} from 'layout/page-title'
 import {PostList} from 'features/blog/post-list'
+import {FrontMatter} from 'lib/mdx'
 
-function SearchablePostList({posts, title}) {
+function SearchablePostList({posts, title}: {posts: FrontMatter[]; title: string}) {
   const [searchValue, setSearchValue] = React.useState('')
   const filteredBlogPosts = posts.filter((frontMatter) =>
     frontMatter.title.toLowerCase().includes(searchValue.toLowerCase())

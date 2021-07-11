@@ -1,6 +1,7 @@
 import metadata from 'metadata'
+import {FrontMatter} from 'lib/mdx'
 
-function generateRssItem(post) {
+function generateRssItem(post: FrontMatter) {
   return `
     <item>
       <guid>${metadata.siteUrl}/blog/${post.slug}</guid>
@@ -14,7 +15,7 @@ function generateRssItem(post) {
   `
 }
 
-export function generateRss(posts, page = 'index.xml') {
+export function generateRss(posts: FrontMatter[], page = 'index.xml') {
   return `
     <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
       <channel>

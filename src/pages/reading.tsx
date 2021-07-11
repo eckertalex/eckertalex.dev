@@ -3,11 +3,9 @@ import metadata from 'metadata'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 import {ReadingList} from 'features/reading-list/reading-list'
-import {fetchReading} from 'lib/gitrows'
+import {fetchReadings, Reading} from 'lib/gitrows'
 
-export default function ReadingPage(props) {
-  const {reading} = props
-
+export default function ReadingPage({readings}: {readings: Record<string, Reading[]>}) {
   return (
     <VStack alignItems="start" spacing={8}>
       <PageSeo
@@ -16,17 +14,17 @@ export default function ReadingPage(props) {
         url={`${metadata.siteUrl}/reading`}
       />
       <PageTitle as="h1">Reading</PageTitle>
-      <ReadingList reading={reading} />
+      <ReadingList readings={readings} />
     </VStack>
   )
 }
 
 export async function getStaticProps() {
-  const reading = await fetchReading()
+  const readings = await fetchReadings()
 
   return {
     props: {
-      reading,
+      readings,
     },
     revalidate: 43200, // 12 hours
   }
