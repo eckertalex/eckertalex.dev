@@ -27,7 +27,7 @@ export async function getStaticProps() {
   return {
     props: {
       reading,
-      revalidate: 43200, // 12 hours
     },
+    revalidate: 43200, // 12 hours
   }
 }
