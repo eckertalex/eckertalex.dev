@@ -136,6 +136,7 @@ function Footer() {
           <Link href="/blog">Blog</Link>
           <Link href="/tags">Tags</Link>
           <Link href="/bookmarks">Bookmarks</Link>
+          <Link href="/calc">Calculators</Link>
         </VStack>
         <VStack alignItems="start">
           <Link href="/uses">Uses</Link>
