@@ -1,3 +1,4 @@
+import {GetStaticProps} from 'next'
 import {
   Grid,
   GridItem,

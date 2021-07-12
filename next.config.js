@@ -10,23 +10,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const nextConfig = {
   pageExtensions: ['js', 'ts', 'jsx', 'tsx', 'md', 'mdx'],
-  experimental: {
-    modern: true,
-  },
+  reactStrictMode: true,
   webpack: (config, {dev, isServer}) => {
-    config.module.rules.push({
-      test: /\.(png|jpe?g|gif|mp4)$/i,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            publicPath: '/_next',
-            name: 'static/media/[name].[hash].[ext]',
-          },
-        },
-      ],
-    })
-
     if (!dev && !isServer) {
       // Replace React with Preact only in client production build
       Object.assign(config.resolve.alias, {
