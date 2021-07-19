@@ -113,4 +113,29 @@ function SwitchHorizontalIconButton({label, to}: {label: string; to: string}) {
   )
 }
 
-export {BaseInput, PixelsInput, RemsInput, SwitchHorizontalIconButton}
+const SwitchVerticalIcon = createIcon({
+  displayName: 'SwitchVerticalIcon',
+  viewBox: '0 0 24 24',
+  defaultProps: {
+    fill: 'none',
+    stroke: 'currentColor',
+  },
+  path: (
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"
+    />
+  ),
+})
+
+function SwitchVerticalIconButton({label, to}: {label: string; to: string}) {
+  return (
+    <Link href={to} passHref>
+      <IconButton as="a" aria-label={label} icon={<SwitchVerticalIcon boxSize={8} />} size="lg" />
+    </Link>
+  )
+}
+
+export {BaseInput, PixelsInput, RemsInput, SwitchHorizontalIconButton, SwitchVerticalIconButton}
