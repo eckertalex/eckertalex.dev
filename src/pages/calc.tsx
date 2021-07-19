@@ -1,6 +1,6 @@
+import Link from 'next/link'
 import {Container, Heading, UnorderedList, ListItem} from '@chakra-ui/react'
 import metadata from 'metadata'
-import {Link} from 'components/link'
 import {PageSeo} from 'features/seo/seo'
 
 export default function Calc() {
@@ -13,6 +13,9 @@ export default function Calc() {
       <UnorderedList>
         <ListItem>
           <Link href="/calc/px-rem">{'PX \u21C4 REM converter'}</Link>
+        </ListItem>
+        <ListItem>
+          <Link href="/calc/rem-px">{'REM \u21C4 PX converter'}</Link>
         </ListItem>
       </UnorderedList>
     </Container>

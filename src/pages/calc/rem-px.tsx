@@ -5,21 +5,21 @@ import {PageSeo} from 'features/seo/seo'
 import {usePxRem} from 'features/calc/px-rem/use-px-rem'
 import {BaseInput, PixelsInput, RemsInput, SwitchHorizontalIconButton} from 'features/calc/px-rem/inputs'
 
-export default function PxRem() {
+export default function RemPx() {
   const [{base, pixels, rems}, {onBaseChange, onPixelsChange, onRemsChange}] = usePxRem({base: '16', pixels: '10'})
 
   return (
     <Container maxW="container.md" centerContent>
-      <PageSeo title={`PX \u21C4 REM - ${metadata.author}`} url={`${metadata.siteUrl}/calc/px-rem`} />
+      <PageSeo title={`REM \u21C4 PX - ${metadata.author}`} url={`${metadata.siteUrl}/calc/rem-px`} />
       <Heading as="h1" fontSize="3xl" marginBottom={16}>
-        {'PX \u21C4 REM converter'}
+        {'REM \u21C4 PX converter'}
       </Heading>
       <VStack spacing={16} width="full">
         <BaseInput value={base} onChange={onBaseChange} />
         <HStack justifyContent="space-between" alignItems="end" width="full">
-          <PixelsInput value={pixels} onChange={onPixelsChange} />
-          <SwitchHorizontalIconButton label="Switch to REM to PX" to="/calc/rem-px" />
           <RemsInput value={rems} onChange={onRemsChange} />
+          <SwitchHorizontalIconButton label="Switch to PX to REM" to="/calc/px-rem" />
+          <PixelsInput value={pixels} onChange={onPixelsChange} />
         </HStack>
       </VStack>
     </Container>
