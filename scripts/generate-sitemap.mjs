@@ -1,8 +1,8 @@
-const fs = require('fs')
-const globby = require('globby')
-const prettier = require('prettier')
+import {globby} from 'globby'
+import prettier from 'prettier'
+import {writeFileSync} from 'fs'
 
-;(async () => {
+async function generate() {
   const prettierConfig = await prettier.resolveConfig('./.prettierrc.js'),
     pages = await globby([
       'src/pages/*.tsx',
@@ -15,6 +15,7 @@ const prettier = require('prettier')
       '!src/pages/_*.jsx',
       '!src/pages/_*.js',
       '!src/pages/api',
+      '!src/pages/404.tsx',
     ]),
     sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
@@ -47,5 +48,7 @@ const prettier = require('prettier')
     })
 
   // eslint-disable-next-line no-sync
-  fs.writeFileSync('public/sitemap.xml', formatted)
-})()
+  writeFileSync('public/sitemap.xml', formatted)
+}
+
+generate()

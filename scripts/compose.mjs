@@ -1,4 +1,5 @@
-const fs = require('fs')
+import {writeFile} from 'fs'
+
 const args = process.argv.slice(2)
 const title = args[0]
 const ext = typeof args[1] !== 'undefined' ? args[1] : 'mdx'
@@ -19,6 +20,6 @@ images: []
 ---
 `
 
-fs.writeFile(`src/data/blog/${fileName}.${ext}`, frontMatter, (err) => {
+writeFile(`src/data/blog/${fileName}.${ext}`, frontMatter, (err) => {
   if (err) throw err
 })
