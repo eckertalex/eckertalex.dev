@@ -5,6 +5,7 @@ import metadata from 'metadata'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 import {ReadingList} from 'features/reading-list/reading-list'
+import {Statistics, computeStats, Stats} from 'features/reading-list/stats'
 import {fetchReadings, Reading} from 'lib/gitrows'
 
 function match(searchValue: string, reading: Reading) {
@@ -23,7 +24,7 @@ function filterReadings(searchValue: string, allReadings: Record<string, Reading
   )
 }
 
-export default function ReadingPage({readings}: {readings: Record<string, Reading[]>}) {
+export default function ReadingPage({readings, stats}: {readings: Record<string, Reading[]>; stats: Stats}) {
   const [searchValue, setSearchValue] = React.useState('')
   const filteredReadings = filterReadings(searchValue, readings)
 
@@ -35,6 +36,7 @@ export default function ReadingPage({readings}: {readings: Record<string, Readin
         url={`${metadata.siteUrl}/reading`}
       />
       <PageTitle as="h1">Reading</PageTitle>
+      <Statistics {...stats} />
       <InputGroup maxWidth="lg">
         <Input placeholder="Search posts" onChange={(e) => setSearchValue(e.target.value)} value={searchValue} />
         <InputRightElement>
@@ -48,10 +50,12 @@ export default function ReadingPage({readings}: {readings: Record<string, Readin
 
 export async function getStaticProps() {
   const readings = await fetchReadings()
+  const stats = computeStats(readings)
 
   return {
     props: {
       readings,
+      stats,
     },
     revalidate: 43200, // 12 hours
   }
