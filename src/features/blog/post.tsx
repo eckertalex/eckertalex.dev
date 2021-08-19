@@ -13,7 +13,7 @@ import {
   useColorModeValue as mode,
 } from '@chakra-ui/react'
 import {Container} from '@chakra-ui/react'
-import tinytime from 'tinytime'
+import dayjs from 'dayjs'
 import {Link} from 'components/link'
 import {PageTitle} from 'layout/page-title'
 import {PostSeo} from 'features/seo/seo'
@@ -29,7 +29,6 @@ import {FrontMatter} from 'lib/mdx'
 const editUrl = (fileName: string) => `${metadata.siteRepo}/blob/dev/data/blog/${fileName}`
 const discussUrl = (slug: string | null) =>
   `https://mobile.twitter.com/search?q=${encodeURIComponent(`${metadata.siteUrl}/blog/${slug}`)}`
-const postDateTemplate = tinytime('{dddd}, {MMMM} {DD}, {YYYY}')
 
 export function Post({
   children,
@@ -53,7 +52,7 @@ export function Post({
             <VisuallyHidden as="dt">Published on</VisuallyHidden>
             <dd>
               <Text as="time" fontSize="base" fontWeight="medium" color={mode('gray.500', 'gray.400')} dateTime={date}>
-                {postDateTemplate.render(new Date(date))}
+                {dayjs(date).format('dddd, MMMM DD, YYYY')}
               </Text>
             </dd>
           </dl>

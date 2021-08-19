@@ -10,12 +10,10 @@ import {
   GridItem,
   useColorModeValue as mode,
 } from '@chakra-ui/react'
-import tinytime from 'tinytime'
+import dayjs from 'dayjs'
 import {Link} from 'components/link'
 import {PostLinkTag} from 'features/blog/tag'
 import {FrontMatter} from 'lib/mdx'
-
-const postDateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
 
 export function PostList({posts}: {posts: FrontMatter[]}) {
   return (
@@ -29,7 +27,7 @@ export function PostList({posts}: {posts: FrontMatter[]}) {
               <dl>
                 <VisuallyHidden as="dt">Published on</VisuallyHidden>
                 <Text as="dd" fontSize="base" fontWeight="bold" color={mode('gray.500', 'gray.500')}>
-                  <time dateTime={date}>{postDateTemplate.render(new Date(date))}</time>
+                  <time dateTime={date}>{dayjs(date).format('MMMM DD, YYYY')}</time>
                 </Text>
               </dl>
               <GridItem colSpan={3} as={VStack} alignItems="start" spacing={4}>

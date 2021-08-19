@@ -5,8 +5,9 @@ import metadata from 'metadata'
 import {PageSeo} from 'features/seo/seo'
 import {PageTitle} from 'layout/page-title'
 import {ReadingList} from 'features/reading-list/reading-list'
-import {Statistics, computeStats, Stats} from 'features/reading-list/stats'
-import {fetchReadings, Reading} from 'lib/gitrows'
+import {Statistics} from 'features/reading-list/statistics'
+import {computeStatistics, Statistics as StatisticsProps} from 'features/reading-list/util'
+import {fetchReadings, Reading, ReadingList as ReadingListType} from 'lib/gitrows'
 
 function match(searchValue: string, reading: Reading) {
   return (
@@ -16,7 +17,7 @@ function match(searchValue: string, reading: Reading) {
   )
 }
 
-function filterReadings(searchValue: string, allReadings: Record<string, Reading[]>): Record<string, Reading[]> {
+function filterReadings(searchValue: string, allReadings: ReadingListType): ReadingListType {
   return Object.fromEntries(
     Object.entries(allReadings)
       .map(([day, readings]) => [day, readings.filter((reading) => match(searchValue, reading))])
@@ -24,7 +25,12 @@ function filterReadings(searchValue: string, allReadings: Record<string, Reading
   )
 }
 
-export default function ReadingPage({readings, stats}: {readings: Record<string, Reading[]>; stats: Stats}) {
+type ReadingPageProps = {
+  readings: ReadingListType
+  statistics: StatisticsProps
+}
+
+export default function ReadingPage({readings, statistics}: ReadingPageProps) {
   const [searchValue, setSearchValue] = React.useState('')
   const filteredReadings = filterReadings(searchValue, readings)
 
@@ -36,7 +42,7 @@ export default function ReadingPage({readings, stats}: {readings: Record<string,
         url={`${metadata.siteUrl}/reading`}
       />
       <PageTitle as="h1">Reading</PageTitle>
-      <Statistics {...stats} />
+      <Statistics {...statistics} />
       <InputGroup maxWidth="lg">
         <Input placeholder="Search posts" onChange={(e) => setSearchValue(e.target.value)} value={searchValue} />
         <InputRightElement>
@@ -50,12 +56,12 @@ export default function ReadingPage({readings, stats}: {readings: Record<string,
 
 export async function getStaticProps() {
   const readings = await fetchReadings()
-  const stats = computeStats(readings)
+  const statistics = computeStatistics(readings)
 
   return {
     props: {
       readings,
-      stats,
+      statistics,
     },
     revalidate: 43200, // 12 hours
   }

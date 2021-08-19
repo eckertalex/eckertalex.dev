@@ -1,9 +1,7 @@
 import React from 'react'
-import tinytime from 'tinytime'
+import dayjs from 'dayjs'
 import {HStack, Divider, Heading, List, ListItem, Link, Text} from '@chakra-ui/react'
-import {Reading} from 'lib/gitrows'
-
-const dateTemplate = tinytime('{MMMM} {DD}, {YYYY}')
+import {Reading, ReadingList as ReadingListType} from 'lib/gitrows'
 
 function ReadingListItem({reading}: {reading: Reading}) {
   const {author, timestamp, url, title, twitter, date, description} = reading
@@ -19,14 +17,14 @@ function ReadingListItem({reading}: {reading: Reading}) {
             @{twitter}
           </Link>
         ) : null}
-        {date ? <Text>{dateTemplate.render(new Date(date))}</Text> : null}
+        {date ? <Text>{dayjs(date).format('MMMM DD, YYYY')}</Text> : null}
       </HStack>
       <Text>{description}</Text>
     </ListItem>
   )
 }
 
-function ReadingList(props: {readings: Record<string, Reading[]>}) {
+function ReadingList(props: {readings: ReadingListType}) {
   const {readings} = props
 
   return (
@@ -36,7 +34,7 @@ function ReadingList(props: {readings: Record<string, Reading[]>}) {
           <HStack color="gray.500">
             <Divider />
             <Heading flexShrink={0} as="h3" fontSize="xs" ml={4}>
-              {dateTemplate.render(new Date(groupDate))}
+              {dayjs(groupDate).format('MMMM DD, YYYY')}
             </Heading>
           </HStack>
           <ListItem mt={4}>
