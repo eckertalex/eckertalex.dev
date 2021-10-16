@@ -45,19 +45,7 @@ type SocialIconsProps = {
 function SocialIcons({kind, href}: SocialIconsProps) {
   const SocialSvg = components[kind]
 
-  return (
-    <IconButton
-      as={Link}
-      isExternal
-      href={href}
-      aria-label={kind}
-      icon={<SocialSvg />}
-      isRound
-      variant="ghost"
-      data-splitbee-event="External Link"
-      data-splitbee-event-type={kind}
-    />
-  )
+  return <IconButton as={Link} isExternal href={href} aria-label={kind} icon={<SocialSvg />} isRound variant="ghost" />
 }
 
 export {SocialIcons}

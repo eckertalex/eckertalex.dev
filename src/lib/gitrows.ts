@@ -20,7 +20,6 @@ function decodeReading(reading: Reading) {
 }
 
 async function fetchReadings() {
-  // eslint-disable-next-line @typescript-eslint/no-var-requires
   const Gitrows = require('gitrows')
   const gitrows = new Gitrows()
 
