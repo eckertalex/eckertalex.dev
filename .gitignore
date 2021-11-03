@@ -15,6 +15,7 @@ public/sitemap.xml
 public/tags/
 public/index.xml
 .vercel
+tsconfig.tsbuildinfo
 
 # production
 /build
@@ -34,6 +35,3 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
-
-# vercel
-.vercel

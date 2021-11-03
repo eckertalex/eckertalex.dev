@@ -18,7 +18,8 @@
     "rootDir": "./",
     "baseUrl": "src",
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "incremental": true
   },
   "exclude": ["node_modules"],
   "include": ["next-env.d.ts", "@types", "src"]

@@ -13,6 +13,7 @@ const nextConfig = {
     esmExternals: true,
   },
   pageExtensions: ['js', 'ts', 'jsx', 'tsx', 'md', 'mdx'],
+  swcMinify: true,
   reactStrictMode: true,
   webpack: (config, {dev, isServer}) => {
     if (!dev && !isServer) {
