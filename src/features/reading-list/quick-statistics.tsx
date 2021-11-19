@@ -35,10 +35,7 @@ function QuickStatistics({total, oldest, currentMonth, lastMonthPct}: QuickStati
             color={mode(lastMonthPct > 0 ? 'green.600' : 'red.600', lastMonthPct > 0 ? 'green.400' : 'red.400')}
           >
             <StatArrow type={lastMonthPct > 0 ? 'increase' : 'decrease'} />
-            {formatQuickStatisticsNumber(lastMonthPct, {
-              signDisplay: 'exceptZero',
-            })}
-            %
+            {formatQuickStatisticsNumber(lastMonthPct)}%
           </StatHelpText>
         )}
       </Stat>
