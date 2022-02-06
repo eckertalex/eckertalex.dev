@@ -128,7 +128,7 @@ First things first, we will need to write the skeleton of our form in HTML. Here
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
             integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
             crossorigin="anonymous"></script>
-    <script async src="js/contact-form.min.js"></script>
+    <script async src="js/contact-form.js"></script>
 </body>
 
 </html>
@@ -142,7 +142,7 @@ This is how the contact form will look like:
 
 Before the user passed the recaptcha the submit button is disabled. Here is the code that triggers when the recaptcha is passed. Paste it into contact-form.js in the folder js at the root of your webpage.
 
-```js
+```js:title=contact-form.js
 /*
  * For google recaptcha
  */
@@ -153,7 +153,7 @@ function recaptchaCallback() {
 
 To make the phone number input easier for the user, I wrote a short jQuery function to automatically surround the area code in parentheses and add a dash at the appropriate places.
 
-```js:title=ajax.js
+```js:title=contact-form.js
 $(document).ready(function() {
 
     /*
@@ -186,7 +186,7 @@ $(document).ready(function() {
 
 Next we will need to write our AJAX code to work as a intermediate layer between our html site and our PHP code. Read the inline comments to see what each part of the code does.
 
-```js:title=ajax.js
+```js:title=contact-form.js
 $(document).ready(function() {
 
     /*
@@ -248,7 +248,7 @@ $(document).ready(function() {
 
 The AJAX code communicates with the PHP code and displays an error message or a success message without reoading the page or redirecting to a success/error page.
 
-```php:title=ajax.php {4,26}
+```php:title=process-contact.php {4,26}
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {

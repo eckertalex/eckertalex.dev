@@ -26,9 +26,7 @@ import {
 import metadata from 'metadata'
 import {FrontMatter} from 'lib/mdx'
 
-const editUrl = (fileName: string) => `${metadata.siteRepo}/blob/dev/data/blog/${fileName}`
-const discussUrl = (slug: string | null) =>
-  `https://mobile.twitter.com/search?q=${encodeURIComponent(`${metadata.siteUrl}/blog/${slug}`)}`
+const editUrl = (fileName: string) => `${metadata.siteRepo}/blob/dev/src/data/blog/${fileName}`
 
 export function Post({
   children,
@@ -45,7 +43,7 @@ export function Post({
 
   return (
     <Container maxW="container.lg">
-      <PostSeo url={`${metadata.siteUrl}/blog/${frontMatter.slug}`} {...frontMatter} />
+      <PostSeo url={`${metadata.siteUrl}/blog/${slug}`} {...frontMatter} />
       <article>
         <VStack as="header" marginY={6}>
           <dl>
@@ -82,8 +80,6 @@ export function Post({
         </VStack>
         <Divider borderColor={mode('gray.700', 'gray.200')} />
         <Text color={mode('gray.700', 'gray.300')} paddingY={4}>
-          <Link href={discussUrl(slug)}>Discuss on Twitter</Link>
-          {` • `}
           <Link href={editUrl(fileName)}>View on GitHub</Link>
         </Text>
         <Divider borderColor={mode('gray.700', 'gray.200')} />
