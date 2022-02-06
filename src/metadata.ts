@@ -12,8 +12,6 @@ const metadata = {
   email: 'me@eckertalex.dev',
   github: 'https://github.com/eckertalex',
   keybase: 'https://keybase.io/eckertalex',
-  twitter: 'https://twitter.com/eckertalex_',
-  twitterHandle: '@eckertalex_',
   linkedin: 'https://www.linkedin.com/in/eckertalex/',
 }
 

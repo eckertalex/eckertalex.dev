@@ -32,9 +32,8 @@ export default function About({about}: {about: MDXPage}) {
             {metadata.author}
           </Heading>
           <Text color={mode('gray.500', 'gray.400')}>Senior Software Engineer</Text>
-          <Text color={mode('gray.500', 'gray.400')}>LogMeIn Germany GmbH</Text>
+          <Text color={mode('gray.500', 'gray.400')}>GoTo Technologies Germany GmbH</Text>
           <HStack spacing={3} paddingTop={4}>
-            <SocialIcons href={metadata.twitter} kind="twitter" />
             <SocialIcons href={metadata.github} kind="github" />
             <SocialIcons href={metadata.keybase} kind="keybase" />
             <SocialIcons href={metadata.linkedin} kind="linkedin" />

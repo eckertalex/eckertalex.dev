@@ -118,7 +118,6 @@ function Footer() {
         <NowPlaying />
       </div>
       <HStack spacing={8}>
-        <SocialIcons href={metadata.twitter} kind="twitter" />
         <SocialIcons href={metadata.github} kind="github" />
         <SocialIcons href={metadata.keybase} kind="keybase" />
         <SocialIcons href={metadata.linkedin} kind="linkedin" />

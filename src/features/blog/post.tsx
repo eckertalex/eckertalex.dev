@@ -64,12 +64,6 @@ export function Post({
                 <Box as="dd" color={mode('gray.900', 'gray.100')}>
                   {metadata.author}
                 </Box>
-                <VisuallyHidden as="dt">Twitter</VisuallyHidden>
-                <dd>
-                  <Link color="accent.400" href={metadata.twitter}>
-                    {metadata.twitterHandle}
-                  </Link>
-                </dd>
               </Box>
             </HStack>
           </dl>

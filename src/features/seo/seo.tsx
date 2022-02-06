@@ -28,8 +28,6 @@ const defaultSeoConfig = {
   ],
   twitter: {
     cardType: 'summary_large_image',
-    handle: metadata.twitterHandle,
-    site: metadata.twitterHandle,
   },
   openGraph: {
     type: 'website',

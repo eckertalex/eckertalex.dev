@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link, Icon, createIcon, IconButton, IconProps} from '@chakra-ui/react'
-import {Mail as MailIcon, Github as GithubIcon, Linkedin as LinkedinIcon, Twitter as TwitterIcon} from 'lucide-react'
+import {Mail as MailIcon, Github as GithubIcon, Linkedin as LinkedinIcon} from 'lucide-react'
 
 const KeybaseIcon = createIcon({
   displayName: 'KeybaseIcon',
@@ -25,15 +25,10 @@ function Linkedin(props: IconProps) {
   return <Icon as={LinkedinIcon} {...props} />
 }
 
-function Twitter(props: IconProps) {
-  return <Icon as={TwitterIcon} {...props} />
-}
-
 const components = {
   mail: Mail,
   github: Github,
   linkedin: Linkedin,
-  twitter: Twitter,
   keybase: KeybaseIcon,
 }
 
