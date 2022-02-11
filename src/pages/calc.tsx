@@ -12,10 +12,10 @@ export default function Calc() {
       </Heading>
       <UnorderedList>
         <ListItem>
-          <Link href="/calc/px-rem">{'PX \u21C4 REM converter'}</Link>
+          <Link href="/calc/firewood">{'Firewood unit converter'}</Link>
         </ListItem>
         <ListItem>
-          <Link href="/calc/rem-px">{'REM \u21C4 PX converter'}</Link>
+          <Link href="/calc/px-rem">{'PX \u21C4 REM converter'}</Link>
         </ListItem>
       </UnorderedList>
     </Container>

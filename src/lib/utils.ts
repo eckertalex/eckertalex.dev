@@ -5,4 +5,8 @@ function kebabCase(str: string) {
     .join('-')
 }
 
-export {kebabCase}
+function round(value: number) {
+  return value.toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/, '$1')
+}
+
+export {kebabCase, round}

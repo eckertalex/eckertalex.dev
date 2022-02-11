@@ -3,19 +3,13 @@ import {Container, Heading, VStack, Stack, useMediaQuery} from '@chakra-ui/react
 import metadata from 'metadata'
 import {PageSeo} from 'features/seo/seo'
 import {usePxRem} from 'features/calc/px-rem/use-px-rem'
-import {
-  BaseInput,
-  PixelsInput,
-  RemsInput,
-  SwitchHorizontalIconButton,
-  SwitchVerticalIconButton,
-} from 'features/calc/px-rem/inputs'
+import {BaseInput, PixelsInput, RemsInput} from 'features/calc/px-rem/inputs'
+import {Icon} from '@chakra-ui/react'
+import {ArrowLeftRight as ArrowLeftRightIcon} from 'lucide-react'
 
 export default function PxRem() {
   const [{base, pixels, rems}, {onBaseChange, onPixelsChange, onRemsChange}] = usePxRem({base: '16', pixels: '10'})
   const [isLargerThan768] = useMediaQuery('(min-width: 768px)')
-
-  const SwitchIconButton = isLargerThan768 ? SwitchHorizontalIconButton : SwitchVerticalIconButton
 
   return (
     <Container maxW="container.md" centerContent>
@@ -33,7 +27,7 @@ export default function PxRem() {
           spacing={4}
         >
           <PixelsInput value={pixels} onChange={onPixelsChange} />
-          <SwitchIconButton label="Switch to REM to PX" to="/calc/rem-px" />
+          <Icon as={ArrowLeftRightIcon} boxSize={12} transform={isLargerThan768 ? undefined : 'rotate(90deg)'} />
           <RemsInput value={rems} onChange={onRemsChange} />
         </Stack>
       </VStack>

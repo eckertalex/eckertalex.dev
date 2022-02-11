@@ -1,11 +1,12 @@
 import {useLocalStorageValue} from '@react-hookz/web'
+import {round} from 'lib/utils'
 
 function px2rem(baseSize: string, targetSize: string) {
-  return (+Number(targetSize) / Number(baseSize)).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/, '$1')
+  return round(+targetSize / +baseSize)
 }
 
 function rem2px(baseSize: string, targetSize: string) {
-  return (+Number(targetSize) * Number(baseSize)).toFixed(3).replace(/([0-9]+(\.[0-9]+[1-9])?)(\.?0+$)/, '$1')
+  return round(+targetSize * +baseSize)
 }
 
 function usePxRem(initialValues: {base: string; pixels: string}) {
