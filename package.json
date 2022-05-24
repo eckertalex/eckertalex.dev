@@ -16,7 +16,7 @@
     "compose": "node ./scripts/compose.mjs",
     "dev": "next dev",
     "build": "next build",
-    "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
+    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "prestart": "yarn build",
     "start": "next start",
     "analyze": "ANALYZE=true next build",
