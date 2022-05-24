@@ -9,17 +9,19 @@ const fileName = title
   .replace(/[^a-zA-Z0-9 ]/g, '')
   .replace(/ /g, '-')
 const d = new Date()
-const date = [d.getFullYear(), `0${d.getMonth() + 1}`.slice(-2), `0${d.getDate()}`.slice(-2)].join('-')
+const date = [
+  d.getFullYear(),
+  `0${d.getMonth() + 1}`.slice(-2),
+  `0${d.getDate()}`.slice(-2),
+].join('-')
 const frontMatter = `---
 title: "${title}"
-date: "${date}"
-tags: []
-draft: true
+publishedAt: "${date}"
 summary:
 images: []
 ---
 `
 
-writeFile(`src/data/blog/${fileName}.${ext}`, frontMatter, (err) => {
+writeFile(`data/blog/${fileName}.${ext}`, frontMatter, (err) => {
   if (err) throw err
 })

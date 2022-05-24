@@ -15,12 +15,14 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "moduleResolution": "node",
-    "rootDir": "./",
-    "baseUrl": "src",
+    "baseUrl": ".",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "incremental": true
+    "incremental": true,
+    "paths": {
+      "contentlayer/generated": ["./.contentlayer/generated"]
+    }
   },
-  "exclude": ["node_modules"],
-  "include": ["next-env.d.ts", "@types", "src"]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.ts", ".contentlayer/generated"],
+  "exclude": ["node_modules"]
 }

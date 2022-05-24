@@ -3,36 +3,27 @@ import prettier from 'prettier'
 import {writeFileSync} from 'fs'
 
 async function generate() {
-  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js'),
-    pages = await globby([
-      'src/pages/*.tsx',
-      'src/pages/*.jsx',
-      'src/pages/*.js',
-      'src/data/**/*.mdx',
-      'src/data/**/*.md',
-      'public/tags/**/*.xml',
-      '!src/pages/_*.tsx',
-      '!src/pages/_*.jsx',
-      '!src/pages/_*.js',
-      '!src/pages/api',
-      '!src/pages/404.tsx',
-    ]),
-    sitemap = `
+  const prettierConfig = await prettier.resolveConfig('./.prettierrc.js')
+  const pages = await globby([
+    'pages/*.tsx',
+    'data/**/*.mdx',
+    '!pages/_*.tsx',
+    '!pages/api',
+    '!pages/404.tsx',
+  ])
+
+  const sitemap = `
         <?xml version="1.0" encoding="UTF-8"?>
         <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
             ${pages
               .map((page) => {
                 const path = page
-                    .replace('src/pages', '')
-                    .replace('src/data', '')
-                    .replace('public', '')
-                    .replace('.tsx', '')
-                    .replace('.jsx', '')
-                    .replace('.js', '')
-                    .replace('.mdx', '')
-                    .replace('.md', '')
-                    .replace('/index.xml', ''),
-                  route = path === '/index' ? '' : path
+                  .replace('pages', '')
+                  .replace('data', '')
+                  .replace('.tsx', '')
+                  .replace('.mdx', '')
+                const route = path === '/index' ? '' : path
+
                 return `
                         <url>
                             <loc>${`https://eckertalex.dev${route}`}</loc>
@@ -41,11 +32,12 @@ async function generate() {
               })
               .join('')}
         </urlset>
-    `,
-    formatted = prettier.format(sitemap, {
-      ...prettierConfig,
-      parser: 'html',
-    })
+    `
+
+  const formatted = prettier.format(sitemap, {
+    ...prettierConfig,
+    parser: 'html',
+  })
 
   writeFileSync('public/sitemap.xml', formatted)
 }

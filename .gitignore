@@ -12,7 +12,6 @@
 /.next/
 /out/
 public/sitemap.xml
-public/tags/
 public/index.xml
 .vercel
 tsconfig.tsbuildinfo
@@ -35,3 +34,6 @@ yarn-error.log*
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Contentlayer
+.contentlayer

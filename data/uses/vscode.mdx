@@ -1,0 +1,497 @@
+---
+title: 'Visual Studio Code Configuration'
+description: 'My VSCode configuration'
+---
+
+## Extensions
+
+- [alefragnani.project-manager](https://marketplace.visualstudio.com/items?itemName=alefragnani.project-manager)
+- [bmalehorn.vscode-fish](https://marketplace.visualstudio.com/items?itemName=bmalehorn.vscode-fish)
+- [BriteSnow.vscode-toggle-quotes](https://marketplace.visualstudio.com/items?itemName=BriteSnow.vscode-toggle-quotes)
+- [CoenraadS.disableligatures](https://marketplace.visualstudio.com/items?itemName=CoenraadS.disableligatures)
+- [dbaeumer.vscode-eslint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [EditorConfig.EditorConfig](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
+- [esbenp.prettier-vscode](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [firsttris.vscode-jest-runner](https://marketplace.visualstudio.com/items?itemName=firsttris.vscode-jest-runner)
+- [mikeburgh.xml-format](https://marketplace.visualstudio.com/items?itemName=mikeburgh.xml-format)
+- [monokai.theme-monokai-pro-vscode](https://marketplace.visualstudio.com/items?itemName=monokai.theme-monokai-pro-vscode)
+- [naumovs.color-highlight](https://marketplace.visualstudio.com/items?itemName=naumovs.color-highlight)
+- [PKief.material-icon-theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme)
+- [sdras.night-owl](https://marketplace.visualstudio.com/items?itemName=sdras.night-owl)
+- [silvenon.mdx](https://marketplace.visualstudio.com/items?itemName=silvenon.mdx)
+- [VisualStudioExptTeam.vscodeintellicode](https://marketplace.visualstudio.com/items?itemName=VisualStudioExptTeam.vscodeintellicode)
+- [yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+
+## Keybindings
+
+```json:keybindings.json
+[
+  /**
+   * Activity Bar
+   **/
+  {
+    "key": "cmd+k cmd+.",
+    "command": "workbench.action.toggleStatusbarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+,",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "cmd+k cmd+e",
+    "command": "workbench.view.explorer"
+  },
+  {
+    "key": "cmd+k cmd+s",
+    "command": "workbench.view.search"
+  },
+  {
+    "key": "cmd+k cmd+d",
+    "command": "workbench.view.debug"
+  },
+  {
+    "key": "cmd+k cmd+g",
+    "command": "workbench.view.scm"
+  },
+  {
+    "key": "cmd+k cmd+p",
+    "command": "workbench.view.extension.project-manager"
+  },
+  {
+    "key": "cmd+k cmd+x",
+    "command": "workbench.view.extensions"
+  },
+  {
+    "key": "cmd+k cmd+l",
+    "command": "workbench.view.extension.liveshare"
+  },
+  /**
+   * Editor Group
+   **/
+  {
+    "key": "cmd+e cmd+e",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+  /**
+   * Terminal
+   **/
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.toggleTerminal"
+  },
+  {
+    "key": "cmd+t",
+    "command": "workbench.action.terminal.focus",
+    "when": "!terminalFocus"
+  },
+  /**
+   * ZEN MODE
+   **/
+  {
+    "key": "cmd+k cmd+k",
+    "command": "workbench.action.toggleZenMode"
+  },
+  /**
+   * File Explorer
+   **/
+  {
+    "key": "cmd+d",
+    "command": "duplicate.execute",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+n",
+    "command": "explorer.newFolder",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
+    "key": "cmd+r",
+    "command": "workbench.files.action.refreshFilesExplorer",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  /**
+   * Emmet
+   **/
+  {
+    "key": "cmd+m cmd+i",
+    "command": "editor.emmet.action.balanceIn",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+o",
+    "command": "editor.emmet.action.balanceOut",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+w",
+    "command": "editor.emmet.action.wrapWithAbbreviation",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+m",
+    "command": "editor.emmet.action.matchTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+e",
+    "command": "editor.action.smartSelect.expand",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+r",
+    "command": "editor.emmet.action.updateTag",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+m cmd+backspace",
+    "command": "editor.emmet.action.removeTag",
+    "when": "editorTextFocus"
+  },
+]
+```
+
+## Snippets
+
+```json:js-ts.code-snippets
+  "console.log": {
+    "prefix": "cl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log(${1:'here'})$0"
+  },
+  "console.log('var', var)": {
+    "prefix": "vl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "console.log('$1', $1)$0"
+  },
+  "import x from '": {
+    "prefix": "imp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "import ${2:*} from '$1'$3"
+  },
+  "eslint disable next line": {
+    "prefix": "eslnl",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-next-line $1"
+  },
+  "eslint disable line": {
+    "prefix": "esll",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": "// eslint-disable-line $1"
+  },
+  "try/catch": {
+    "prefix": "try",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["try {", "  $1", "} catch (error) {", "  $0", "}"]
+  },
+  "function": {
+    "prefix": "fun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["function $1($2) {", "  $0", "}"]
+  },
+  "async function": {
+    "prefix": "afun",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["async function $1($2) {", "  $0", "}"]
+  },
+  "Switch Statement": {
+    "prefix": "switch",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "switch (${1:key}) {",
+      "  case ${2:value}: {",
+      "    $0",
+      "    break",
+      "  }",
+      "  default: {",
+      "    break",
+      "  }",
+      "}"
+    ]
+  },
+  "Reducer": {
+    "prefix": "reducer",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "function ${1:someReducer}(state, action) {",
+      "  switch (action.type) {",
+      "    case ${2:'value'}: {",
+      "      return $0",
+      "    }",
+      "    default: {",
+      "      throw new Error(`Unhandled action type: ${action.type}`)",
+      "    }",
+      "  }",
+      "}"
+    ]
+  },
+  "Switch case": {
+    "prefix": "case",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["case ${2:'value'}: {", "  return $0", "}"]
+  },
+  "React function component": {
+    "prefix": "comp",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "export function $1($2) {",
+      "  $3",
+      "  return (",
+      "    $0",
+      "  )",
+      "}"
+    ]
+  },
+  "useState": {
+    "prefix": "us",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const [${1:state}, ${2:setState}] = useState($3)$0"]
+  },
+  "useEffect": {
+    "prefix": "uf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "useEffect(() => {",
+      "  $1",
+      "",
+      "  return () => {",
+      "    $0",
+      "  }",
+      "}, [])"
+    ]
+  },
+  "useReducer": {
+    "prefix": "ur",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": [
+      "const [state, dispatch] = useReducer(${1:someReducer}, {",
+      "  $0",
+      "})"
+    ]
+  },
+  "useMemo": {
+    "prefix": "um",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const $0 = useMemo(() => $1, [])"]
+  },
+  "useCallback": {
+    "prefix": "ucb",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const $0 = useCallback(() => $1, [])"]
+  },
+  "useRef": {
+    "prefix": "urf",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["const ${1:someRef} = React.useRef($2)$0"]
+  },
+  "Jest test": {
+    "prefix": "test",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', () => {", "  $0", "})"]
+  },
+  "Jest async test": {
+    "prefix": "atest",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["test('$1', async () => {", "  $0", "})"]
+  },
+  "Mocha it block": {
+    "prefix": "it",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["it('$1', () => {", "  $2", "})"]
+  },
+  "Mocha describe block": {
+    "prefix": "desc",
+    "scope": "javascript, typescript, javascriptreact, typescriptreact",
+    "body": ["describe('$1', () => {", "  $2", "})"]
+  }
+```
+
+## Settings
+
+```json:settings.json{
+  // Window
+  "window.title": "${activeEditorMedium}${separator}${rootName} ${dirty}",
+  "window.newWindowDimensions": "inherit",
+  // Breadcrumbs
+  "breadcrumbs.enabled": true,
+  // Explorer
+  "explorer.openEditors.visible": 0,
+  // Problems
+  "problems.decorations.enabled": false,
+  // Workbench
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.perEditorGroup": false,
+  "workbench.editor.limit.value": 10,
+  "workbench.tips.enabled": false,
+  "workbench.settings.editor": "json",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.sideBar.location": "right",
+  "workbench.startupEditor": "none",
+  "workbench.editor.showTabs": false,
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "workbench.colorTheme": "Monokai Pro",
+  "workbench.preferredDarkColorTheme": "Night Owl",
+  "workbench.preferredLightColorTheme": "Night Owl Light",
+  "workbench.colorCustomizations": {
+    "[Night Owl]": {
+      "activityBar.background": "#000C1D",
+      "activityBar.border": "#102a44",
+      "sideBar.background": "#001122",
+      "sideBar.border": "#102a44",
+      "sideBar.foreground": "#8BADC1"
+    }
+  },
+  // Editor
+  "editor.copyWithSyntaxHighlighting": false,
+  "editor.emptySelectionClipboard": false,
+  "editor.detectIndentation": false,
+  "editor.inlineSuggest.enabled": false,
+  "editor.wordSeparators": "`~!@#$%^&*()=+[{]}\\|;:'\",.<>/?",
+  "editor.quickSuggestionsDelay": 0,
+  "editor.formatOnPaste": false,
+  "editor.codeLens": false,
+  "editor.guides.bracketPairs": false,
+  "editor.colorDecorators": false,
+  "editor.lightbulb.enabled": false,
+  "editor.overviewRulerBorder": false,
+  "editor.occurrencesHighlight": false,
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.minimap.enabled": false,
+  "editor.snippetSuggestions": "top",
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.wordBasedSuggestions": false,
+  "editor.suggest.showKeywords": false,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "editor.wordWrapColumn": 120,
+  "editor.dragAndDrop": false,
+  "editor.formatOnSave": true,
+  "editor.semanticHighlighting.enabled": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // Diff Editor
+  "diffEditor.ignoreTrimWhitespace": false,
+  "diffEditor.renderSideBySide": false,
+  // Editor Font
+  "editor.fontFamily": "'JetBrains Mono', 'Dank Mono'",
+  "editor.fontSize": 18,
+  "editor.lineHeight": 28,
+  "editor.letterSpacing": 0.5,
+  "editor.suggestFontSize": 14,
+  "editor.suggestLineHeight": 25,
+  "editor.fontLigatures": true,
+  "editor.glyphMargin": true,
+  "editor.fontWeight": "normal",
+  // Editor Cursor
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorWidth": 3,
+  "editor.hideCursorInOverviewRuler": false,
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.smoothScrolling": true,
+  // Editor Rendering
+  "editor.minimap.showSlider": "always",
+  "editor.mouseWheelZoom": false,
+  "editor.renderControlCharacters": false,
+  "editor.renderWhitespace": "all",
+  "editor.renderLineHighlight": "none",
+  "editor.lineNumbers": "on",
+  "editor.rulers": [80, 120],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // Zen mode
+  "zenMode.fullScreen": false,
+  // Files
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  "files.hotExit": "onExit",
+  "files.encoding": "utf8",
+  "files.autoGuessEncoding": false,
+  "files.exclude": {
+    "USE_GITIGNORE": true
+  },
+  // Debug
+  "debug.javascript.codelens.npmScripts": "never",
+  // scm
+  "scm.diffDecorations": "none",
+  // Git
+  "git.autofetch": true,
+  "git.enableSmartCommit": true,
+  "git.decorations.enabled": false,
+  // Terminal
+  "terminal.integrated.defaultProfile.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+  "terminal.integrated.defaultProfile.osx": "fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.scrollback": 100000,
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorBlinking": false,
+  "terminal.integrated.fontFamily": "'JetBrains Nerd Font Mono', 'Dank Mono'",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.confirmOnExit": "never",
+  // Search
+  "search.useIgnoreFiles": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/coverage": true,
+    "**/dist": true,
+    "**/build": true
+  },
+  // Security
+  "security.workspace.trust.untrustedFiles": "open",
+  // Telemetry
+  "telemetry.telemetryLevel": "off",
+  "workbench.enableExperiments": false,
+  "workbench.settings.enableNaturalLanguageSearch": false,
+  //
+  // Extensions
+  //
+  // Disable Ligatures
+  "disableLigatures.mode": "Cursor",
+  // project manager
+  "projectManager.git.baseFolders": ["~/code/"],
+  "projectManager.git.maxDepthRecursion": 3,
+  // Eslint
+  "eslint.packageManager": "yarn",
+  "workbench.activityBar.visible": false,
+  "workbench.statusBar.visible": false
+}
+```
+
+---
+
+## How to generate a list of VSCode Extensions
+
+```js:generate-vscode-extensions-list.js
+const {execSync, spawn} = require('child_process')
+
+const result = execSync('code --list-extensions')
+
+const list = String(result)
+  .split('\n')
+  .filter(Boolean)
+  .map(
+    (x) => `- [${x}](https://marketplace.visualstudio.com/items?itemName=${x})`,
+  )
+  .join('\n')
+
+// const proc = spawn('clip') // for Windows
+const proc = spawn('pbcopy') // for MacOS
+proc.stdin.write(list)
+proc.stdin.end()
+```
+
+Credit:
+[Kent C. Dodds](https://github.com/kentcdodds/ama/issues/406#issuecomment-391764106)

@@ -1,12 +1,13 @@
 <h1 align="center">Welcome to eckertalex.dev 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-4.2.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-5.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/eckertalex/eckertalex.dev/blob/dev/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
 </p>
 
-> Personal blog by Alexander Eckert. I write about React, JavaScript, and TypeScript.
+> Personal blog by Alexander Eckert. I write about React, JavaScript, and
+> TypeScript.
 
 ### 🏠 [Homepage](https://eckertalex.dev)
 
@@ -22,5 +23,6 @@ Give a ⭐️ if this project helped you!
 
 ## 📝 License
 
-Copyright &copy; 2020 [eckertalex](https://github.com/eckertalex).<br /> This project is
-[MIT](https://github.com/eckertalex/eckertalex.dev/blob/dev/LICENSE) licensed.
+Copyright &copy; 2022 [eckertalex](https://github.com/eckertalex).<br /> This
+project is [MIT](https://github.com/eckertalex/eckertalex.dev/blob/dev/LICENSE)
+licensed.
