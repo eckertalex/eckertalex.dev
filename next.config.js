@@ -29,11 +29,11 @@ module.exports = withContentlayer(
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
-  default-src 'self' vitals.vercel-insights.com;
-  script-src 'self' 'unsafe-eval' 'unsafe-inline';
-  style-src 'self' 'unsafe-inline' *.googleapis.com;
+  default-src 'self' chiffre.io vitals.vercel-insights.com;
+  script-src 'self' 'unsafe-eval' 'unsafe-inline' chiffre.io;
+  style-src 'self' 'unsafe-inline';
   img-src * blob: data:;
-  font-src 'self' *.gstatic.com;
+  font-src 'self';
 `
 
 const securityHeaders = [

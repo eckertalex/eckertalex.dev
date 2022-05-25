@@ -20,7 +20,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            rel="preload"
+            rel="preconnect"
             href="/fonts/ibm-plex-sans-var.woff2"
             as="font"
             type="font/woff2"
