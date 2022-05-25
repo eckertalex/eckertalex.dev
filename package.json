@@ -1,7 +1,7 @@
 {
   "name": "eckertalex.dev",
   "description": "Personal blog by Alexander Eckert. I write about React, JavaScript, and TypeScript.",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "author": {
     "name": "Alexander Eckert",
     "email": "eckertalex@pm.me",
@@ -30,7 +30,6 @@
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@react-hookz/web": "^14.2.2",
-    "@splitbee/web": "^0.3.0",
     "@visx/pattern": "^2.1.2",
     "@visx/responsive": "^2.10.0",
     "@visx/xychart": "^2.10.0",

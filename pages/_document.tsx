@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Document, {
   Head,
   Html,
@@ -68,6 +69,31 @@ export default class MyDocument extends Document {
           />
           <Main />
           <NextScript />
+          {process.env.NODE_ENV === 'production' &&
+            !!process.env.NEXT_PUBLIC_CHIFFRE_PUBLIC_KEY &&
+            !!process.env.NEXT_PUBLIC_CHIFFRE_PROJECT_ID && (
+              <>
+                <script
+                  id="chiffre:analytics"
+                  src="https://chiffre.io/analytics.js"
+                  data-chiffre-project-id={
+                    process.env.NEXT_PUBLIC_CHIFFRE_PROJECT_ID
+                  }
+                  data-chiffre-public-key={
+                    process.env.NEXT_PUBLIC_CHIFFRE_PUBLIC_KEY
+                  }
+                  crossOrigin="anonymous"
+                  async
+                ></script>
+                <noscript>
+                  <img
+                    src={`https://chiffre.io/noscript/${process.env.NEXT_PUBLIC_CHIFFRE_PROJECT_ID}`}
+                    alt="Chiffre.io anonymous visit counting for clients without JavaScript"
+                    crossOrigin="anonymous"
+                  />
+                </noscript>
+              </>
+            )}
         </body>
       </Html>
     )
