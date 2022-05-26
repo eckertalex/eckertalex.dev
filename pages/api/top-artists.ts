@@ -1,10 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next'
 import {getTopArtists, Artist} from '../../lib/spotify'
 
-export default async function fetchTopArtists(
-  _: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
   const response = await getTopArtists()
   const {items}: {items: Artist[]} = await response.json()
 
