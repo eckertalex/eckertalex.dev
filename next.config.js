@@ -12,6 +12,8 @@ module.exports = withContentlayer(
   })({
     experimental: {
       esmExternals: true,
+      legacyBrowsers: false,
+      browsersListForSwc: true,
     },
     createRoot: true,
     swcMinify: true,

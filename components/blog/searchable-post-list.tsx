@@ -18,7 +18,7 @@ function SearchablePostList({
   posts,
   title,
 }: {
-  posts: Pick<BlogPost, 'slug' | 'title' | 'summary' | 'publishedAt'>[]
+  posts: Pick<BlogPost, 'slug' | 'title' | 'summary'>[]
   title: string
 }) {
   const [searchValue, setSearchValue] = useState('')

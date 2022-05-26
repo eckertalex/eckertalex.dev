@@ -1,32 +1,25 @@
-import {NextApiRequest, NextApiResponse} from 'next'
-import {getNowPlaying} from '../../lib/spotify'
+import type {NextApiRequest, NextApiResponse} from 'next'
+import {getNowPlaying, Song} from '../../lib/spotify'
 
-type NowPlaying = {
-  album?: string
-  albumImageUrl?: string
-  artist?: string
-  isPlaying?: boolean
-  songUrl?: string
-  title?: string
-}
-
-export default async function fetchNowPlaying(
-  _: NextApiRequest,
-  res: NextApiResponse<NowPlaying>
-) {
+export default async function handler(_: NextApiRequest, res: NextApiResponse) {
   const response = await getNowPlaying()
 
   if (response.status === 204 || response.status > 400) {
     return res.status(200).json({isPlaying: false})
   }
 
-  const song = response.parsedBody
-  const title = song?.item?.name
-  const isPlaying = song?.is_playing
-  const artist = song?.item?.artists.map((artist) => artist.name).join(', ')
-  const album = song?.item?.album.name
-  const albumImageUrl = song?.item?.album.images[0].url
-  const songUrl = song?.item?.external_urls.spotify
+  const song: Song = await response.json()
+
+  if (song.item === null) {
+    return res.status(200).json({isPlaying: false})
+  }
+
+  const isPlaying = song.is_playing
+  const title = song.item.name
+  const artist = song.item.artists.map((_artist) => _artist.name).join(', ')
+  const album = song.item.album.name
+  const albumImageUrl = song.item.album.images[0].url
+  const songUrl = song.item.external_urls.spotify
 
   res.setHeader(
     'Cache-Control',

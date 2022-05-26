@@ -13,11 +13,11 @@ export default function Blog({posts}) {
 
 export function getStaticProps() {
   const posts = allBlogPosts
-    .map((post) => pick(['slug', 'title', 'summary', 'publishedAt'], post))
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
     )
+    .map((post) => pick(['slug', 'title', 'summary'], post))
 
   return {props: {posts}}
 }

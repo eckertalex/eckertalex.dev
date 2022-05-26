@@ -8,7 +8,6 @@ import {
   Divider,
   VisuallyHidden,
   Text,
-  Box,
   Heading,
   useColorModeValue as mode,
   Container,
@@ -16,6 +15,7 @@ import {
 import {format, parseISO} from 'date-fns'
 import {Link} from '../components/link'
 import {BlogPost} from '../.contentlayer/generated'
+import {ViewCounter} from '../components/blog/view-counter'
 
 const editUrl = (slug) =>
   `https://github.com/eckertalex/eckertalex.dev/edit/dev/data/blog/${slug}.mdx`
@@ -45,7 +45,7 @@ export function BlogPostLayout({
             </Heading>
             <Stack
               as="dl"
-              direction={['column', 'row']}
+              direction={{base: 'column', sm: 'row'}}
               justifyContent="space-between"
               width="full"
             >
@@ -82,10 +82,19 @@ export function BlogPostLayout({
                   </Text>
                 </dd>
               </HStack>
-              <VisuallyHidden as="dt">Reading Time</VisuallyHidden>
-              <Box as="dd" fontSize="sm" color={mode('gray.700', 'gray.300')}>
-                {post.readingTime.text}
-              </Box>
+              <HStack>
+                <VisuallyHidden as="dt">Reading Time</VisuallyHidden>
+                <Text
+                  as="dd"
+                  fontSize="sm"
+                  color={mode('gray.700', 'gray.300')}
+                >
+                  {post.readingTime.text}
+                </Text>
+                <Text>/</Text>
+                <VisuallyHidden as="dt">Views</VisuallyHidden>
+                <ViewCounter slug={post.slug} />
+              </HStack>
             </Stack>
           </VStack>
           <Divider borderColor={mode('gray.700', 'gray.200')} />

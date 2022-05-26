@@ -28,7 +28,7 @@ export default function Home({
   projects,
   hero,
 }: {
-  posts: BlogPost[]
+  posts: Pick<BlogPost, 'slug' | 'title' | 'summary'>[]
   projects: OtherPage
   hero: OtherPage
 }) {
@@ -76,11 +76,12 @@ export default function Home({
 
 export async function getStaticProps() {
   const posts = allBlogPosts
-    .map((post) => pick(['slug', 'title', 'summary', 'publishedAt'], post))
     .sort(
       (a, b) =>
         Number(new Date(b.publishedAt)) - Number(new Date(a.publishedAt))
     )
+    .map((post) => pick(['slug', 'title', 'summary'], post))
+
   const projects = allOtherPages.find((page) => page.slug === 'projects')!
   const hero = allOtherPages.find((page) => page.slug === 'hero')!
 
