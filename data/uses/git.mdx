@@ -6,11 +6,11 @@ description: 'Snippets and other git tips and tricks.'
 ## Configuration
 
 For ease of use, I decided to store all my custom git configurations in a `git/`
-folder under `~/.config/`, except the "root" `.gitconfig`.
+folder under `~/.config/`, except the “root” `.gitconfig`.
 
 ### Root .gitconfig
 
-The "root" `.gitconfig` is located at `~/.gitconfig`. Here we can specify a
+The “root” `.gitconfig` is located at `~/.gitconfig`. Here we can specify a
 default git user with name and email, as well as configure our default commit
 editor.
 
@@ -45,9 +45,9 @@ follows:
   excludesfile = ~/.gitignore
 ```
 
-### Git "Workspaces"
+### Git “Workspaces”
 
-When I have two separate git profiles to manage, then git "workspaces" are very
+When I have two separate git profiles to manage, then git “workspaces” are very
 handy. Assume we have work and personal git profiles. I like to separate these
 projects in a different folder tree.
 
@@ -66,7 +66,7 @@ create a `work.gitconfig` and `personal.gitconfig` under `~/.config/git/`
   email = <Your Personal Git Email>
 ```
 
-Then update our "root" `.gitconfig` as follows:
+Then update our “workspaces” `.gitconfig` as follows:
 
 ```toml:~/.gitconfig {8-11}
 [user]
