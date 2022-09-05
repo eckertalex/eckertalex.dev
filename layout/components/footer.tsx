@@ -17,7 +17,7 @@ export function Footer() {
       </div>
       <HStack spacing={8}>
         <SocialIcons href="https://github.com/eckertalex" kind="github" />
-        <SocialIcons href="https://keybase.io/eckertalex" kind="keybase" />
+        <SocialIcons href="https://twitter.com/eckertalex_" kind="twitter" />
         <SocialIcons
           href="https://www.linkedin.com/in/eckertalex/"
           kind="linkedin"

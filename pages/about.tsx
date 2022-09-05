@@ -49,8 +49,8 @@ export default function About({about}: {about: OtherPage}) {
             <HStack spacing={3} paddingTop={4}>
               <SocialIcons href="https://github.com/eckertalex" kind="github" />
               <SocialIcons
-                href="https://keybase.io/eckertalex"
-                kind="keybase"
+                href="https://twitter.com/eckertalex_"
+                kind="twitter"
               />
               <SocialIcons
                 href="https://www.linkedin.com/in/eckertalex/"

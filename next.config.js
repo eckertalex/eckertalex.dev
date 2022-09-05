@@ -10,14 +10,14 @@ module.exports = withContentlayer(
   withBundleAnalyzer({
     enabled: process.env.ANALYZE === 'true',
   })({
+    swcMinify: true,
+    reactStrictMode: true,
     experimental: {
       esmExternals: true,
       legacyBrowsers: false,
       browsersListForSwc: true,
+      images: {allowFutureImage: true},
     },
-    createRoot: true,
-    swcMinify: true,
-    reactStrictMode: true,
     async headers() {
       return [
         {
