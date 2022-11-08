@@ -13,11 +13,11 @@ making HTTP requests? How can we take full advantage of TypeScript's type
 system? Let's find out …
 
 <Image
-  src="/static/img/typescript-fetch-wrapper/kameron-kincade-lazlo-in-snow-unsplash.jpg"
-  height={675}
-  width={1200}
-  priority={true}
-  alt="Lazlo in Snow"
+	src="/static/img/typescript-fetch-wrapper/kameron-kincade-lazlo-in-snow-unsplash.jpg"
+	height={675}
+	width={1200}
+	priority={true}
+	alt="Lazlo in Snow"
 />
 
 _Photo by [Kameron Kincade](https://unsplash.com/@kkincade)_
@@ -107,22 +107,22 @@ We can also use other HTTP methods than `GET` with our fetch wrapper.
 
 ```ts
 type Post = {
-  id: string
-  userId: number
-  title: string
-  body: string
+	id: string
+	userId: number
+	title: string
+	body: string
 }
 
 const request = new Request('https://jsonplaceholder.typicode.com/posts', {
-  method: 'post',
-  body: JSON.stringify({
-    title: 'my post',
-    body: 'some content',
-    userId: 1,
-  }),
-  headers: {
-    'Content-type': 'application/json; charset=UTF-8',
-  },
+	method: 'post',
+	body: JSON.stringify({
+		title: 'my post',
+		body: 'some content',
+		userId: 1,
+	}),
+	headers: {
+		'Content-type': 'application/json; charset=UTF-8',
+	},
 })
 
 const response = await http<Post>(request)
@@ -171,24 +171,24 @@ clarify this.
 import * as fetch from './fetch.ts'
 
 type RequestBody = {
-  userId: number
-  title: string
-  body: string
+	userId: number
+	title: string
+	body: string
 }
 
 type ResponseBody = RequestBody & {
-  id: string
+	id: string
 }
 
 const newPost = {
-  userId: 1,
-  title: 'my post',
-  body: 'some content',
+	userId: 1,
+	title: 'my post',
+	body: 'some content',
 }
 
 const response = await fetch.post<RequestBody, ResponseBody>(
-  'https://jsonplaceholder.typicode.com/posts',
-  newPost
+	'https://jsonplaceholder.typicode.com/posts',
+	newPost,
 )
 ```
 

@@ -1,28 +1,35 @@
 {
-  "compilerOptions": {
-    "target": "esnext",
-    "module": "esnext",
-    "lib": ["dom", "es2019"],
-    "allowJs": true,
-    "jsx": "preserve",
-    "noEmit": true,
-    "isolatedModules": true,
-    "forceConsistentCasingInFileNames": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "incremental": true,
-    "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.ts", ".contentlayer/generated"],
-  "exclude": ["node_modules"]
+	"compilerOptions": {
+		"target": "es5",
+		"module": "esnext",
+		"lib": ["dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"jsx": "preserve",
+		"noEmit": true,
+		"isolatedModules": true,
+		"forceConsistentCasingInFileNames": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"moduleResolution": "node",
+		"baseUrl": ".",
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
+		"incremental": true,
+		"paths": {
+			"contentlayer/generated": ["./.contentlayer/generated"]
+		},
+		"plugins": [
+			{
+				"name": "next"
+			}
+		]
+	},
+	"include": [
+		"next-env.d.ts",
+		"**/*.ts",
+		"**/*.tsx",
+		".next/types/**/*.ts",
+		".contentlayer/generated"
+	],
+	"exclude": ["node_modules"]
 }
