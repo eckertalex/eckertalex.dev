@@ -1,17 +1,15 @@
-import { ChakraProvider, createLocalStorageManager } from '@chakra-ui/react'
-import { AppProps } from 'next/app'
-import { PrismGlobal } from '../components/prism-global'
-import { theme, colorModeStorageKey } from '../lib/theme'
+import '../styles/global.css'
+import '../styles/prism.css'
 
-const manager = createLocalStorageManager(colorModeStorageKey)
+import { AppProps } from 'next/app'
+import { ThemeProvider } from 'next-themes'
 
 export default function App(props: AppProps) {
 	const { Component, pageProps } = props
 
 	return (
-		<ChakraProvider theme={theme} colorModeManager={manager}>
-			<PrismGlobal />
+		<ThemeProvider attribute="class">
 			<Component {...pageProps} />
-		</ChakraProvider>
+		</ThemeProvider>
 	)
 }

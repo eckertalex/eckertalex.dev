@@ -1,76 +1,61 @@
-import {
-	Divider,
-	Text,
-	VStack,
-	HStack,
-	Icon,
-	useColorModeValue as mode,
-} from '@chakra-ui/react'
-import { PostList } from '../components/blog/post-list'
-import { Link } from '../components/link'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import { PageTitle } from '../components/page-title'
-import { MDXComponents } from '../components/mdx-components'
+import { PostList } from '../components/post-list'
 import { pick } from '../lib/utils'
 import { ArrowRight as ArrowRightIcon } from 'lucide-react'
-import {
-	allBlogPosts,
-	allOtherPages,
-	BlogPost,
-	OtherPage,
-} from '../.contentlayer/generated'
-import { NavLayout } from '../layout/nav-layout'
+import { allBlogPosts, BlogPost } from '../.contentlayer/generated'
+import Image from 'next/image'
+import Link from 'next/link'
+import { Container } from '../components/container'
 
 const MAX_DISPLAY = 3
 
 export default function Home({
 	posts,
-	projects,
-	hero,
 }: {
 	posts: Pick<BlogPost, 'slug' | 'title' | 'summary'>[]
-	projects: OtherPage
-	hero: OtherPage
 }) {
-	const HeroComponent = useMDXComponent(hero.body.code)
-	const ProjectsComponent = useMDXComponent(projects.body.code)
-
 	return (
-		<NavLayout>
-			<VStack alignItems="start" spacing={4}>
-				<PageTitle>{hero.title}</PageTitle>
-				<HeroComponent components={MDXComponents} />
-				<VStack alignItems="start" spacing={4}>
-					<PageTitle as="h2" fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-						Latest Posts
-					</PageTitle>
-					<Text fontSize="lg" color={mode('gray.500', 'gray.400')}>
-						Personal blog by Alexander Eckert. I write about React, JavaScript,
-						and TypeScript.
-					</Text>
-					<Divider borderColor={mode('gray.700', 'gray.200')} />
-					<PostList posts={posts.slice(0, MAX_DISPLAY)} />
-				</VStack>
-				{posts.length > MAX_DISPLAY ? (
-					<HStack
-						width="full"
-						justifyContent="end"
-						fontSize="base"
-						fontWeight="medium"
-					>
-						<Link aria-label="all posts" color="accent.400" href="/blog">
-							All Posts
-						</Link>
-						<Icon as={ArrowRightIcon} color="accent.400" height={4} width={4} />
-					</HStack>
-				) : null}
-				<Divider borderColor={mode('gray.700', 'gray.200')} />
-				<PageTitle as="h2" fontSize={{ base: '2xl', sm: '3xl', md: '4xl' }}>
-					{projects.title}
-				</PageTitle>
-				<ProjectsComponent components={MDXComponents} />
-			</VStack>
-		</NavLayout>
+		<Container>
+			<div className="flex flex-col justify-center items-start max-w-2xl border-gray-200 dark:border-gray-700 mx-auto pb-16">
+				<div className="flex flex-col-reverse sm:flex-row items-start">
+					<div className="flex flex-col pr-8">
+						<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
+							Alexander Eckert
+						</h1>
+						<h2 className="text-gray-700 dark:text-gray-200 mb-4">
+							Senior Software Engineer
+						</h2>
+						<p className="text-gray-600 dark:text-gray-400 mb-16">
+							I am a software developer living in Germany. I mainly program in
+							JavaScript and TypeScript. My favorite Framework is React.
+						</p>
+					</div>
+					<div className="w-[80px] sm:w-[176px] relative mb-8 sm:mb-0 mr-auto">
+						<Image
+							alt="Alexander Eckert"
+							height={176}
+							width={176}
+							src="/portrait.jpg"
+							sizes="30vw"
+							priority
+							className="rounded-full"
+						/>
+					</div>
+				</div>
+				<h3 className="font-bold text-2xl md:text-4xl tracking-tight mb-6 text-black dark:text-white">
+					Latest Posts
+				</h3>
+				<PostList posts={posts.slice(0, MAX_DISPLAY)} />
+				<Link
+					href="/blog"
+					className="flex items-center mt-8 text-gray-600 dark:text-gray-400 leading-7 rounded-lg hover:text-gray-800 dark:hover:text-gray-200 transition-all h-6"
+				>
+					<>
+						{'Read all posts'}
+						<ArrowRightIcon className="h-6 w-6 ml-1" />
+					</>
+				</Link>
+			</div>
+		</Container>
 	)
 }
 
@@ -82,8 +67,5 @@ export const getStaticProps = async () => {
 		)
 		.map((post) => pick(['slug', 'title', 'summary'], post))
 
-	const projects = allOtherPages.find((page) => page.slug === 'projects')!
-	const hero = allOtherPages.find((page) => page.slug === 'hero')!
-
-	return { props: { posts, projects, hero } }
+	return { props: { posts } }
 }

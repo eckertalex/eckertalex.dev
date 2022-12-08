@@ -19,7 +19,7 @@ function decodeReading(reading: Reading) {
 	return reading
 }
 
-async function fetchReadings() {
+export async function fetchReadings() {
 	const Gitrows = require('gitrows')
 	const gitrows = new Gitrows()
 
@@ -35,5 +35,3 @@ async function fetchReadings() {
 			}
 		}, {})
 }
-
-export { fetchReadings }

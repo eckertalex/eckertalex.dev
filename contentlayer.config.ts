@@ -34,17 +34,6 @@ const BlogPost = defineDocumentType(() => ({
 	computedFields,
 }))
 
-const Uses = defineDocumentType(() => ({
-	name: 'Uses',
-	filePathPattern: 'uses/*.mdx',
-	contentType: 'mdx',
-	fields: {
-		title: { type: 'string', required: true },
-		description: { type: 'string', required: true },
-	},
-	computedFields,
-}))
-
 const OtherPage = defineDocumentType(() => ({
 	name: 'OtherPage',
 	filePathPattern: '*.mdx',
@@ -57,7 +46,7 @@ const OtherPage = defineDocumentType(() => ({
 
 const contentLayerConfig = makeSource({
 	contentDirPath: 'content',
-	documentTypes: [BlogPost, Uses, OtherPage],
+	documentTypes: [BlogPost, OtherPage],
 	mdx: {
 		remarkPlugins: [remarkGfm],
 		rehypePlugins: [

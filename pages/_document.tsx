@@ -1,19 +1,6 @@
-import Document, {
-	Head,
-	Html,
-	Main,
-	NextScript,
-	DocumentContext,
-} from 'next/document'
-import { ColorModeScript } from '@chakra-ui/react'
-import { theme, colorModeStorageKey } from '../lib/theme'
+import Document, { Head, Html, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
-	static async getInitialProps(ctx: DocumentContext) {
-		const initialProps = await Document.getInitialProps(ctx)
-		return { ...initialProps }
-	}
-
 	render() {
 		return (
 			<Html lang="en">
@@ -25,7 +12,23 @@ export default class MyDocument extends Document {
 						type="font/woff2"
 						crossOrigin="anonymous"
 					/>
-					<meta content="#1F2937" name="theme-color" />
+					<link
+						rel="preconnect"
+						href="/fonts/JetBrainsMono-Regular.woff2"
+						as="font"
+						type="font/woff2"
+						crossOrigin="anonymous"
+					/>
+					<meta
+						content="#1F2937"
+						media="(prefers-color-scheme: dark)"
+						name="theme-color"
+					/>
+					<meta
+						content="#ffffff"
+						media="(prefers-color-scheme: light)"
+						name="theme-color"
+					/>
 					<meta content="#1F2937" name="msapplication-TileColor" />
 					<meta
 						content="/static/favicons/browserconfig.xml"
@@ -55,17 +58,13 @@ export default class MyDocument extends Document {
 						href="/static/favicons/safari-pinned-tab.svg"
 						rel="mask-icon"
 					/>
-					<link href="/index.xml" rel="alternate" type="application/rss+xml" />
+					<link href="/feed.xml" rel="alternate" type="application/rss+xml" />
 					<meta
 						content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"
 						name="robots"
 					/>
 				</Head>
-				<body>
-					<ColorModeScript
-						storageKey={colorModeStorageKey}
-						initialColorMode={theme.config.initialColorMode}
-					/>
+				<body className="bg-white dark:bg-black text-white dark:text-black">
 					<Main />
 					<NextScript />
 				</body>

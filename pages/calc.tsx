@@ -1,26 +1,35 @@
 import Link from 'next/link'
-import { Container, Heading, UnorderedList, ListItem } from '@chakra-ui/react'
-import { NavLayout } from '../layout/nav-layout'
+import { Container } from '../components/container'
 
 export default function Calc() {
 	return (
-		<NavLayout
-			title="Calculators | Alexander Eckert"
+		<Container
+			title="Calculators - Alexander Eckert"
 			description="A collection of useful calculators."
 		>
-			<Container maxW="container.md" centerContent>
-				<Heading as="h1" fontSize="3xl" marginBottom={16}>
+			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
+				<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
 					Calculators
-				</Heading>
-				<UnorderedList>
-					<ListItem>
-						<Link href="/calc/firewood">{'Firewood unit converter'}</Link>
-					</ListItem>
-					<ListItem>
-						<Link href="/calc/px-rem">{'PX \u21C4 REM converter'}</Link>
-					</ListItem>
-				</UnorderedList>
-			</Container>
-		</NavLayout>
+				</h1>
+				<ul>
+					<li>
+						<Link
+							className="text-black dark:text-white hover:underline"
+							href="/calc/firewood"
+						>
+							{'Firewood unit converter'}
+						</Link>
+					</li>
+					<li>
+						<Link
+							className="text-black dark:text-white hover:underline"
+							href="/calc/px-rem"
+						>
+							{'PX \u21C4 REM converter'}
+						</Link>
+					</li>
+				</ul>
+			</div>
+		</Container>
 	)
 }

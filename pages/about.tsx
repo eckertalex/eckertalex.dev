@@ -1,77 +1,38 @@
-import {
-	Grid,
-	GridItem,
-	VStack,
-	HStack,
-	Heading,
-	Text,
-	Divider,
-	useColorModeValue as mode,
-	Box,
-} from '@chakra-ui/react'
+import { Container } from '../components/container'
 import Image from 'next/image'
-import { useMDXComponent } from 'next-contentlayer/hooks'
-import { SocialIcons } from '../components/social-icons'
-import { PageTitle } from '../components/page-title'
-import { MDXComponents } from '../components/mdx-components'
-import { allOtherPages, OtherPage } from '../.contentlayer/generated'
-import { NavLayout } from '../layout/nav-layout'
-import portrait from 'public/static/img/portrait.jpg'
+import portrait from 'public/portrait.jpg'
 
-export default function About({ about }: { about: OtherPage }) {
-	const Component = useMDXComponent(about.body.code)
-
+export default function About() {
 	return (
-		<NavLayout title={`${about.title} | Alexander Eckert`}>
-			<VStack alignItems="start" spacing={8}>
-				<PageTitle>{about.title}</PageTitle>
-				<Divider borderColor={mode('gray.700', 'gray.200')} />
-				<Grid templateColumns={{ md: 'repeat(3, 1fr)' }}>
-					<VStack spacing={2} marginTop={8}>
+		<Container title={`About - Alexander Eckert`}>
+			<div className="flex flex-col justify-center items-start max-w-2xl mx-auto mb-16 w-full">
+				<h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-4 text-black dark:text-white">
+					About Me
+				</h1>
+				<div className="mb-8 prose dark:prose-dark leading-6">
+					<h2>Bio</h2>
+					<h3>Job Title</h3>
+					<p>
+						Alexander Eckert, Senior Software Engineer at GoTo Technologies
+						Germany GmbH
+					</p>
+					<h3>Education</h3>
+					<p>
+						Alexander Eckert graduated from the University of Alaska, Fairbanks,
+						with a B.S. in Computer Science.
+					</p>
+					<h2>Headshot</h2>
+					<a href="/portrait.jpg">
 						<Image
-							alt="Alexander Eckert"
+							alt="Alexander Eckert headshot"
+							width={400}
+							quality={100}
 							src={portrait}
-							width={192}
-							style={{ borderRadius: '9999px' }}
+							className="rounded-md"
 						/>
-						<Heading
-							as="h3"
-							fontSize="2xl"
-							fontWeight="bold"
-							letterSpacing="tight"
-						>
-							Alexander Eckert
-						</Heading>
-						<Text color={mode('gray.500', 'gray.400')}>
-							Senior Software Engineer
-						</Text>
-						<Text color={mode('gray.500', 'gray.400')}>
-							GoTo Technologies Germany GmbH
-						</Text>
-						<HStack spacing={3} paddingTop={4}>
-							<SocialIcons href="https://github.com/eckertalex" kind="github" />
-							<SocialIcons
-								href="https://twitter.com/eckertalex_"
-								kind="twitter"
-							/>
-							<SocialIcons
-								href="https://www.linkedin.com/in/eckertalex/"
-								kind="linkedin"
-							/>
-							<SocialIcons href="mailto:me@eckertalex.dev" kind="mail" />
-						</HStack>
-					</VStack>
-					<GridItem colSpan={2} as={VStack} alignItems="start" spacing={2}>
-						<Component components={MDXComponents} />
-					</GridItem>
-				</Grid>
-			</VStack>
-		</NavLayout>
+					</a>
+				</div>
+			</div>
+		</Container>
 	)
-}
-
-export const getStaticProps = async () => {
-	const about = allOtherPages.find((page) => page.slug === 'about')!
-
-	return { props: { about } }
 }
