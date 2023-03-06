@@ -4,7 +4,7 @@
 	"version": "5.2.0",
 	"author": {
 		"name": "Alexander Eckert",
-		"email": "eckertalex@pm.me",
+		"email": "eckertalex@proton.me",
 		"url": "https://eckertalex.dev"
 	},
 	"license": "MIT",
@@ -75,8 +75,8 @@
 			"prettier --write"
 		]
 	},
-	"volta": {
-		"node": "18.12.1"
+	"engines": {
+		"node": "18"
 	},
-	"packageManager": "pnpm@7.18.1"
+	"packageManager": "pnpm@7.29.0"
 }
