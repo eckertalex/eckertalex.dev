@@ -1,11 +1,13 @@
+'use client'
+
 import useSWR from 'swr'
 
-async function fetcher<JSON = any>(
+async function fetcher<TData = any>(
 	input: RequestInfo,
-	init?: RequestInit,
-): Promise<JSON> {
+	init?: RequestInit
+): Promise<TData> {
 	const res = await fetch(input, init)
-	return res.json()
+	return res.json() as TData
 }
 
 function SpotifyIcon() {
@@ -13,7 +15,7 @@ function SpotifyIcon() {
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 496 512"
-			className="h-4 w-4 ml-auto mt-[-2px]"
+			className="ml-auto mt-[-2px] h-4 w-4"
 		>
 			<path
 				fill="#1ed760"
@@ -32,30 +34,24 @@ export function NowPlaying() {
 	}>('/api/now-playing', fetcher)
 
 	return (
-		<div className="flex flex-row-reverse items-center sm:flex-row mb-8 space-x-0 sm:space-x-2 w-full">
+		<section className="flex w-full flex-row-reverse items-center space-x-0 md:flex-row md:space-x-2">
 			<SpotifyIcon />
-			<div className="inline-flex flex-col sm:flex-row w-full max-w-full truncate">
+			<div className="inline-flex w-full max-w-full flex-col truncate text-lg font-medium text-muted-foreground md:flex-row">
 				{song?.songUrl ? (
 					<a
-						className="capsize text-gray-800 dark:text-gray-200 font-medium  max-w-max truncate"
 						target="_blank"
 						rel="noopener noreferrer"
+						className="truncate"
 						href={song.songUrl}
 					>
 						{song.title}
 					</a>
 				) : (
-					<p className="capsize text-gray-800 dark:text-gray-200 font-medium">
-						Not Playing
-					</p>
+					<p>Not Playing</p>
 				)}
-				<span className="capsize mx-2 text-gray-500 dark:text-gray-300 hidden sm:block">
-					{' – '}
-				</span>
-				<p className="capsize text-gray-500 dark:text-gray-300 max-w-max truncate">
-					{song?.artist ?? 'Spotify'}
-				</p>
+				<span className="mx-2 hidden md:block">{' – '}</span>
+				<p className="truncate">{song?.artist ?? 'Spotify'}</p>
 			</div>
-		</div>
+		</section>
 	)
 }

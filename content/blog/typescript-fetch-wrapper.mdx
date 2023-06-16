@@ -1,7 +1,7 @@
 ---
 title: 'Fetch Wrapper in TypeScript'
 publishedAt: '2020-07-12'
-summary:
+description:
   "How can we use `fetch` to simplify the code for making HTTP requests? How can
   we take full advantage of TypeScript's type system?"
 ---
@@ -13,7 +13,7 @@ making HTTP requests? How can we take full advantage of TypeScript's type
 system? Let's find out …
 
 <Image
-	src="/static/img/typescript-fetch-wrapper/kameron-kincade-lazlo-in-snow-unsplash.jpg"
+	src="/images/typescript-fetch-wrapper/kameron-kincade-lazlo-in-snow-unsplash.jpg"
 	height={675}
 	width={1200}
 	priority={true}
@@ -48,21 +48,21 @@ We need to _await_ the response before calling `json`.
 Let's create a wrapper for `fetch` combining these two lines of code as well as
 adding types:
 
-```ts:fetch.ts
+```ts title="fetch.ts" showLineNumbers
 async function http<T>(request: RequestInfo): Promise<T> {
-  const response = await fetch(request)
-  return await response.json()
+	const response = await fetch(request)
+	return await response.json()
 }
 
 // example consuming code
 type Todo = {
-  userId: number
-  id: string
-  title: string
-  completed: boolean
+	userId: number
+	id: string
+	title: string
+	completed: boolean
 }
 
-const data = await http<Todo[]>("https://jsonplaceholder.typicode.com/todos")
+const data = await http<Todo[]>('https://jsonplaceholder.typicode.com/todos')
 ```
 
 Our `fetch` wrapper function takes in a generic parameter `T` for the type of
@@ -74,30 +74,30 @@ code.
 So far our fetch wrapper does not handle errors very graciously, so let's
 improve that.
 
-```ts:fetch.ts
+```ts title="fetch.ts" showLineNumbers
 async function http<T>(request: RequestInfo): Promise<T> {
-  const response = await fetch(request)
+	const response = await fetch(request)
 
-  if(!response.ok) {
-    throw new Error({name: response.status, message: response.statusText})
-  }
+	if (!response.ok) {
+		throw new Error({ name: response.status, message: response.statusText })
+	}
 
-  // may error if there is no body, return empty array
-  return response.json().catch(() => ({}))
+	// may error if there is no body, return empty array
+	return response.json().catch(() => ({}))
 }
 
 // example consuming code
 type Todo = {
-  userId: number
-  id: string
-  title: string
-  completed: boolean
+	userId: number
+	id: string
+	title: string
+	completed: boolean
 }
 
 try {
-  const data = await http<Todo[]>("https://jsonplaceholder.typicode.com/todos")
-} catch(error) {
-  console.log("Error", error)
+	const data = await http<Todo[]>('https://jsonplaceholder.typicode.com/todos')
+} catch (error) {
+	console.log('Error', error)
 }
 ```
 
@@ -105,7 +105,7 @@ try {
 
 We can also use other HTTP methods than `GET` with our fetch wrapper.
 
-```ts
+```ts showLineNumbers
 type Post = {
 	id: string
 	userId: number
@@ -133,32 +133,40 @@ body needs to be stringified by using `JSON.stringify()`. However, I don't feel
 like typing so much for every post request. So let's refactor our http wrapper
 to expose a helper function for each HTTP method.
 
-```ts:fetch.ts
+```ts title="fetch.ts" showLineNumbers
 async function http<T>(path: string, config: RequestInit): Promise<T> {
-  const request = new Request(path, config)
-  const response = await fetch(request)
+	const request = new Request(path, config)
+	const response = await fetch(request)
 
-  if(!response.ok) {
-    throw new Error({name: response.status, message: response.statusText})
-  }
+	if (!response.ok) {
+		throw new Error({ name: response.status, message: response.statusText })
+	}
 
-  // may error if there is no body, return empty array
-  return response.json().catch(() => ({}))
+	// may error if there is no body, return empty array
+	return response.json().catch(() => ({}))
 }
 
 export async function get<T>(path: string, config?: RequestInit): Promise<T> {
-  const init = {method: 'get', ...config}
-  return await http<T>(path, init)
+	const init = { method: 'get', ...config }
+	return await http<T>(path, init)
 }
 
-export async function post<T, U>(path: string, body: T, config?: RequestInit): Promise<U> {
-  const init = {method: 'post', body: JSON.stringify(body), ...config}
-  return await http<U>(path, init)
+export async function post<T, U>(
+	path: string,
+	body: T,
+	config?: RequestInit
+): Promise<U> {
+	const init = { method: 'post', body: JSON.stringify(body), ...config }
+	return await http<U>(path, init)
 }
 
-export async function put<T, U>(path: string, body: T, config?: RequestInit): Promise<U> {
-  const init = {method: 'put', body: JSON.stringify(body), ...config}
-  return await http<U>(path, init)
+export async function put<T, U>(
+	path: string,
+	body: T,
+	config?: RequestInit
+): Promise<U> {
+	const init = { method: 'put', body: JSON.stringify(body), ...config }
+	return await http<U>(path, init)
 }
 ```
 
@@ -167,7 +175,7 @@ However, `post` and `put` each have two generic arguments. The first is for the
 request body and the second one for the response body. Let's see an example to
 clarify this.
 
-```ts
+```ts showLineNumbers
 import * as fetch from './fetch.ts'
 
 type RequestBody = {
@@ -188,7 +196,7 @@ const newPost = {
 
 const response = await fetch.post<RequestBody, ResponseBody>(
 	'https://jsonplaceholder.typicode.com/posts',
-	newPost,
+	newPost
 )
 ```
 

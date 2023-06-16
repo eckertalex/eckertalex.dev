@@ -49,7 +49,7 @@ async function getAccessToken(): Promise<{ access_token: string }> {
 		}),
 	})
 
-	return response.json()
+	return response.json() as Promise<{ access_token: string }>
 }
 
 export async function getNowPlaying() {
