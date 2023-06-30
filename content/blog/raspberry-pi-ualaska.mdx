@@ -1,7 +1,7 @@
 ---
 title: 'Connecting Raspberry Pi 3 with UAlaska'
 publishedAt: '2017-10-17'
-summary: 'Here is how to set up a connection with UAlaska on a RPi3.'
+description: 'Here is how to set up a connection with UAlaska on a RPi3.'
 ---
 
 With the release of the
@@ -24,13 +24,13 @@ Here is how to set up a connection with UAlaska on a RPi3. I tested it with
 Retropie, but it should also work with Raspbian. Open the terminal (F8 in
 Retropie) and type the following:
 
-```bash
+```sh
 sudo nano /etc/wpa_supplicant/wpa_supplicant.conf
 ```
 
 Now add a new section:
 
-```bash
+```sh
 network={
     ssid="UAlaska"
     scan_ssid=1

@@ -1,7 +1,7 @@
 ---
 title: 'How to create an AJAX Form in PHP with Google reCAPTCHA'
 publishedAt: '2018-08-03'
-summary: 'How to create an AJAX Form in PHP with Google reCAPTCHA.'
+description: 'How to create an AJAX Form in PHP with Google reCAPTCHA.'
 ---
 
 Recently, at my software development internship, I was tasked to redo our
@@ -14,7 +14,7 @@ improve the user experience.
 First things first, we will need to write the skeleton of our form in HTML. Here
 is an example:
 
-```html:ajax.html {96}
+```html title="ajax.html" {96} showLineNumbers
 <!doctype html>
 <html lang="en">
 
@@ -145,7 +145,7 @@ sample code, where I wrote **YOUR_SITE_KEY**.
 This is how the contact form will look like:
 
 <Image
-	src="/static/img/ajax-php-recaptcha-form/contact-form.png"
+	src="/images/ajax-php-recaptcha-form/contact-form.png"
 	height={375}
 	width={1092}
 	alt="Example contact form"
@@ -155,12 +155,12 @@ Before the user passed the reCAPTCHA, the submit button is disabled. Here is the
 code that triggers when the reCAPTCHA is passed. Paste it into contact-form.js
 in the folder JS at the root of your webpage.
 
-```js:contact-form.js
+```js title="contact-form.js" showLineNumbers
 /*
  * For google recaptcha
  */
 function recaptchaCallback() {
-    $("#submit").prop('disabled', false);
+	$('#submit').prop('disabled', false)
 }
 ```
 
@@ -168,106 +168,106 @@ To make the phone number input easier for the user, I wrote a short jQuery
 function to automatically surround the area code in parentheses and add a dash
 at the appropriate places.
 
-```js:contact-form.js
-$(document).ready(function() {
+```js title="contact-form.js" showLineNumbers
+$(document).ready(function () {
+	/*
+	 * For phone number input field
+	 */
+	$("input[type='tel']").each(function () {
+		$(this).on('change keyup paste', function (e) {
+			var output,
+				$this = $(this),
+				input = $this.val()
 
-    /*
-    * For phone number input field
-    */
-    $("input[type='tel']").each(function() {
-        $(this).on("change keyup paste", function(e) {
-            var output,
-                $this = $(this),
-                input = $this.val();
-
-            if (e.keyCode != 8) {
-                input = input.replace(/[^0-9]/g, '');
-                var area = input.substr(0, 3);
-                var pre = input.substr(3, 3);
-                var tel = input.substr(6, 4);
-                if (area.length < 3) {
-                    output = "(" + area;
-                } else if (area.length == 3 && pre.length < 3) {
-                    output = "(" + area + ")" + " " + pre;
-                } else if (area.length == 3 && pre.length == 3) {
-                    output = "(" + area + ")" + " " + pre + "-" + tel;
-                }
-                $this.val(output);
-            }
-        });
-    });
-});
+			if (e.keyCode != 8) {
+				input = input.replace(/[^0-9]/g, '')
+				var area = input.substr(0, 3)
+				var pre = input.substr(3, 3)
+				var tel = input.substr(6, 4)
+				if (area.length < 3) {
+					output = '(' + area
+				} else if (area.length == 3 && pre.length < 3) {
+					output = '(' + area + ')' + ' ' + pre
+				} else if (area.length == 3 && pre.length == 3) {
+					output = '(' + area + ')' + ' ' + pre + '-' + tel
+				}
+				$this.val(output)
+			}
+		})
+	})
+})
 ```
 
 Next we will need to write our AJAX code to work as an intermediate layer
 between our HTML site and our PHP code. Read the inline comments to see what
 each part of the code does.
 
-```js:contact-form.js
-$(document).ready(function() {
+```js title="contact-form.js" showLineNumbers
+$(document).ready(function () {
+	/*
+	 * For phone number input field
+	 */
+	$("input[type='tel']").each(function () {
+		// truncated for this post
+	})
 
-    /*
-    * For phone number input field
-    */
-    $("input[type='tel']").each(function() {
-        // truncated for this post
-    });
+	/*
+	 * AJAX code
+	 */
+	// Get the form.
+	var form = $('#ajax-contact')
+	// Get the messages div.
+	var formMessages = $('#form-messages')
+	// Set up an event listener for the contact form.
+	$(form).submit(function (e) {
+		// Stop the browser from submitting the form.
+		e.preventDefault()
+		// Serialize the form data.
+		var formData = $(form).serialize()
+		// Submit the form using AJAX.
+		$.ajax({
+			type: 'POST',
+			url: $(form).attr('action'),
+			data: formData,
+		})
+			.done(function (response) {
+				// Make sure that the formMessages div has the 'success' class.
+				$(formMessages).removeClass('alert-danger')
+				$(formMessages).addClass('alert-success')
 
-    /*
-    * AJAX code
-    */
-    // Get the form.
-    var form = $('#ajax-contact');
-    // Get the messages div.
-    var formMessages = $('#form-messages');
-    // Set up an event listener for the contact form.
-    $(form).submit(function(e) {
-        // Stop the browser from submitting the form.
-        e.preventDefault();
-        // Serialize the form data.
-        var formData = $(form).serialize();
-        // Submit the form using AJAX.
-        $.ajax({
-                type: 'POST',
-                url: $(form).attr('action'),
-                data: formData
-            })
-            .done(function(response) {
-                // Make sure that the formMessages div has the 'success' class.
-                $(formMessages).removeClass('alert-danger');
-                $(formMessages).addClass('alert-success');
+				// Set the message text.
+				$(formMessages).text(response)
 
-                // Set the message text.
-                $(formMessages).text(response);
+				// Clear the form.
+				$('#subject').val('')
+				$('#phone').val('')
+				$('#name').val('')
+				$('#email').val('')
+				$('#message').val('')
+			})
+			.fail(function (data) {
+				// Make sure that the formMessages div has the 'error' class.
+				$(formMessages).removeClass('alert-success')
+				$(formMessages).addClass('alert-danger')
 
-                // Clear the form.
-                $('#subject').val('');
-                $('#phone').val('');
-                $('#name').val('');
-                $('#email').val('');
-                $('#message').val('');
-            })
-            .fail(function(data) {
-                // Make sure that the formMessages div has the 'error' class.
-                $(formMessages).removeClass('alert-success');
-                $(formMessages).addClass('alert-danger');
-
-                // Set the message text.
-                if (data.responseText !== '') {
-                    $(formMessages).text(data.responseText);
-                } else {
-                    $(formMessages).text('Oops! An error occured and your message could not be sent.');
-                }
-            });
-    });
-});
+				// Set the message text.
+				if (data.responseText !== '') {
+					$(formMessages).text(data.responseText)
+				} else {
+					$(formMessages).text(
+						'Oops! An error occured and your message could not be sent.'
+					)
+				}
+			})
+	})
+})
 ```
 
 The AJAX code communicates with the PHP code and displays an error message or a
 success message without reloading the page or redirecting to a success/error
 page.
 
-```php:process-contact.php {4,26}
+```php title="process-contact.php" showLineNumbers {4,26}
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         if(isset($_POST['g-recaptcha-response']) && !empty($_POST['g-recaptcha-response'])) {
@@ -345,7 +345,7 @@ specify your email at line 26.
 If you did everything right, the resulting email will look like this:
 
 <Image
-	src="/static/img/ajax-php-recaptcha-form/email.png"
+	src="/images/ajax-php-recaptcha-form/email.png"
 	height={442}
 	width={967}
 	alt="Resulting email"
