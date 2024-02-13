@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import { allPosts } from 'contentlayer/generated'
-import { RssIcon } from 'lucide-react'
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
+import { RssIcon } from "lucide-react";
 
-import { PostLink } from '@/components/post-link'
+import { PostLink } from "@/components/post-link";
 
 export default function BlogPage() {
 	const posts = allPosts.sort((a, b) =>
 		new Date(a.publishedAt) > new Date(b.publishedAt) ? -1 : 1
-	)
+	);
 
 	return (
 		<section>
@@ -31,5 +31,5 @@ export default function BlogPage() {
 				))}
 			</ul>
 		</section>
-	)
+	);
 }

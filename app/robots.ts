@@ -2,10 +2,10 @@ export default function robots() {
 	return {
 		rules: [
 			{
-				userAgent: '*',
+				userAgent: "*",
 			},
 		],
-		sitemap: 'https://eckertalex.dev/sitemap.xml',
-		host: 'https://eckertalex.dev',
-	}
+		sitemap: "https://eckertalex.dev/sitemap.xml",
+		host: "https://eckertalex.dev",
+	};
 }

@@ -1,14 +1,14 @@
-import '@/styles/globals.css'
+import "@/styles/globals.css";
 
-import { Metadata } from 'next'
+import { Metadata } from "next";
 
-import { siteConfig } from '@/config/site'
-import { fontMono, fontSans } from '@/lib/fonts'
-import { cn } from '@/lib/utils'
-import { SiteFooter } from '@/components/site-footer'
-import { SiteHeader } from '@/components/site-header'
-import { TailwindIndicator } from '@/components/tailwind-indicator'
-import { ThemeProvider } from '@/components/theme-provider'
+import { siteConfig } from "@/config/site";
+import { fontMono, fontSans } from "@/lib/fonts";
+import { cn } from "@/lib/utils";
+import { SiteFooter } from "@/components/site-footer";
+import { SiteHeader } from "@/components/site-header";
+import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
 	title: {
@@ -16,21 +16,21 @@ export const metadata: Metadata = {
 		template: `%s - ${siteConfig.name}`,
 	},
 	description: siteConfig.description,
-	keywords: ['Next.js', 'React', 'TypeScript'],
+	keywords: ["Next.js", "React", "TypeScript"],
 	authors: [
 		{
-			name: 'eckertalex',
-			url: 'https://eckertalex.dev',
+			name: "eckertalex",
+			url: "https://eckertalex.dev",
 		},
 	],
-	creator: 'eckertalex',
+	creator: "eckertalex",
 	themeColor: [
-		{ media: '(prefers-color-scheme: light)', color: 'white' },
-		{ media: '(prefers-color-scheme: dark)', color: 'black' },
+		{ media: "(prefers-color-scheme: light)", color: "white" },
+		{ media: "(prefers-color-scheme: dark)", color: "black" },
 	],
 	openGraph: {
-		type: 'website',
-		locale: 'en_US',
+		type: "website",
+		locale: "en_US",
 		url: siteConfig.url,
 		title: siteConfig.name,
 		description: siteConfig.description,
@@ -45,16 +45,16 @@ export const metadata: Metadata = {
 		],
 	},
 	twitter: {
-		card: 'summary_large_image',
+		card: "summary_large_image",
 		title: siteConfig.name,
 		description: siteConfig.description,
 		images: [siteConfig.ogImage],
-		creator: '@eckertalex_',
+		creator: "@eckertalex_",
 	},
 	icons: {
-		icon: '/favicon.ico',
-		shortcut: '/favicon-16x16.png',
-		apple: '/apple-touch-icon.png',
+		icon: "/favicon.ico",
+		shortcut: "/favicon-16x16.png",
+		apple: "/apple-touch-icon.png",
 	},
 	manifest: `${siteConfig.url}/site.webmanifest`,
 	robots: {
@@ -63,15 +63,15 @@ export const metadata: Metadata = {
 		googleBot: {
 			index: true,
 			follow: true,
-			'max-video-preview': -1,
-			'max-image-preview': 'large',
-			'max-snippet': -1,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
 		},
 	},
-}
+};
 
 interface RootLayoutProps {
-	children: React.ReactNode
+	children: React.ReactNode;
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
@@ -81,12 +81,16 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<head />
 				<body
 					className={cn(
-						'min-h-screen bg-background font-sans antialiased',
+						"min-h-screen bg-background font-sans antialiased",
 						fontSans.variable,
 						fontMono.variable
 					)}
 				>
-					<ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+					>
 						<div className="container relative flex min-h-screen flex-col">
 							<SiteHeader />
 							<main id="skip" className="flex-1 scroll-mt-4">
@@ -99,5 +103,5 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				</body>
 			</html>
 		</>
-	)
+	);
 }

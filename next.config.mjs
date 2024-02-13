@@ -1,4 +1,4 @@
-import { withContentlayer } from 'next-contentlayer'
+import { withContentlayer } from "next-contentlayer";
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
@@ -10,45 +10,45 @@ const ContentSecurityPolicy = `
   connect-src *;
   font-src 'self';
   frame-src 'none'
-`
+`;
 
 const securityHeaders = [
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
 	{
-		key: 'Content-Security-Policy',
-		value: ContentSecurityPolicy.replace(/\n/g, ''),
+		key: "Content-Security-Policy",
+		value: ContentSecurityPolicy.replace(/\n/g, ""),
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
 	{
-		key: 'Referrer-Policy',
-		value: 'origin-when-cross-origin',
+		key: "Referrer-Policy",
+		value: "origin-when-cross-origin",
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
 	{
-		key: 'X-Frame-Options',
-		value: 'DENY',
+		key: "X-Frame-Options",
+		value: "DENY",
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
 	{
-		key: 'X-Content-Type-Options',
-		value: 'nosniff',
+		key: "X-Content-Type-Options",
+		value: "nosniff",
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-DNS-Prefetch-Control
 	{
-		key: 'X-DNS-Prefetch-Control',
-		value: 'on',
+		key: "X-DNS-Prefetch-Control",
+		value: "on",
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security
 	{
-		key: 'Strict-Transport-Security',
-		value: 'max-age=31536000; includeSubDomains',
+		key: "Strict-Transport-Security",
+		value: "max-age=31536000; includeSubDomains",
 	},
 	// https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Feature-Policy
 	{
-		key: 'Permissions-Policy',
-		value: 'camera=(), microphone=(), geolocation=()',
+		key: "Permissions-Policy",
+		value: "camera=(), microphone=(), geolocation=()",
 	},
-]
+];
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -57,19 +57,19 @@ const nextConfig = {
 	async headers() {
 		return [
 			{
-				source: '/(.*)',
+				source: "/(.*)",
 				headers: securityHeaders,
 			},
-		]
+		];
 	},
 	// https://github.com/vercel/next.js/issues/33693
 	webpack: (config) => {
 		config.infrastructureLogging = {
-			level: 'error',
-		}
+			level: "error",
+		};
 
-		return config
+		return config;
 	},
-}
+};
 
-export default withContentlayer(nextConfig)
+export default withContentlayer(nextConfig);

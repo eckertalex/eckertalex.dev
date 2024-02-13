@@ -1,13 +1,13 @@
-import Link from 'next/link'
-import { GithubIcon, HexagonIcon, TwitterIcon } from 'lucide-react'
+import Link from "next/link";
+import { GithubIcon, HexagonIcon, TwitterIcon } from "lucide-react";
 
-import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
-import { MainNav } from './main-nav'
-import { ModeToggle } from './mode-toggle'
-import { SkipNav } from './skip-nav'
+import { MainNav } from "./main-nav";
+import { ModeToggle } from "./mode-toggle";
+import { SkipNav } from "./skip-nav";
 
 export function SiteHeader() {
 	return (
@@ -32,10 +32,10 @@ export function SiteHeader() {
 					rel="noreferrer"
 					className={cn(
 						buttonVariants({
-							size: 'sm',
-							variant: 'ghost',
+							size: "sm",
+							variant: "ghost",
 						}),
-						'w-9 px-0'
+						"w-9 px-0"
 					)}
 				>
 					<GithubIcon className="h-5 w-5" />
@@ -47,10 +47,10 @@ export function SiteHeader() {
 					rel="noreferrer"
 					className={cn(
 						buttonVariants({
-							size: 'sm',
-							variant: 'ghost',
+							size: "sm",
+							variant: "ghost",
 						}),
-						'w-9 px-0'
+						"w-9 px-0"
 					)}
 				>
 					<TwitterIcon className="h-5 w-5 fill-current" />
@@ -59,5 +59,5 @@ export function SiteHeader() {
 				<ModeToggle />
 			</nav>
 		</header>
-	)
+	);
 }

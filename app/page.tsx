@@ -1,18 +1,18 @@
-import Image from 'next/image'
-import Link from 'next/link'
-import { allPosts } from 'contentlayer/generated'
-import { ArrowRightIcon } from 'lucide-react'
+import Image from "next/image";
+import Link from "next/link";
+import { allPosts } from "contentlayer/generated";
+import { ArrowRightIcon } from "lucide-react";
 
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { PostLink } from '@/components/post-link'
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { PostLink } from "@/components/post-link";
 
 export default function IndexPage() {
 	const posts = allPosts
 		.sort((a, b) =>
 			new Date(a.publishedAt) > new Date(b.publishedAt) ? -1 : 1
 		)
-		.slice(0, 3)
+		.slice(0, 3);
 
 	return (
 		<div className="flex flex-col gap-12">
@@ -25,8 +25,8 @@ export default function IndexPage() {
 						A developer who cares about the user.
 					</p>
 					<p className="text-xl text-muted-foreground">
-						I am a software developer, father of two and husband to a wonderful
-						wife.
+						I am a software developer, father of two and husband to
+						a wonderful wife.
 					</p>
 				</div>
 				<Image
@@ -46,7 +46,10 @@ export default function IndexPage() {
 					</h1>
 					<Link
 						href="/blog"
-						className={cn(buttonVariants({ variant: 'link' }), 'text-xl')}
+						className={cn(
+							buttonVariants({ variant: "link" }),
+							"text-xl"
+						)}
 					>
 						<span>Read all posts</span>
 						<ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -61,5 +64,5 @@ export default function IndexPage() {
 				</ul>
 			</section>
 		</div>
-	)
+	);
 }

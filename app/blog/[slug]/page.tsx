@@ -1,35 +1,37 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
-import { format, parseISO } from 'date-fns'
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import { allPosts } from "contentlayer/generated";
+import { format, parseISO } from "date-fns";
 
-import { siteConfig } from '@/config/site'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Mdx } from '@/components/mdx-components'
+import { siteConfig } from "@/config/site";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Mdx } from "@/components/mdx-components";
+
+export const runtime = "edge";
 
 type PostPageProps = {
 	params: {
-		slug: string
-	}
-}
+		slug: string;
+	};
+};
 
 async function getPostFromParams({ params }: PostPageProps) {
-	const post = allPosts.find((post) => post.slug === params.slug)
+	const post = allPosts.find((post) => post.slug === params.slug);
 
 	if (!post) {
-		null
+		null;
 	}
 
-	return post
+	return post;
 }
 
 export async function generateMetadata({
 	params,
 }: PostPageProps): Promise<Metadata> {
-	const post = await getPostFromParams({ params })
+	const post = await getPostFromParams({ params });
 
 	if (!post) {
-		return {}
+		return {};
 	}
 
 	return {
@@ -38,7 +40,7 @@ export async function generateMetadata({
 		openGraph: {
 			title: post.title,
 			description: post.description,
-			type: 'article',
+			type: "article",
 			publishedTime: post.publishedAt,
 			url: `https://eckertalex.dev/blog/${post.slug}`,
 			images: [
@@ -51,46 +53,50 @@ export async function generateMetadata({
 			],
 		},
 		twitter: {
-			card: 'summary_large_image',
+			card: "summary_large_image",
 			title: post.title,
 			description: post.description,
 			images: [siteConfig.ogImage],
-			creator: '@eckertalex_',
+			creator: "@eckertalex_",
 		},
-	}
+	};
 }
 
 export async function generateStaticParams(): Promise<
-	PostPageProps['params'][]
+	PostPageProps["params"][]
 > {
 	return allPosts.map((post) => ({
 		slug: post.slug,
-	}))
+	}));
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-	const post = await getPostFromParams({ params })
+	const post = await getPostFromParams({ params });
 
 	if (!post) {
-		notFound()
+		notFound();
 	}
 
 	return (
 		<article className="space-y-4">
-			<h1 className="mt-2 scroll-m-20 text-4xl font-bold">{post.title}</h1>
+			<h1 className="mt-2 scroll-m-20 text-4xl font-bold">
+				{post.title}
+			</h1>
 			<div className="flex flex-row items-center space-x-2">
 				<Avatar>
 					<AvatarImage src="/portrait.jpg" alt="eckertalex" />
 					<AvatarFallback>AE</AvatarFallback>
 				</Avatar>
 				<div className="flex w-full flex-row items-center justify-between">
-					<p className="text-sm text-muted-foreground">{'Alexander Eckert'}</p>
 					<p className="text-sm text-muted-foreground">
-						{format(parseISO(post.publishedAt), 'MMMM dd, yyyy')}
+						{"Alexander Eckert"}
+					</p>
+					<p className="text-sm text-muted-foreground">
+						{format(parseISO(post.publishedAt), "MMMM dd, yyyy")}
 					</p>
 				</div>
 			</div>
 			<Mdx code={post.body.code} />
 		</article>
-	)
+	);
 }

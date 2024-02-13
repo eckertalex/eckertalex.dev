@@ -1,24 +1,19 @@
-import Link from 'next/link'
+import Link from "next/link";
 import {
 	GithubIcon,
 	HexagonIcon,
 	LinkedinIcon,
 	RssIcon,
 	TwitterIcon,
-} from 'lucide-react'
+} from "lucide-react";
 
-import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-
-import { NowPlaying } from './now-playing'
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 
 export function SiteFooter() {
 	return (
 		<footer className="mt-16 border-t pb-16 pt-48">
-			<div className="mb-16 flex w-full justify-center">
-				<NowPlaying />
-			</div>
 			<div className="grid grid-cols-2 gap-16 md:grid-cols-4">
 				<div className="col-span-2 flex flex-col space-y-6">
 					<Link
@@ -26,7 +21,9 @@ export function SiteFooter() {
 						className="mr-6 flex items-center space-x-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 					>
 						<HexagonIcon className="h-10 w-10 text-pink-600 dark:text-pink-400" />
-						<span className="text-2xl font-bold">{siteConfig.name}</span>
+						<span className="text-2xl font-bold">
+							{siteConfig.name}
+						</span>
 					</Link>
 					<p className="text-xl text-muted-foreground">
 						A developer who cares about the user.
@@ -38,10 +35,10 @@ export function SiteFooter() {
 							rel="noreferrer"
 							className={cn(
 								buttonVariants({
-									size: 'sm',
-									variant: 'ghost',
+									size: "sm",
+									variant: "ghost",
 								}),
-								'w-9 px-0'
+								"w-9 px-0"
 							)}
 						>
 							<GithubIcon className="h-5 w-5" />
@@ -53,10 +50,10 @@ export function SiteFooter() {
 							rel="noreferrer"
 							className={cn(
 								buttonVariants({
-									size: 'sm',
-									variant: 'ghost',
+									size: "sm",
+									variant: "ghost",
 								}),
-								'w-9 px-0'
+								"w-9 px-0"
 							)}
 						>
 							<TwitterIcon className="h-5 w-5 fill-current" />
@@ -68,10 +65,10 @@ export function SiteFooter() {
 							rel="noreferrer"
 							className={cn(
 								buttonVariants({
-									size: 'sm',
-									variant: 'ghost',
+									size: "sm",
+									variant: "ghost",
 								}),
-								'w-9 px-0'
+								"w-9 px-0"
 							)}
 						>
 							<LinkedinIcon className="h-5 w-5 fill-current" />
@@ -81,10 +78,10 @@ export function SiteFooter() {
 							href="/rss.xml"
 							className={cn(
 								buttonVariants({
-									size: 'sm',
-									variant: 'ghost',
+									size: "sm",
+									variant: "ghost",
 								}),
-								'w-9 px-0'
+								"w-9 px-0"
 							)}
 						>
 							<RssIcon className="h-5 w-5 fill-current" />
@@ -156,8 +153,8 @@ export function SiteFooter() {
 				</div>
 			</div>
 			<p className="mt-8 text-sm text-muted-foreground">
-				All rights reserved © Alexander Eckert 2023
+				All rights reserved © Alexander Eckert 2024
 			</p>
 		</footer>
-	)
+	);
 }

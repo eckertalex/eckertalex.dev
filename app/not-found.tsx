@@ -1,22 +1,22 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { allPosts } from 'contentlayer/generated'
-import { ArrowRightIcon } from 'lucide-react'
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { allPosts } from "contentlayer/generated";
+import { ArrowRightIcon } from "lucide-react";
 
-import { siteConfig } from '@/config/site'
-import { cn } from '@/lib/utils'
-import { buttonVariants } from '@/components/ui/button'
-import { PostLink } from '@/components/post-link'
+import { siteConfig } from "@/config/site";
+import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
+import { PostLink } from "@/components/post-link";
 
 export default function NotFound() {
 	const posts = allPosts
 		.sort((a, b) =>
 			new Date(a.publishedAt) > new Date(b.publishedAt) ? -1 : 1
 		)
-		.slice(0, 3)
-	const path = usePathname()
+		.slice(0, 3);
+	const path = usePathname();
 
 	return (
 		<div className="grid grid-cols-1 gap-x-16 md:grid-cols-2">
@@ -44,7 +44,10 @@ export default function NotFound() {
 					</div>
 					<Link
 						href="/blog"
-						className={cn(buttonVariants({ variant: 'link' }), 'text-xl')}
+						className={cn(
+							buttonVariants({ variant: "link" }),
+							"text-xl"
+						)}
 					>
 						<span>Read all posts</span>
 						<ArrowRightIcon className="ml-2 h-5 w-5" />
@@ -59,5 +62,5 @@ export default function NotFound() {
 				</ul>
 			</section>
 		</div>
-	)
+	);
 }

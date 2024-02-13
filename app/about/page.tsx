@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function AboutPage() {
 	return (
@@ -12,8 +12,8 @@ export default function AboutPage() {
 						A developer who cares about the user.
 					</p>
 					<p className="text-xl text-muted-foreground">
-						I am a software developer, father of two and husband to a wonderful
-						wife.
+						I am a software developer, father of two and husband to
+						a wonderful wife.
 					</p>
 				</div>
 				<Image
@@ -27,5 +27,5 @@ export default function AboutPage() {
 				/>
 			</section>
 		</article>
-	)
+	);
 }

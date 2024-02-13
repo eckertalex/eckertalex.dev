@@ -1,7 +1,7 @@
 ---
-title: 'How to create an AJAX Form in PHP with Google reCAPTCHA'
-publishedAt: '2018-08-03'
-description: 'How to create an AJAX Form in PHP with Google reCAPTCHA.'
+title: "How to create an AJAX Form in PHP with Google reCAPTCHA"
+publishedAt: "2018-08-03"
+description: "How to create an AJAX Form in PHP with Google reCAPTCHA."
 ---
 
 Recently, at my software development internship, I was tasked to redo our
@@ -160,7 +160,7 @@ in the folder JS at the root of your webpage.
  * For google recaptcha
  */
 function recaptchaCallback() {
-	$('#submit').prop('disabled', false)
+	$("#submit").prop("disabled", false);
 }
 ```
 
@@ -174,28 +174,28 @@ $(document).ready(function () {
 	 * For phone number input field
 	 */
 	$("input[type='tel']").each(function () {
-		$(this).on('change keyup paste', function (e) {
+		$(this).on("change keyup paste", function (e) {
 			var output,
 				$this = $(this),
-				input = $this.val()
+				input = $this.val();
 
 			if (e.keyCode != 8) {
-				input = input.replace(/[^0-9]/g, '')
-				var area = input.substr(0, 3)
-				var pre = input.substr(3, 3)
-				var tel = input.substr(6, 4)
+				input = input.replace(/[^0-9]/g, "");
+				var area = input.substr(0, 3);
+				var pre = input.substr(3, 3);
+				var tel = input.substr(6, 4);
 				if (area.length < 3) {
-					output = '(' + area
+					output = "(" + area;
 				} else if (area.length == 3 && pre.length < 3) {
-					output = '(' + area + ')' + ' ' + pre
+					output = "(" + area + ")" + " " + pre;
 				} else if (area.length == 3 && pre.length == 3) {
-					output = '(' + area + ')' + ' ' + pre + '-' + tel
+					output = "(" + area + ")" + " " + pre + "-" + tel;
 				}
-				$this.val(output)
+				$this.val(output);
 			}
-		})
-	})
-})
+		});
+	});
+});
 ```
 
 Next we will need to write our AJAX code to work as an intermediate layer
@@ -209,58 +209,58 @@ $(document).ready(function () {
 	 */
 	$("input[type='tel']").each(function () {
 		// truncated for this post
-	})
+	});
 
 	/*
 	 * AJAX code
 	 */
 	// Get the form.
-	var form = $('#ajax-contact')
+	var form = $("#ajax-contact");
 	// Get the messages div.
-	var formMessages = $('#form-messages')
+	var formMessages = $("#form-messages");
 	// Set up an event listener for the contact form.
 	$(form).submit(function (e) {
 		// Stop the browser from submitting the form.
-		e.preventDefault()
+		e.preventDefault();
 		// Serialize the form data.
-		var formData = $(form).serialize()
+		var formData = $(form).serialize();
 		// Submit the form using AJAX.
 		$.ajax({
-			type: 'POST',
-			url: $(form).attr('action'),
+			type: "POST",
+			url: $(form).attr("action"),
 			data: formData,
 		})
 			.done(function (response) {
 				// Make sure that the formMessages div has the 'success' class.
-				$(formMessages).removeClass('alert-danger')
-				$(formMessages).addClass('alert-success')
+				$(formMessages).removeClass("alert-danger");
+				$(formMessages).addClass("alert-success");
 
 				// Set the message text.
-				$(formMessages).text(response)
+				$(formMessages).text(response);
 
 				// Clear the form.
-				$('#subject').val('')
-				$('#phone').val('')
-				$('#name').val('')
-				$('#email').val('')
-				$('#message').val('')
+				$("#subject").val("");
+				$("#phone").val("");
+				$("#name").val("");
+				$("#email").val("");
+				$("#message").val("");
 			})
 			.fail(function (data) {
 				// Make sure that the formMessages div has the 'error' class.
-				$(formMessages).removeClass('alert-success')
-				$(formMessages).addClass('alert-danger')
+				$(formMessages).removeClass("alert-success");
+				$(formMessages).addClass("alert-danger");
 
 				// Set the message text.
-				if (data.responseText !== '') {
-					$(formMessages).text(data.responseText)
+				if (data.responseText !== "") {
+					$(formMessages).text(data.responseText);
 				} else {
 					$(formMessages).text(
-						'Oops! An error occured and your message could not be sent.'
-					)
+						"Oops! An error occured and your message could not be sent."
+					);
 				}
-			})
-	})
-})
+			});
+	});
+});
 ```
 
 The AJAX code communicates with the PHP code and displays an error message or a

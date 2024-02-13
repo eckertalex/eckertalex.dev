@@ -1,7 +1,7 @@
-import { allPosts } from 'contentlayer/generated'
-import RSS from 'rss'
+import { allPosts } from "contentlayer/generated";
+import RSS from "rss";
 
-import { siteConfig } from '@/config/site'
+import { siteConfig } from "@/config/site";
 
 export async function GET() {
 	const rss = new RSS({
@@ -9,7 +9,7 @@ export async function GET() {
 		description: siteConfig.description,
 		site_url: siteConfig.url,
 		feed_url: `${siteConfig.url}/rss.xml`,
-	})
+	});
 
 	allPosts
 		.sort((a, b) =>
@@ -21,12 +21,12 @@ export async function GET() {
 				url: `${siteConfig.url}/blog/${post.slug}`,
 				date: post.publishedAt,
 				description: post.description,
-			})
-		})
+			});
+		});
 
 	return new Response(rss.xml({ indent: true }), {
 		headers: {
-			'Content-Type': 'application/xml; charset=utf-8',
+			"Content-Type": "application/xml; charset=utf-8",
 		},
-	})
+	});
 }
