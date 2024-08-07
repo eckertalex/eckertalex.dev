@@ -18,7 +18,7 @@ export function SiteHeader() {
 					href="/"
 					className="mr-6 flex h-9 items-center space-x-2 rounded-md px-3 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 				>
-					<HexagonIcon className="h-6 w-6 text-pink-600 dark:text-pink-400" />
+					<HexagonIcon className="size-6 text-pink-600 dark:text-pink-400" />
 					<span className="hidden font-bold sm:inline-block">
 						{siteConfig.name}
 					</span>
@@ -38,7 +38,7 @@ export function SiteHeader() {
 						"w-9 px-0"
 					)}
 				>
-					<GithubIcon className="h-5 w-5" />
+					<GithubIcon className="size-5" />
 					<span className="sr-only">GitHub</span>
 				</Link>
 				<Link
@@ -53,7 +53,7 @@ export function SiteHeader() {
 						"w-9 px-0"
 					)}
 				>
-					<TwitterIcon className="h-5 w-5 fill-current" />
+					<TwitterIcon className="size-5 fill-current" />
 					<span className="sr-only">Twitter</span>
 				</Link>
 				<ModeToggle />

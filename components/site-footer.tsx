@@ -20,7 +20,7 @@ export function SiteFooter() {
 						href="/"
 						className="mr-6 flex items-center space-x-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 					>
-						<HexagonIcon className="h-10 w-10 text-pink-600 dark:text-pink-400" />
+						<HexagonIcon className="size-10 text-pink-600 dark:text-pink-400" />
 						<span className="text-2xl font-bold">
 							{siteConfig.name}
 						</span>
@@ -41,7 +41,7 @@ export function SiteFooter() {
 								"w-9 px-0"
 							)}
 						>
-							<GithubIcon className="h-5 w-5" />
+							<GithubIcon className="size-5" />
 							<span className="sr-only">GitHub</span>
 						</Link>
 						<Link
@@ -56,7 +56,7 @@ export function SiteFooter() {
 								"w-9 px-0"
 							)}
 						>
-							<TwitterIcon className="h-5 w-5 fill-current" />
+							<TwitterIcon className="size-5 fill-current" />
 							<span className="sr-only">Twitter</span>
 						</Link>
 						<Link
@@ -71,7 +71,7 @@ export function SiteFooter() {
 								"w-9 px-0"
 							)}
 						>
-							<LinkedinIcon className="h-5 w-5 fill-current" />
+							<LinkedinIcon className="size-5 fill-current" />
 							<span className="sr-only">Linkedin</span>
 						</Link>
 						<Link
@@ -84,7 +84,7 @@ export function SiteFooter() {
 								"w-9 px-0"
 							)}
 						>
-							<RssIcon className="h-5 w-5 fill-current" />
+							<RssIcon className="size-5 fill-current" />
 							<span className="sr-only">RSS</span>
 						</Link>
 					</nav>

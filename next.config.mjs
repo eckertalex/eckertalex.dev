@@ -52,8 +52,6 @@ const securityHeaders = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-	reactStrictMode: true,
-	swcMinify: true,
 	async headers() {
 		return [
 			{
@@ -61,14 +59,6 @@ const nextConfig = {
 				headers: securityHeaders,
 			},
 		];
-	},
-	// https://github.com/vercel/next.js/issues/33693
-	webpack: (config) => {
-		config.infrastructureLogging = {
-			level: "error",
-		};
-
-		return config;
 	},
 };
 

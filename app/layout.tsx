@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 import { siteConfig } from "@/config/site";
 import { fontMono, fontSans } from "@/lib/fonts";
@@ -24,10 +24,6 @@ export const metadata: Metadata = {
 		},
 	],
 	creator: "eckertalex",
-	themeColor: [
-		{ media: "(prefers-color-scheme: light)", color: "white" },
-		{ media: "(prefers-color-scheme: dark)", color: "black" },
-	],
 	openGraph: {
 		type: "website",
 		locale: "en_US",
@@ -70,6 +66,13 @@ export const metadata: Metadata = {
 	},
 };
 
+export const viewport: Viewport = {
+	themeColor: [
+		{ media: "(prefers-color-scheme: light)", color: "white" },
+		{ media: "(prefers-color-scheme: dark)", color: "black" },
+	],
+};
+
 interface RootLayoutProps {
 	children: React.ReactNode;
 }
@@ -81,7 +84,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<head />
 				<body
 					className={cn(
-						"min-h-screen bg-background font-sans antialiased",
+						"bg-background min-h-screen font-sans antialiased",
 						fontSans.variable,
 						fontMono.variable
 					)}

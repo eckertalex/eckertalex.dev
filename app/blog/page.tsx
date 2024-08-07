@@ -19,7 +19,7 @@ export default function BlogPage() {
 					href="/rss.xml"
 					className="flex items-center rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
 				>
-					<RssIcon className="mr-1 h-4 w-4 text-orange-500" />
+					<RssIcon className="mr-1 size-4 text-orange-500" />
 					<span>RSS</span>
 				</Link>
 			</div>
