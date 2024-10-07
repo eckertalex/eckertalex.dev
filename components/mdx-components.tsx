@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { useMDXComponent } from "next-contentlayer/hooks";
+import { useMDXComponent } from "next-contentlayer2/hooks";
 
 import { cn } from "@/lib/utils";
 
@@ -66,7 +66,7 @@ const components = {
 	a: ({ className, ...props }: React.HTMLAttributes<HTMLAnchorElement>) => (
 		<a
 			className={cn(
-				"rounded-md font-medium underline-offset-4 ring-offset-background hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+				"ring-offset-background focus-visible:ring-ring rounded-md font-medium underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2",
 				className
 			)}
 			{...props}
@@ -123,7 +123,7 @@ const components = {
 		...props
 	}: React.HTMLAttributes<HTMLTableRowElement>) => (
 		<tr
-			className={cn("m-0 border-t p-0 even:bg-muted", className)}
+			className={cn("even:bg-muted m-0 border-t p-0", className)}
 			{...props}
 		/>
 	),
@@ -156,7 +156,7 @@ const components = {
 			<>
 				<pre
 					className={cn(
-						"mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border py-4 data-[theme=dark]:bg-background data-[theme=light]:bg-white",
+						"data-[theme=dark]:bg-background mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border py-4 data-[theme=light]:bg-white",
 						className
 					)}
 					{...props}
@@ -167,7 +167,7 @@ const components = {
 	code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
 		<code
 			className={cn(
-				"relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-extrabold",
+				"bg-muted relative rounded px-[0.3rem] py-[0.2rem] font-mono text-sm font-extrabold",
 				className
 			)}
 			{...props}

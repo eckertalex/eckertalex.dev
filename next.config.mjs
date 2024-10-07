@@ -1,4 +1,4 @@
-import { withContentlayer } from "next-contentlayer";
+import { withContentlayer } from "next-contentlayer2";
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `

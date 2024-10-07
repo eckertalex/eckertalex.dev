@@ -18,14 +18,14 @@ export function SiteFooter() {
 				<div className="col-span-2 flex flex-col space-y-6">
 					<Link
 						href="/"
-						className="mr-6 flex items-center space-x-2 rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+						className="ring-offset-background focus-visible:ring-ring mr-6 flex items-center space-x-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 					>
 						<HexagonIcon className="size-10 text-pink-600 dark:text-pink-400" />
 						<span className="text-2xl font-bold">
 							{siteConfig.name}
 						</span>
 					</Link>
-					<p className="text-xl text-muted-foreground">
+					<p className="text-muted-foreground text-xl">
 						A developer who cares about the user.
 					</p>
 					<nav className="flex space-x-1">
@@ -97,7 +97,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/impressum"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Impressum
 							</Link>
@@ -105,7 +105,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/datenschutz"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Datenschutz
 							</Link>
@@ -120,7 +120,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Home
 							</Link>
@@ -128,7 +128,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/blog"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Blog
 							</Link>
@@ -136,7 +136,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/about"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								About
 							</Link>
@@ -144,7 +144,7 @@ export function SiteFooter() {
 						<li>
 							<Link
 								href="/sitemap.xml"
-								className="rounded-md text-muted-foreground ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Sitemap.xml
 							</Link>
@@ -152,7 +152,7 @@ export function SiteFooter() {
 					</ul>
 				</div>
 			</div>
-			<p className="mt-8 text-sm text-muted-foreground">
+			<p className="text-muted-foreground mt-8 text-sm">
 				All rights reserved © Alexander Eckert 2024
 			</p>
 		</footer>

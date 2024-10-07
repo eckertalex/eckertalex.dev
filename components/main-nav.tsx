@@ -18,7 +18,7 @@ export function MainNav() {
 					buttonVariants({
 						variant: "link",
 					}),
-					"transition-colors hover:text-foreground/80",
+					"hover:text-foreground/80 transition-colors",
 					pathname?.startsWith("/blog")
 						? "text-foreground"
 						: "text-foreground/60"

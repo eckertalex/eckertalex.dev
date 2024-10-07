@@ -8,10 +8,10 @@ export default function AboutPage() {
 					<h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
 						Hey, I'm Alexander
 					</h1>
-					<p className="text-xl text-muted-foreground">
+					<p className="text-muted-foreground text-xl">
 						A developer who cares about the user.
 					</p>
-					<p className="text-xl text-muted-foreground">
+					<p className="text-muted-foreground text-xl">
 						I am a software developer, father of two and husband to
 						a wonderful wife.
 					</p>

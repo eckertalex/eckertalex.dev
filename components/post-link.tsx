@@ -7,7 +7,7 @@ export function PostLink({ post }: { post: Post }) {
 			<h2 className="scroll-m-20 text-2xl font-semibold tracking-tight">
 				{post.title}
 			</h2>
-			<p className="leading-7 text-muted-foreground">
+			<p className="text-muted-foreground leading-7">
 				{post.description}
 			</p>
 		</Link>

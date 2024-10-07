@@ -88,10 +88,10 @@ export default async function PostPage({ params }: PostPageProps) {
 					<AvatarFallback>AE</AvatarFallback>
 				</Avatar>
 				<div className="flex w-full flex-row items-center justify-between">
-					<p className="text-sm text-muted-foreground">
+					<p className="text-muted-foreground text-sm">
 						{"Alexander Eckert"}
 					</p>
-					<p className="text-sm text-muted-foreground">
+					<p className="text-muted-foreground text-sm">
 						{format(parseISO(post.publishedAt), "MMMM dd, yyyy")}
 					</p>
 				</div>

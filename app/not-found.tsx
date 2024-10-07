@@ -24,7 +24,7 @@ export default function NotFound() {
 				<h1 className="text-lg md:text-3xl md:font-semibold">
 					Oh no, you found a page that's missing!
 				</h1>
-				<p className="text-lg text-muted-foreground md:text-3xl md:font-semibold">
+				<p className="text-muted-foreground text-lg md:text-3xl md:font-semibold">
 					{`Sorry, "${path}" is not a page on `}
 					<Link href="/" className="underline underline-offset-4">
 						{siteConfig.url}
@@ -38,7 +38,7 @@ export default function NotFound() {
 						<h1 className="text-lg md:text-3xl md:font-semibold">
 							Looking for something to read?
 						</h1>
-						<p className="text-lg text-muted-foreground md:text-3xl md:font-semibold">
+						<p className="text-muted-foreground text-lg md:text-3xl md:font-semibold">
 							Have a look at these articles.
 						</p>
 					</div>

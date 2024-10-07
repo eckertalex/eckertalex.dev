@@ -16,7 +16,7 @@ export function SiteHeader() {
 			<div className="flex flex-1 items-center">
 				<Link
 					href="/"
-					className="mr-6 flex h-9 items-center space-x-2 rounded-md px-3 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+					className="ring-offset-background focus-visible:ring-ring mr-6 flex h-9 items-center space-x-2 rounded-md px-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 				>
 					<HexagonIcon className="size-6 text-pink-600 dark:text-pink-400" />
 					<span className="hidden font-bold sm:inline-block">
