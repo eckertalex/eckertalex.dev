@@ -6,7 +6,6 @@ export const siteConfig = {
 	ogImage: "http://eckertalex.dev/og.png",
 	url: "https://eckertalex.dev",
 	links: {
-		twitter: "https://twitter.com/eckertalex_",
 		github: "https://github.com/eckertalex",
 		linkedin: "https://linkedin.com/in/eckertalex",
 	},

@@ -1,93 +1,18 @@
 import Link from "next/link";
-import {
-	GithubIcon,
-	HexagonIcon,
-	LinkedinIcon,
-	RssIcon,
-	TwitterIcon,
-} from "lucide-react";
 
 import { siteConfig } from "@/config/site";
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
+
+import { SiteLogo } from "./site-logo";
 
 export function SiteFooter() {
 	return (
-		<footer className="mt-16 border-t pb-16 pt-48">
+		<footer className="mt-16 border-t pb-16 pt-24">
 			<div className="grid grid-cols-2 gap-16 md:grid-cols-4">
 				<div className="col-span-2 flex flex-col space-y-6">
-					<Link
-						href="/"
-						className="ring-offset-background focus-visible:ring-ring mr-6 flex items-center space-x-2 rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-					>
-						<HexagonIcon className="size-10 text-pink-600 dark:text-pink-400" />
-						<span className="text-2xl font-bold">
-							{siteConfig.name}
-						</span>
-					</Link>
+					<SiteLogo />
 					<p className="text-muted-foreground text-xl">
 						A developer who cares about the user.
 					</p>
-					<nav className="flex space-x-1">
-						<Link
-							href={siteConfig.links.github}
-							target="_blank"
-							rel="noreferrer"
-							className={cn(
-								buttonVariants({
-									size: "sm",
-									variant: "ghost",
-								}),
-								"w-9 px-0"
-							)}
-						>
-							<GithubIcon className="size-5" />
-							<span className="sr-only">GitHub</span>
-						</Link>
-						<Link
-							href={siteConfig.links.twitter}
-							target="_blank"
-							rel="noreferrer"
-							className={cn(
-								buttonVariants({
-									size: "sm",
-									variant: "ghost",
-								}),
-								"w-9 px-0"
-							)}
-						>
-							<TwitterIcon className="size-5 fill-current" />
-							<span className="sr-only">Twitter</span>
-						</Link>
-						<Link
-							href={siteConfig.links.linkedin}
-							target="_blank"
-							rel="noreferrer"
-							className={cn(
-								buttonVariants({
-									size: "sm",
-									variant: "ghost",
-								}),
-								"w-9 px-0"
-							)}
-						>
-							<LinkedinIcon className="size-5 fill-current" />
-							<span className="sr-only">Linkedin</span>
-						</Link>
-						<Link
-							href="/rss.xml"
-							className={cn(
-								buttonVariants({
-									size: "sm",
-									variant: "ghost",
-								}),
-								"w-9 px-0"
-							)}
-						>
-							<RssIcon className="size-5 fill-current" />
-							<span className="sr-only">RSS</span>
-						</Link>
-					</nav>
 				</div>
 				<div>
 					<div className="scroll-m-20 text-lg font-semibold tracking-tight">
@@ -108,6 +33,22 @@ export function SiteFooter() {
 								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
 							>
 								Datenschutz
+							</Link>
+						</li>
+						<li>
+							<Link
+								href={siteConfig.links.github}
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+							>
+								GitHub
+							</Link>
+						</li>
+						<li>
+							<Link
+								href={siteConfig.links.linkedin}
+								className="text-muted-foreground ring-offset-background focus-visible:ring-ring rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
+							>
+								LinkedIn
 							</Link>
 						</li>
 					</ul>

@@ -12,7 +12,7 @@ export default function IndexPage() {
 		.sort((a, b) =>
 			new Date(a.publishedAt) > new Date(b.publishedAt) ? -1 : 1
 		)
-		.slice(0, 3);
+		.slice(0, 7);
 
 	return (
 		<div className="flex flex-col gap-12">

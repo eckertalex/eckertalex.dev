@@ -11,7 +11,7 @@ export default function BlogPage() {
 
 	return (
 		<section>
-			<div className="mb-4 flex items-end border-b pb-2">
+			<div className="mb-4 mt-8 flex items-end border-b pb-2">
 				<h1 className="flex-1 scroll-m-20 text-4xl font-bold transition-colors">
 					Blog
 				</h1>
