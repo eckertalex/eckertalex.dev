@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import Prose from "../components/Prose.astro";
+import { excludeDrafts, sortPostsByPubDate } from "../utils/collections";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const title = "Blog";
+const allPosts = await getCollection("blog", excludeDrafts).then(
+  sortPostsByPubDate,
+);
+---
+
+<Layout title={title}>
+  <section class="flex flex-col max-w-4xl w-full gap-12">
+    <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+      {title}
+    </h1>
+    <div class="mb-46 grid grid-cols-1 gap-y-12">
+      {
+        allPosts.map((post) => (
+          <div class="col-span-3 p grid grid-cols-subgrid relative">
+            <div class="text-md px-2">
+              {post.data.pubDate ? (
+                <div class="mb-4 font-mono text-sm font-medium tracking-widest text-slate-500 uppercase">
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+              ) : null}
+              <a class="font-semibold" href={`/blog/${post.id}`}>
+                {post.data.title}
+              </a>
+              {post.data.description ? (
+                <div class="line-clamp-3">
+                  <Prose>{post.data.description}</Prose>
+                </div>
+              ) : null}
+              <a
+                class="mt-4 inline-block text-sm font-semibold text-pink-500 hover:text-pink-600"
+                href={`/blog/${post.id}`}
+              >
+                {"Read more"}
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+</Layout>

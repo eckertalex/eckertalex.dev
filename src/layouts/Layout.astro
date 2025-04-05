@@ -1,0 +1,52 @@
+---
+import TailwindBreakpoints from "../components/TailwindBreakpoints.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+import { siteConfig } from "../content/siteConfig.ts";
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonical?: string;
+};
+
+const {
+  title = siteConfig.title,
+  description = siteConfig.description,
+  canonical = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href={canonical} />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={siteConfig.title}
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <title>{title}</title>
+  </head>
+  <body class="bg-white pl-[calc(100vw-100%)] text-black antialiased">
+    <div
+      class="flex flex-col mx-auto max-w-3xl min-h-screen px-4 sm:px-6 xl:max-w-5xl xl:px-0"
+    >
+      <SiteHeader />
+      <main id="skip" class="mb-auto">
+        <slot />
+      </main>
+      <SiteFooter />
+    </div>
+    <TailwindBreakpoints />
+  </body>
+</html>
