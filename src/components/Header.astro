@@ -1,0 +1,16 @@
+---
+import Logo from "./Logo.astro";
+import NavLink from "./NavLink.astro";
+import SkipNav from "./SkipNav.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+---
+
+<header class="flex items-center justify-between py-4">
+  <SkipNav />
+  <Logo />
+  <nav class="flex items-center justify-between gap-4">
+    <NavLink href="/blog">{"Blog"}</NavLink>
+    <NavLink href="/about">{"About"}</NavLink>
+    <ThemeToggle />
+  </nav>
+</header>

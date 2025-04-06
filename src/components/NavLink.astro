@@ -1,0 +1,25 @@
+---
+type Props = {
+  href: string;
+};
+
+const { href } = Astro.props;
+const { pathname } = Astro.url;
+
+const currentPath =
+  pathname.length > 1 && pathname.endsWith("/")
+    ? pathname.slice(0, -1)
+    : pathname;
+
+const baseClassName =
+  "text-slate-800 dark:text-slate-200 hover:text-pink-600 dark:hover:text-pink-400 text-xl font-normal transition-colors";
+const activeClassName =
+  "underline underline-offset-4 decoration-pink-500 dark:decoration-pink-400 decoration-2 decoration-dashed";
+---
+
+<a
+  href={href}
+  class={`${baseClassName} ${currentPath === href ? activeClassName : ""}`}
+>
+  <slot />
+</a>

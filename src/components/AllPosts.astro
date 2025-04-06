@@ -1,0 +1,64 @@
+---
+import { getCollection } from "astro:content";
+import Prose from "../components/Prose.astro";
+import { excludeDrafts, sortPostsByPubDate } from "../utils/collections";
+import FormattedDate from "../components/FormattedDate.astro";
+
+const allPosts = await getCollection("blog", excludeDrafts).then(
+  sortPostsByPubDate,
+);
+---
+
+<section class="flex flex-col gap-12">
+  <div class="flex justify-between">
+    <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
+      {"Latest"}
+    </h1>
+    <a href="/rss.xml" class="flex items-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="mr-1 size-4 text-orange-500 dark:text-orange-400"
+        ><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"
+        ></path><circle cx="5" cy="19" r="1"></circle></svg
+      >
+      <span>RSS</span>
+    </a>
+  </div>
+  <ol class="mb-46 grid grid-cols-1 gap-y-12">
+    {
+      allPosts.map((post) => (
+        <li class="col-span-3 p grid grid-cols-subgrid relative">
+          <div class="text-md">
+            {post.data.pubDate ? (
+              <div class="mb-4 font-mono text-sm font-medium tracking-widest text-slate-500 dark:text-slate-400 uppercase">
+                <FormattedDate date={post.data.pubDate} />
+              </div>
+            ) : null}
+            <a class="font-semibold" href={`/blog/${post.slug}`}>
+              {post.data.title}
+            </a>
+            {post.data.description ? (
+              <div class="line-clamp-3">
+                <Prose>{post.data.description}</Prose>
+              </div>
+            ) : null}
+            <a
+              class="mt-4 inline-block text-sm font-semibold text-pink-500 dark:text-pink-400 hover:text-pink-600 dark:hover:text-pink-300"
+              href={`/blog/${post.slug}`}
+            >
+              {"Read more"}
+            </a>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</section>
