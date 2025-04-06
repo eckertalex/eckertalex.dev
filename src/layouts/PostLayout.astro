@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Prose from "../components/Prose.astro";
+import FormattedDate from "../components/FormattedDate.astro";
+import Layout from "./Layout.astro";
+
+type Props = {
+  frontmatter: CollectionEntry<"blog">["data"];
+};
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <article class="flex flex-col gap-12">
+    <header>
+      <div
+        class="mb-4 font-mono text-sm font-medium tracking-widest text-slate-500 dark:text-slate-400 uppercase"
+      >
+        <FormattedDate date={frontmatter.pubDate} />
+      </div>
+      <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
+        {frontmatter.title}
+      </h1>
+    </header>
+    <div class="mt-4">
+      <Prose>
+        <slot />
+      </Prose>
+    </div>
+  </article>
+</Layout>

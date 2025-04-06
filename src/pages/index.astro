@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro";
+import AllPosts from "../components/AllPosts.astro";
+import { siteConfig } from "../content/siteConfig";
+---
+
+<Layout>
+  <div class="flex flex-col gap-12">
+    <section>
+      <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
+        Hey, I'm Alexander
+      </h1>
+      <p class="text-slate-500 dark:text-slate-400 text-xl">
+        {siteConfig.slogan}
+      </p>
+    </section>
+    <AllPosts />
+  </div>
+</Layout>

@@ -1,0 +1,24 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Prose from "../components/Prose.astro";
+import Layout from "./Layout.astro";
+
+type Props = {
+  frontmatter: CollectionEntry<"page">["data"];
+};
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter.title}>
+  <article class="flex flex-col gap-12">
+    <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
+      {frontmatter.title}
+    </h1>
+    <div class="mt-4">
+      <Prose>
+        <slot />
+      </Prose>
+    </div>
+  </article>
+</Layout>

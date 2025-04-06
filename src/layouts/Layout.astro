@@ -1,0 +1,67 @@
+---
+import TailwindBreakpoints from "../components/TailwindBreakpoints.astro";
+import Header from "../components/Header.astro";
+import ThemeHeadScript from "../components/ThemeHeadScript.astro";
+import Footer from "../components/Footer.astro";
+import { siteConfig } from "../content/siteConfig.ts";
+import "../styles/global.css";
+
+type Props = {
+  title?: string;
+  description?: string;
+  canonical?: string;
+};
+
+const {
+  title: propTitle,
+  description = siteConfig.description,
+  canonical = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+
+const title = propTitle ? `${propTitle} - ${siteConfig.name}` : siteConfig.name;
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="canonical" href={canonical} />
+    <meta name="description" content={description} />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#ffffff"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#000000"
+    />
+    <meta name="generator" content={Astro.generator} />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={siteConfig.name}
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <ThemeHeadScript />
+    <title>{title}</title>
+  </head>
+  <body
+    class="bg-slate-50 dark:bg-slate-950 pl-[calc(100vw-100%)] text-slate-950 dark:text-slate-50 antialiased"
+  >
+    <div
+      class="flex flex-col mx-auto max-w-2xl min-h-screen px-4 sm:px-6 xl:px-0"
+    >
+      <Header />
+      <main id="skip" class="mb-auto mt-8">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <TailwindBreakpoints />
+  </body>
+</html>

@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import Prose from "../components/Prose.astro";
+import portrait from "../assets/portrait.jpg";
+import { siteConfig } from "../content/siteConfig";
+
+const title = "About Me";
+---
+
+<Layout title={title}>
+  <section class="flex flex-col gap-8">
+    <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
+      {title}
+    </h1>
+    <div class="flex flex-col xl:flex-row gap-8 xl:items-start items-center">
+      <div class="flex flex-col items-center">
+        <Image
+          loading="eager"
+          src={portrait}
+          alt="Portrait of Alexander Eckert, Software Engineer"
+          class="aspect-square object-cover size-48 rounded-md"
+        />
+        <p class="pt-4 pb-2 text-2xl font-bold tracking-tight leading-8">
+          {"Alexander Eckert"}
+        </p>
+        <p
+          class="text-slate-500 dark:text-slate-400 text-xl text-balance text-center"
+        >
+          {siteConfig.slogan}
+        </p>
+      </div>
+      <div class="w-full">
+        <Prose>
+          Lead Software Engineer with 6+ years of experience in frontend
+          development. Proven track record of enhancing performance, reducing
+          technical debt, and driving innovation in complex web applications.
+          Excels in cross-functional collaboration, mentoring, and leading
+          high-impact projects. Committed to pragmatic solutions and continuous
+          learning in fast-paced, agile environments.
+        </Prose>
+      </div>
+    </div>
+  </section>
+</Layout>
