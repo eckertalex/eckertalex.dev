@@ -19,11 +19,13 @@ export function sortPostsByPubDate(
 }
 
 /**
- * Exclude draft posts from the collection. If the site is built in production mode, draft posts are excluded by default.
+ * Exclude draft posts from the collection. If the site is built in production mode, draft posts are excluded.
+ * Drafts are included during development.
  *
  * @param post Blog post
- * @returns True if the post is not a draft
+ * @returns True if the post should be included
  */
 export function excludeDrafts({ data }: CollectionEntry<"blog">): boolean {
-  return !data.draft;
+  const isDev = import.meta.env.MODE === "development";
+  return isDev || !data.draft;
 }
