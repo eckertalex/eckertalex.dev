@@ -2,7 +2,7 @@
 title: On Grace, Frustration, and Getting to Know People
 pubDate: 2025-04-08
 description: So what helps? Getting to know people. Actually talking to them. It sounds obvious when I write it down, but it’s the single most reliable thing that gets me back into a good headspace. Book a coffee chat. Pair on something technical. Hop on a quick call. Every time I do this, I walk away feeling more connected, more grounded. It becomes easier to give people grace when I’m reminded they’re not just Slack messages or PR comments—they’re humans, trying their best, just like I am.
-draft: true
+draft: false
 ---
 
 So what helps?
