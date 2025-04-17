@@ -3,14 +3,73 @@ import Logo from "./Logo.astro";
 import NavLink from "./NavLink.astro";
 import SkipNav from "./SkipNav.astro";
 import ThemeToggle from "./ThemeToggle.astro";
+import MenuIcon from "./MenuIcon.astro";
 ---
 
-<header class="flex items-center justify-between py-4">
+<header class="flex items-center justify-between py-4 relative">
   <SkipNav />
   <Logo />
-  <nav class="flex items-center justify-between gap-4">
-    <NavLink href="/blog">{"Blog"}</NavLink>
-    <NavLink href="/about">{"About"}</NavLink>
-    <ThemeToggle />
+  <nav>
+    <ul class="flex items-center justify-between gap-2 md:gap-4">
+      <li class="hidden md:block">
+        <NavLink href="/blog">{"Blog"}</NavLink>
+      </li>
+      <li class="hidden md:block">
+        <NavLink href="/about">{"About"}</NavLink>
+      </li>
+      <li>
+        <ThemeToggle />
+      </li>
+      <li>
+        <button
+          id="toggle"
+          class="block md:hidden p-2 rounded-md cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-800 active:bg-slate-200 dark:active:bg-slate-700"
+          aria-label="Menu"
+          aria-expanded="false"
+          aria-controls="menu"
+        >
+          <MenuIcon />
+        </button>
+      </li>
+    </ul>
+
+    <div id="menu" class="hidden">
+      <ul
+        class="absolute top-full left-0 w-full bg-slate-50 dark:bg-slate-950 border border-pink-500 dark:border-pink-400 rounded-md flex flex-col gap-2 list-none m-0 p-4"
+      >
+        <li>
+          <NavLink href="/blog">{"Blog"}</NavLink>
+        </li>
+        <li>
+          <NavLink href="/about">{"About"}</NavLink>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>
+
+<script is:inline>
+  const menuToggle = document.getElementById("toggle");
+  const menu = document.getElementById("menu");
+
+  function toggleMenu() {
+    const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", !isOpen);
+    menu.classList.toggle("hidden");
+    document.removeEventListener("click", closeMenuOnOutsideClick);
+
+    if (!isOpen) {
+      document.addEventListener("click", closeMenuOnOutsideClick);
+    }
+  }
+
+  function closeMenuOnOutsideClick(event) {
+    const path = event.composedPath();
+    if (path.some((elem) => elem.id === "menu" || elem.id === "toggle")) {
+      return;
+    }
+    toggleMenu();
+  }
+
+  menuToggle.addEventListener("click", toggleMenu);
+</script>
