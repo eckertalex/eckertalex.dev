@@ -1,0 +1,57 @@
+---
+import OpenGraphArticleTags from "./seo/OpenGraphArticleTags.astro";
+import OpenGraphBasicTags from "./seo/OpenGraphBasicTags.astro";
+import OpenGraphImageTags from "./seo/OpenGraphImageTags.astro";
+import TwitterTags from "./seo/TwitterTags.astro";
+
+export type Props = {
+  title: string;
+  description: string;
+  canonical: string | URL;
+  author: string;
+  openGraph: {
+    basic: {
+      title: string;
+      type: string;
+      url: string | URL;
+      image: string;
+      description: string;
+      siteName?: string;
+      locale?: string;
+    };
+    image: {
+      url: string | URL;
+      type: string;
+      width: number;
+      height: number;
+      alt: string;
+    };
+    article?: {
+      publishedTime: string;
+      modifiedTime?: string;
+      author: string;
+    };
+  };
+  twitter: {
+    card: "summary" | "summary_large_image" | "app" | "player";
+    site: string;
+    title: string;
+    description: string;
+    image: string | URL;
+    imageAlt: string;
+  };
+};
+---
+
+<title>{Astro.props.title}</title>
+
+<meta name="title" content={Astro.props.title} />
+<meta name="description" content={Astro.props.description} />
+<meta name="author" content={Astro.props.author} />
+
+<link rel="canonical" href={Astro.props.canonical} />
+
+{Astro.props.openGraph && <OpenGraphBasicTags {...Astro.props} />}
+{Astro.props.openGraph?.image && <OpenGraphImageTags {...Astro.props} />}
+{Astro.props.openGraph?.article && <OpenGraphArticleTags {...Astro.props} />}
+{Astro.props.twitter && <TwitterTags {...Astro.props} />}

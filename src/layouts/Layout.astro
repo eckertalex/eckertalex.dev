@@ -3,6 +3,7 @@ import TailwindBreakpoints from "../components/TailwindBreakpoints.astro";
 import Header from "../components/Header.astro";
 import ThemeHeadScript from "../components/ThemeHeadScript.astro";
 import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
 import { siteConfig } from "../content/siteConfig.ts";
 import "../styles/global.css";
 
@@ -10,45 +11,96 @@ type Props = {
   title?: string;
   description?: string;
   canonical?: string;
+  article?: {
+    title: string;
+    author: string;
+    pubDate: Date;
+  };
 };
 
 const {
   title: propTitle,
   description = siteConfig.description,
-  canonical = new URL(Astro.url.pathname, Astro.site).href,
+  canonical = new URL(Astro.url.pathname, Astro.site),
+  article,
 } = Astro.props;
 
+const ogTitle = propTitle ?? siteConfig.name;
 const title = propTitle ? `${propTitle} - ${siteConfig.name}` : siteConfig.name;
+
+const ogImage = new URL(siteConfig.ogImage, Astro.url);
+const ogImageAlt = siteConfig.ogImageAlt;
 ---
 
 <!doctype html>
 <html lang="en" class="scroll-smooth">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="canonical" href={canonical} />
-    <meta name="description" content={description} />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: light)"
-      content="#ffffff"
-    />
-    <meta
-      name="theme-color"
-      media="(prefers-color-scheme: dark)"
-      content="#000000"
-    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
     <link
       rel="alternate"
       type="application/rss+xml"
       title={siteConfig.name}
       href={new URL("rss.xml", Astro.site)}
     />
-    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="oklch(98.4% 0.003 247.858)"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="oklch(12.9% 0.042 264.695)"
+    />
+
+    <SEO
+      title={title}
+      canonical={canonical}
+      description={description}
+      author={article?.author ?? siteConfig.author}
+      openGraph={{
+        basic: {
+          type: "website",
+          url: Astro.url,
+          title: article?.title ?? ogTitle,
+          image: ogImage.toString(),
+          description,
+          locale: "en-US",
+          siteName: siteConfig.name,
+        },
+        image: {
+          url: ogImage.toString(),
+          type: "image/png",
+          width: 1260,
+          height: 2400,
+          alt: ogImageAlt,
+        },
+        ...(article
+          ? {
+              article: {
+                publishedTime: article.pubDate.toISOString(),
+                author: article.author,
+              },
+            }
+          : {}),
+      }}
+      twitter={{
+        card: "summary_large_image",
+        site: "@eckertalex_",
+        title: article?.title ?? ogTitle,
+        description,
+        image: ogImage,
+        imageAlt: ogImageAlt,
+      }}
+    />
+
     <ThemeHeadScript />
-    <title>{title}</title>
   </head>
   <body
     class="bg-slate-50 dark:bg-slate-950 pl-[calc(100vw-100%)] text-slate-950 dark:text-slate-50 antialiased"

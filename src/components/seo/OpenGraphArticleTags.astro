@@ -1,0 +1,11 @@
+---
+const { publishedTime, modifiedTime, author } = Astro.props.openGraph.article;
+---
+
+<meta property="article:published_time" content={publishedTime} />
+{
+  modifiedTime ? (
+    <meta property="article:modified_time" content={modifiedTime} />
+  ) : null
+}
+<meta property="article:author" content={author} />

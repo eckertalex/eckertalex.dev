@@ -3,6 +3,7 @@ import type { CollectionEntry } from "astro:content";
 import Prose from "../components/Prose.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Layout from "./Layout.astro";
+import { siteConfig } from "../content/siteConfig";
 
 type Props = {
   frontmatter: CollectionEntry<"blog">["data"];
@@ -11,7 +12,15 @@ type Props = {
 const { frontmatter } = Astro.props;
 ---
 
-<Layout title={frontmatter.title}>
+<Layout
+  title={frontmatter.title}
+  description={frontmatter.description}
+  article={{
+    title: frontmatter.title,
+    author: siteConfig.author,
+    pubDate: frontmatter.pubDate,
+  }}
+>
   <article class="flex flex-col gap-12">
     <header>
       <div
