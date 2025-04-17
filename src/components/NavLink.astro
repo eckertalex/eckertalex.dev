@@ -19,7 +19,7 @@ const activeClassName =
 
 <a
   href={href}
-  class={`${baseClassName} ${currentPath === href ? activeClassName : ""}`}
+  class={`${baseClassName} ${currentPath.startsWith(href) ? activeClassName : ""}`}
 >
   <slot />
 </a>
