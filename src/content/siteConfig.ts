@@ -10,6 +10,7 @@ export const siteConfig = {
   ogImage: "/og.png",
   ogImageAlt:
     "Profile card for Alexander Eckert with the tagline 'A developer who cares about the user' and a pink hexagonal logo on a dark background.",
+  umamiId: "e442207d-dee8-4e06-a7b0-fede02436e4e",
   links: {
     github: "https://github.com/eckertalex",
     linkedin: "https://linkedin.com/in/eckertalex",

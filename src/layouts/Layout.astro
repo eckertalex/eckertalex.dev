@@ -30,6 +30,8 @@ const title = propTitle ? `${propTitle} - ${siteConfig.name}` : siteConfig.name;
 
 const ogImage = new URL(siteConfig.ogImage, Astro.url);
 const ogImageAlt = siteConfig.ogImageAlt;
+
+const isProd = import.meta.env.MODE === "production";
 ---
 
 <!doctype html>
@@ -98,6 +100,17 @@ const ogImageAlt = siteConfig.ogImageAlt;
     />
 
     <ThemeHeadScript />
+
+    {
+      isProd ? (
+        <script
+          defer
+          is:inline
+          src="https://cloud.umami.is/script.js"
+          data-website-id={siteConfig.umamiId}
+        />
+      ) : null
+    }
   </head>
   <body
     class="bg-slate-50 dark:bg-slate-950 pl-[calc(100vw-100%)] text-slate-950 dark:text-slate-50 antialiased"
