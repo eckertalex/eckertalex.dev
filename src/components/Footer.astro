@@ -1,72 +1,115 @@
 ---
 import Logo from "./Logo.astro";
 import { siteConfig } from "../content/siteConfig.ts";
+import BlueskyIcon from "./icons/bluesky.svg";
+import GitHubIcon from "./icons/github.svg";
+import LinkedInIcon from "./icons/linkedin.svg";
+import RSSIcon from "./icons/rss.svg";
+import XIcon from "./icons/x.svg";
 ---
 
 <footer
   class="mt-16 border-t border-slate-200 dark:border-slate-700 pb-16 pt-24"
 >
-  <div class="grid grid-cols-2 gap-16 md:grid-cols-4">
-    <div class="col-span-2 flex flex-col space-y-6">
+  <div class="grid grid-cols-1 gap-16 md:grid-cols-2">
+    <div class="flex flex-col space-y-6">
       <Logo />
       <p class="text-slate-500 dark:text-slate-400 text-xl">
         {siteConfig.slogan}
       </p>
+      <div class="flex gap-4">
+        <a
+          href={`https://github.com/${siteConfig.socials.github}`}
+          class="cursor-pointer hover:text-slate-700 dark:hover:text-slate-300"
+          aria-label="GitHub"
+          data-umami-event="outbound-link-click"
+          data-umami-event-url={`https://github.com/${siteConfig.socials.github}`}
+        >
+          <GitHubIcon />
+        </a>
+        <a
+          href={`https://x.com/${siteConfig.socials.x}`}
+          class="hover:text-slate-700 dark:hover:text-slate-300"
+          aria-label="X"
+          data-umami-event="outbound-link-click"
+          data-umami-event-url={`https://x.com/${siteConfig.socials.x}`}
+        >
+          <XIcon />
+        </a>
+        <a
+          href={`https://bsky.app/profile/${siteConfig.socials.bluesky}`}
+          class="hover:text-slate-700 dark:hover:text-slate-300"
+          aria-label="Bluesky"
+          data-umami-event="outbound-link-click"
+          data-umami-event-url={`https://bsky.com/profile/${siteConfig.socials.bluesky}`}
+        >
+          <BlueskyIcon />
+        </a>
+        <a
+          href={`https://linkedin.com/in/${siteConfig.socials.linkedin}`}
+          class="hover:text-slate-700 dark:hover:text-slate-300"
+          aria-label="LinkedIn"
+          data-umami-event="outbound-link-click"
+          data-umami-event-url={`https://linkedin.com/in/${siteConfig.socials.linkedin}`}
+        >
+          <LinkedInIcon />
+        </a>
+        <a
+          href="/rss.xml"
+          class="hover:text-slate-700 dark:hover:text-slate-300"
+          aria-label="RSS"
+        >
+          <RSSIcon />
+        </a>
+      </div>
     </div>
     <div>
-      <div class="text-lg font-semibold tracking-tight">
-        {"General"}
-      </div>
-      <ul class="mt-4 flex flex-col gap-4">
+      <div class="text-lg font-semibold tracking-tight">{"Sitemap"}</div>
+      <ul class="mt-4 grid grid-cols-2 gap-x-8 gap-y-4">
         <li>
-          <a href="/impressum" class="text-slate-500 dark:text-slate-400">
+          <a
+            href="/"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+          >
+            {"Home"}
+          </a>
+        </li>
+        <li>
+          <a
+            href="/impressum"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+          >
             {"Impressum"}
           </a>
         </li>
         <li>
-          <a href="/datenschutz" class="text-slate-500 dark:text-slate-400">
+          <a
+            href="/blog"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+          >
+            {"Blog"}
+          </a>
+        </li>
+        <li>
+          <a
+            href="/datenschutz"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
+          >
             {"Datenschutz"}
           </a>
         </li>
         <li>
           <a
-            href={siteConfig.links.github}
-            class="text-slate-500 dark:text-slate-400"
+            href="/about"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
           >
-            {"GitHub"}
+            {"About"}
           </a>
-        </li>
-        <li>
-          <a
-            href={siteConfig.links.linkedin}
-            class="text-slate-500 dark:text-slate-400"
-          >
-            {"LinkedIn"}
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div>
-      <div class="text-lg font-semibold tracking-tight">
-        {"Sitemap"}
-      </div>
-      <ul class="mt-4 flex flex-col gap-4">
-        <li>
-          <a href="/" class="text-slate-500 dark:text-slate-400">{"Home"}</a>
-        </li>
-        <li>
-          <a href="/blog" class="text-slate-500 dark:text-slate-400">{"Blog"}</a
-          >
-        </li>
-        <li>
-          <a href="/about" class="text-slate-500 dark:text-slate-400"
-            >{"About"}</a
-          >
         </li>
         <li>
           <a
             href="/sitemap-index.xml"
-            class="text-slate-500 dark:text-slate-400"
+            class="text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
           >
             {"Sitemap"}
           </a>

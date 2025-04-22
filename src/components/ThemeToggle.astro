@@ -1,6 +1,6 @@
 ---
-import SunIcon from "./icons/SunIcon.astro";
-import MoonIcon from "./icons/MoonIcon.astro";
+import SunIcon from "./icons/sun.svg";
+import MoonIcon from "./icons/moon.svg";
 ---
 
 <button
@@ -20,7 +20,9 @@ import MoonIcon from "./icons/MoonIcon.astro";
     element.classList.toggle("dark");
 
     const isDark = element.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
+    const theme = isDark ? "dark" : "light";
+    localStorage.setItem("theme", theme);
+    umami.track("toggle-theme", { theme });
   };
 
   document

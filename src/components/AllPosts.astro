@@ -1,8 +1,9 @@
 ---
 import { getCollection } from "astro:content";
 import Prose from "../components/Prose.astro";
-import { excludeDrafts, sortPostsByPubDate } from "../utils/collections";
 import FormattedDate from "../components/FormattedDate.astro";
+import { excludeDrafts, sortPostsByPubDate } from "../utils/collections";
+import RSSIcon from "../components/icons/rss.svg";
 
 const allPosts = await getCollection("blog", excludeDrafts).then(
   sortPostsByPubDate,
@@ -14,21 +15,8 @@ const allPosts = await getCollection("blog", excludeDrafts).then(
     <h1 class="text-4xl font-extrabold tracking-tight lg:text-5xl">
       {"Latest"}
     </h1>
-    <a href="/rss.xml" class="flex items-center">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        class="mr-1 size-4 text-orange-500 dark:text-orange-400"
-        ><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"
-        ></path><circle cx="5" cy="19" r="1"></circle></svg
-      >
+    <a href="/rss.xml" class="flex items-center hover:underline">
+      <RSSIcon class="mr-1 size-4 text-orange-500 dark:text-orange-400" />
       <span>RSS</span>
     </a>
   </div>
