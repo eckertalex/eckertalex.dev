@@ -36,7 +36,8 @@
     "astro-meta-tags": "0.3.1",
     "prettier": "3.5.3",
     "prettier-plugin-astro": "0.14.1",
-    "sharp": "0.34.1"
+    "sharp": "0.34.1",
+    "wrangler": "4.13.1"
   },
   "engines": {
     "node": "22"
