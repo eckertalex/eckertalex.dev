@@ -15,6 +15,7 @@ type Props = {
     title: string;
     author: string;
     pubDate: Date;
+    modDate?: Date | undefined;
   };
 };
 
@@ -84,6 +85,7 @@ const isProd = import.meta.env.MODE === "production";
           ? {
               article: {
                 publishedTime: article.pubDate.toISOString(),
+                modifiedTime: article.modDate?.toISOString(),
                 author: article.author,
               },
             }

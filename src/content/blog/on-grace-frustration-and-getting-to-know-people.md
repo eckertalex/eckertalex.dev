@@ -1,9 +1,12 @@
 ---
 title: On Grace, Frustration, and Getting to Know People
 pubDate: 2025-04-08
-description: So what helps? Getting to know people. Actually talking to them. It sounds obvious when I write it down, but it’s the single most reliable thing that gets me back into a good headspace. Book a coffee chat. Pair on something technical. Hop on a quick call. Every time I do this, I walk away feeling more connected, more grounded. It becomes easier to give people grace when I’m reminded they’re not just Slack messages or PR comments—they’re humans, trying their best, just like I am.
+modTime: 2025-04-24
+description: Over the past few months, I’ve noticed that I get frustrated more frequently and more easily at work. I don't always show it, but inside, I find myself reacting more emotionally to decisions I don’t agree with. And it is exhausting. So what helps? Getting to know people. Actually talking to them.
 draft: false
 ---
+
+Over the past few months, I’ve noticed that I get frustrated more frequently and more easily at work. I don't always show it, but inside, I find myself reacting more emotionally to decisions I don’t agree with. And it is exhausting.
 
 So what helps?
 
@@ -41,13 +44,13 @@ There’s no silver bullet—just reaching out and talking to people. Building r
 
 ### Another thing that helps me: being vulnerable.
 
-I’m a pretty emotional person. I care a lot. I want things to be good. And sometimes that turns into tension and guardedness. I start to feel disconnected, overly critical, brittle. When I feel frustrated or misunderstood, my default is to double down and shield up. But I’ve learned that doesn’t serve me well.
+I feel things deeply, and I care a lot about getting things right. But sometimes that turns into tension and guardedness. I start to feel disconnected, overly critical, brittle. When I feel frustrated or misunderstood, my default is to double down and shield up. But I’ve learned that doesn’t serve me well.
 
 So I try to be honest. Being vulnerable—sharing when I don’t know something, admitting when I’m overwhelmed, asking for feedback, talking about things I’m unsure of—has been one of the best ways to defuse those reactions.
 
 It’s not easy. It feels risky. But it also opens the door for others to be vulnerable too. It shifts the dynamic. It makes it easier to trust each other. It reminds me that we’re all working through our own stuff. Everyone’s just trying to do a good job.
 
-Sometimes I’ll see a public message that rubs me the wrong way. Maybe I think it was worded poorly. Maybe I think it made our team look bad. My gut reaction is to judge. To stew a bit. But when I step back, I realize—I’m not great at this stuff either. I’ve written plenty of messages that didn’t land well. I’ve definitely made things worse by reacting too quickly.
+Sometimes I’ll see a public message that rubs me the wrong way. My gut reaction is to judge. But when I step back, I realize—I’m not great at this stuff either. I’ve written plenty of messages that didn’t land well. I’ve definitely made things worse by reacting too quickly.
 
 This stuff is hard. It doesn’t come naturally to me. But I’m working on it.
 
