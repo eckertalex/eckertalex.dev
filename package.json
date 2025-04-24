@@ -16,6 +16,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
+    "deploy": "wrangler pages deploy",
     "preview": "astro preview",
     "typecheck": "tsc --noEmit",
     "format": "pnpm exec prettier --write .",
