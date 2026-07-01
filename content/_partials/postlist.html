@@ -1,0 +1,11 @@
+{{ define "postlist" }}
+<ul class="post-list">
+    {{ range . }}
+    <li>
+        <time datetime="{{ .Frontmatter.Published }}">{{ formatDate .Frontmatter.Published }}</time>
+        <a class="post-title" href="{{ .CanonicalPath }}">{{ .Frontmatter.Title }}</a>
+        <p class="post-summary">{{ .Frontmatter.Description }}</p>
+    </li>
+    {{ end }}
+</ul>
+{{ end }}

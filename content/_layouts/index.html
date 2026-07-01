@@ -1,0 +1,14 @@
+{{ define "title" }}{{ .Site.Name }}{{ end }}
+{{ define "content" }}
+<section class="hero">
+    <h1>I'm Alexander</h1>
+    <p class="hero-intro">I write about software and the human side of building it.</p>
+</section>
+<section class="posts">
+    <div class="section-head">
+        <h2 class="section-title">Blog</h2>
+        {{ template "rsslink" . }}
+    </div>
+    {{ template "postlist" .Posts }}
+</section>
+{{ end }}

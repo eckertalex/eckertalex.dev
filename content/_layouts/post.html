@@ -1,0 +1,9 @@
+{{ define "content" }}
+<article>
+    <div class="post-header">
+        <time datetime="{{ .Frontmatter.Published }}">{{ formatDate .Frontmatter.Published }}</time>
+        <h1>{{ .Frontmatter.Title }}</h1>
+    </div>
+    <div class="prose">{{ .HTML }}</div>
+</article>
+{{ end }}

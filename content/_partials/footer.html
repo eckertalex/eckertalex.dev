@@ -1,0 +1,67 @@
+{{ define "footer" }}
+<footer>
+    <div class="footer-grid">
+        <div class="footer-about">
+            <a class="logo" href="/" aria-label="{{ .Site.Name }}">
+                <svg width="32" height="32" aria-hidden="true" focusable="false">
+                    <use href="/icons/sprite.svg#hexagon"></use>
+                </svg>
+                <span>{{ .Site.Name }}</span>
+            </a>
+            <p class="footer-tagline">{{ .Site.Description }}</p>
+            <ul aria-label="Social links">
+                <li>
+                    <a href="https://github.com/{{ .Site.Socials.GitHub }}" aria-label="GitHub">
+                        <svg width="24" height="24" aria-hidden="true" focusable="false">
+                            <use href="/icons/sprite.svg#github"></use>
+                        </svg>
+                    </a>
+                </li>
+                {{ if .Site.Socials.X }}
+                <li>
+                    <a href="https://x.com/{{ .Site.Socials.X }}" aria-label="X">
+                        <svg width="20" height="20" aria-hidden="true" focusable="false">
+                            <use href="/icons/sprite.svg#twitter-x"></use>
+                        </svg>
+                    </a>
+                </li>
+                {{ end }}
+                {{ if .Site.Socials.Bluesky }}
+                <li>
+                    <a href="https://bsky.app/profile/{{ .Site.Socials.Bluesky }}" aria-label="Bluesky">
+                        <svg width="20" height="20" aria-hidden="true" focusable="false">
+                            <use href="/icons/sprite.svg#bluesky"></use>
+                        </svg>
+                    </a>
+                </li>
+                {{ end }}
+                <li>
+                    <a href="https://linkedin.com/in/{{ .Site.Socials.LinkedIn }}" aria-label="LinkedIn">
+                        <svg width="24" height="24" aria-hidden="true" focusable="false">
+                            <use href="/icons/sprite.svg#linkedin"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li>
+                    <a href="/atom.xml" aria-label="Atom feed">
+                        <svg width="24" height="24" aria-hidden="true" focusable="false">
+                            <use href="/icons/sprite.svg#rss"></use>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <nav class="footer-sitemap" aria-label="Sitemap">
+            <h2>Sitemap</h2>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+                <li><a href="/impressum/">Impressum</a></li>
+                <li><a href="/datenschutz/">Datenschutz</a></li>
+                <li><a href="/sitemap.xml">Sitemap</a></li>
+            </ul>
+        </nav>
+    </div>
+    <p class="footer-copyright">{{ .Site.Copyright }}</p>
+</footer>
+{{ end }}

@@ -1,0 +1,9 @@
+{{ define "content" }}
+<section class="posts">
+    <div class="section-head">
+        <h1 class="page-title">{{ .Frontmatter.Title }}</h1>
+        {{ template "rsslink" . }}
+    </div>
+    {{ template "postlist" .Posts }}
+</section>
+{{ end }}

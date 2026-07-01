@@ -1,0 +1,18 @@
+{
+    "url": "https://eckertalex.dev",
+    "name": "eckertalex.dev",
+    "author": "Alexander Eckert",
+    "description": "Software engineer. Writing about code and the human side of it.",
+    "copyright": "All rights reserved © Alexander Eckert 2026",
+    "ogImage": "/og.png",
+    "ogImageAlt": "Profile card for Alexander Eckert reading 'Software, and the human side of building it.', with a pink hexagonal logo on a dark background.",
+    "locale": "en_US",
+    "umamiId": "e442207d-dee8-4e06-a7b0-fede02436e4e",
+    "umamiSrc": "https://umami.eckertalex.dev/script.js",
+    "socials": {
+        "github": "eckertalex",
+        "x": "eckertalex_",
+        "bluesky": "eckertalex.dev",
+        "linkedin": "eckertalex"
+    }
+}

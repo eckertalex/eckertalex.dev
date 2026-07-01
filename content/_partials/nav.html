@@ -1,0 +1,46 @@
+{{ define "navlinks" }}
+<li>
+    <a href="/"{{ if or (eq .CanonicalPath "/") (hasPrefix .CanonicalPath "/blog/") }} aria-current="page"{{ end }}>Blog</a>
+</li>
+<li>
+    <a href="/about/"{{ if eq .CanonicalPath "/about/" }} aria-current="page"{{ end }}>About</a>
+</li>
+{{ end }}
+
+{{ define "nav" }}
+<a class="skip-link" href="#skip">Skip to content</a>
+<header>
+    <a class="logo" href="/" aria-label="{{ .Site.Name }}">
+        <svg width="32" height="32" aria-hidden="true" focusable="false">
+            <use href="/icons/sprite.svg#hexagon"></use>
+        </svg>
+        <span>{{ .Site.Name }}</span>
+    </a>
+    <nav aria-label="Primary">
+        <ul class="nav-links">
+            {{ template "navlinks" . }}
+        </ul>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle color theme">
+            <svg class="sun" width="20" height="20" aria-hidden="true" focusable="false">
+                <use href="/icons/sprite.svg#sun"></use>
+            </svg>
+            <svg class="moon" width="20" height="20" aria-hidden="true" focusable="false">
+                <use href="/icons/sprite.svg#moon"></use>
+            </svg>
+        </button>
+        <button id="menu-toggle" class="menu-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="mobile-menu">
+            <svg class="open" width="24" height="24" aria-hidden="true" focusable="false">
+                <use href="/icons/sprite.svg#menu"></use>
+            </svg>
+            <svg class="close" width="24" height="24" aria-hidden="true" focusable="false">
+                <use href="/icons/sprite.svg#x"></use>
+            </svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="mobile-menu" hidden>
+        <ul>
+            {{ template "navlinks" . }}
+        </ul>
+    </div>
+</header>
+{{ end }}
