@@ -11,9 +11,7 @@ type Config struct {
 	URL         string  `json:"url"`
 	Name        string  `json:"name"`
 	Author      string  `json:"author"`
-	AuthorEmail string  `json:"authorEmail,omitempty"`
 	Description string  `json:"description"`
-	Copyright   string  `json:"copyright"`
 	OGImage     string  `json:"ogImage"`
 	OGImageAlt  string  `json:"ogImageAlt"`
 	Locale      string  `json:"locale"`

@@ -20,14 +20,7 @@ type urlset struct {
 func writeSitemap(c *Collection) error {
 	var entries []urlEntry
 	add := func(p *Page) {
-		lastmod := p.Frontmatter.Updated
-		if lastmod == "" {
-			lastmod = p.Frontmatter.Published
-		}
-		if iso, err := formatRFC3339(lastmod); err == nil {
-			lastmod = iso
-		}
-		entries = append(entries, urlEntry{Loc: Site.URL + p.CanonicalPath, Lastmod: lastmod})
+		entries = append(entries, urlEntry{Loc: Site.URL + p.CanonicalPath, Lastmod: formatRFC3339(p.LastModified())})
 	}
 
 	for _, p := range c.Indexes {

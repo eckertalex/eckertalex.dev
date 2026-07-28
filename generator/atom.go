@@ -38,36 +38,19 @@ type feed struct {
 	Entries []entry  `xml:"entry"`
 }
 
-func formatRFC3339(dateStr string) (string, error) {
-	t, err := time.Parse("2006-01-02", dateStr)
-	if err != nil {
-		return "", err
-	}
-	return t.UTC().Format(time.RFC3339), nil
+func formatRFC3339(t time.Time) string {
+	return t.UTC().Format(time.RFC3339)
 }
 
 func writeAtom(collection *Collection) error {
 	entries := make([]entry, 0, len(collection.Posts))
-	var latestUpdated string
+	var latest time.Time
 
 	for _, p := range collection.Posts {
 		postLink := Site.URL + "/blog/" + p.Slug + "/"
 
-		published, err := formatRFC3339(p.Frontmatter.Published)
-		if err != nil {
-			return err
-		}
-
-		updated := published
-		if p.Frontmatter.Updated != "" {
-			updated, err = formatRFC3339(p.Frontmatter.Updated)
-			if err != nil {
-				return err
-			}
-		}
-
-		if updated > latestUpdated {
-			latestUpdated = updated
+		if p.LastModified().After(latest) {
+			latest = p.LastModified()
 		}
 
 		entries = append(entries, entry{
@@ -78,14 +61,14 @@ func writeAtom(collection *Collection) error {
 				Type: "text/html",
 			},
 			ID:        postLink,
-			Published: published,
-			Updated:   updated,
+			Published: formatRFC3339(p.PublishedAt),
+			Updated:   formatRFC3339(p.LastModified()),
 			Summary:   p.Frontmatter.Description,
 		})
 	}
 
-	if latestUpdated == "" {
-		latestUpdated = time.Now().UTC().Format(time.RFC3339)
+	if latest.IsZero() {
+		latest = time.Now()
 	}
 
 	feed := feed{
@@ -104,7 +87,7 @@ func writeAtom(collection *Collection) error {
 				Type: "text/html",
 			},
 		},
-		Updated: latestUpdated,
+		Updated: formatRFC3339(latest),
 		Author: person{
 			Name: Site.Author,
 		},

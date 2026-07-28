@@ -41,12 +41,12 @@ Body in Markdown.
 - `title` and `published` (`YYYY-MM-DD`) are required on every page. Blog posts
   (anything under `content/blog/`) additionally require a `description`, which feeds
   the `<meta>`/Open Graph tags and the Atom feed `<summary>`.
-- `updated` and `layout` are optional. The layout is otherwise inferred from the path.
+- `updated` is optional. The layout is inferred from the path.
 - Directories starting with `_` (e.g. `_layouts`, `_partials`) are not published.
 
 Layouts and partials are Go `html/template` files in `content/_layouts/` and
 `content/_partials/`. Site-wide identity (URL, author, socials, analytics) lives in
-`generator/config.go`.
+`config.json`.
 
 A build produces `dist/` with the rendered pages, `atom.xml`, `sitemap.xml`, and
 `robots.txt`, plus everything copied verbatim from `public/` (stylesheet, fonts, favicon, og image).

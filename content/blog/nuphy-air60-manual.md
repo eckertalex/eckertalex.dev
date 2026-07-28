@@ -40,15 +40,15 @@ Air60 BT5.0 = Bluetooth 5.0, Air60 BT3.0 = Bluetooth 3.0
 
 - <kbd>Fn</kbd>+<kbd>❮</kbd>: Switch backlight effect
 - <kbd>Fn</kbd>+<kbd>❯</kbd>: Switch backlight color
-- <kbd>Fn</kbd>+<kbd>ᐱᐯ</kbd>: Backlight brightness + -{" "}
-- <kbd>Fn</kbd>+<kbd>,.</kbd>: Backlight speed + -{" "}
+- <kbd>Fn</kbd>+<kbd>ᐱᐯ</kbd>: Backlight brightness + -
+- <kbd>Fn</kbd>+<kbd>,.</kbd>: Backlight speed + -
 
 ### Sidelight Settings
 
 - <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>❯</kbd>: Switch sidelight effect
 - <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>❮</kbd>: Switch sidelight color
-- <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>ᐱᐯ</kbd>: Sidelight brightness + -{" "}
-- <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>,.</kbd>: Sidelight speed + -{" "}
+- <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>ᐱᐯ</kbd>: Sidelight brightness + -
+- <kbd>Fn</kbd>+<kbd>?</kbd>+<kbd>,.</kbd>: Sidelight speed + -
 
 ### Sleep Mode Settings
 

@@ -24,7 +24,6 @@ type Frontmatter struct {
 	Description string `json:"description,omitempty"`
 	Published   string `json:"published"`
 	Updated     string `json:"updated,omitempty"`
-	Layout      string `json:"layout,omitempty"`
 }
 
 type Page struct {
@@ -34,10 +33,19 @@ type Page struct {
 	SourcePath    string
 	CanonicalPath string    // site URL path, e.g. "/blog/foo/"
 	PublishedAt   time.Time // parsed Frontmatter.Published
+	UpdatedAt     time.Time // parsed Frontmatter.Updated, zero if absent
 	Markdown      string
 	HTML          template.HTML
 	IsPost        bool // under content/blog/, not _index.md
 	IsIndex       bool // _index.md (homepage or a section index)
+}
+
+// LastModified is UpdatedAt if the page declares one, else PublishedAt.
+func (p *Page) LastModified() time.Time {
+	if !p.UpdatedAt.IsZero() {
+		return p.UpdatedAt
+	}
+	return p.PublishedAt
 }
 
 type Collection struct {
@@ -145,6 +153,15 @@ func buildCollection() (*Collection, error) {
 			continue
 		}
 
+		var updatedAt time.Time
+		if fm.Updated != "" {
+			updatedAt, err = time.Parse("2006-01-02", fm.Updated)
+			if err != nil {
+				errs = append(errs, fmt.Errorf("%s: invalid updated date %q: %w", path, fm.Updated, err))
+				continue
+			}
+		}
+
 		page := &Page{
 			Frontmatter:   fm,
 			Slug:          slug,
@@ -152,6 +169,7 @@ func buildCollection() (*Collection, error) {
 			SourcePath:    path,
 			CanonicalPath: canonicalPath(path),
 			PublishedAt:   publishedAt,
+			UpdatedAt:     updatedAt,
 			Markdown:      body,
 			IsPost:        isPost,
 			IsIndex:       isIndex,
@@ -221,7 +239,7 @@ type renderData struct {
 	Site  Config
 	Prod  bool
 	Posts []*Page
-	Pages []*Page
+	Year  int
 }
 
 func Build(prod bool) error {
@@ -232,6 +250,7 @@ func Build(prod bool) error {
 	if err := json.Unmarshal(data, &Site); err != nil {
 		return fmt.Errorf("config.json: %w", err)
 	}
+	buildYear := time.Now().Year()
 
 	collection, err := buildCollection()
 	if err != nil {
@@ -271,18 +290,13 @@ func Build(prod bool) error {
 		switch {
 		case p.CanonicalPath == "/":
 			layout = "index"
-		case p.CanonicalPath == "/blog/":
-			layout = "blog"
 		case p.CanonicalPath == "/404.html":
 			layout = "404"
 		case p.IsPost:
 			layout = "post"
 		}
-		if p.Frontmatter.Layout != "" {
-			layout = p.Frontmatter.Layout
-		}
 
-		out, err := tmpls.Render(layout, renderData{Page: p, Site: Site, Prod: prod, Posts: collection.Posts, Pages: collection.Pages})
+		out, err := tmpls.Render(layout, renderData{Page: p, Site: Site, Prod: prod, Posts: collection.Posts, Year: buildYear})
 		if err != nil {
 			return fmt.Errorf("%s: %w", p.SourcePath, err)
 		}

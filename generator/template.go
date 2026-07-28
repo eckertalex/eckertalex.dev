@@ -12,13 +12,8 @@ type Templates struct {
 	partials *template.Template
 }
 
-// formatDate turns a "2006-01-02" date into "Jan 2, 2006". On a parse
-// failure it returns the input unchanged.
-func formatDate(s string) string {
-	t, err := time.Parse("2006-01-02", s)
-	if err != nil {
-		return s
-	}
+// formatDate turns a time.Time into "Jan 2, 2006".
+func formatDate(t time.Time) string {
 	return t.Format("Jan 2, 2006")
 }
 
