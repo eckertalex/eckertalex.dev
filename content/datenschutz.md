@@ -2,7 +2,7 @@
 { "title": "Datenschutzerklärung", "published": "2020-09-01" }
 ---
 
-## 1. Name und Kontaktdaten des für die Verarbeitung Verantwortlichen
+## 1. Name und Kontaktdaten des für die Verarbeitung Verantwortlichen {#1-name-und-kontaktdaten-des-fuer-die-verarbeitung-verantwortlichen}
 
 Diese Datenschutz-Information gilt für die Datenverarbeitung durch:
 Inhaber: Alexander Eckert
@@ -40,7 +40,7 @@ Sofern Ihre personenbezogenen Daten auf Grundlage von berechtigten Interessen ge
 
 Wir bedienen uns im Übrigen geeigneter technischer und organisatorischer Sicherheitsmaßnahmen, um Ihre Daten gegen zufällige oder vorsätzliche Manipulationen, teilweisen oder vollständigen Verlust, Zerstörung oder gegen den unbefugten Zugriff Dritter zu schützen. Unsere Sicherheitsmaßnahmen werden entsprechend der technologischen Entwicklung fortlaufend verbessert.
 
-## 8. Aktualität und Änderung dieser Datenschutzerklärung
+## 8. Aktualität und Änderung dieser Datenschutzerklärung {#8-aktualitaet-und-aenderung-dieser-datenschutzerklaerung}
 
 Diese Datenschutzerklärung ist aktuell gültig und hat den Stand Mai 2018. Durch die Weiterentwicklung unserer Website und Angebote darüber oder aufgrund geänderter gesetzlicher beziehungsweise behördlicher Vorgaben kann es notwendig werden, diese Datenschutzerklärung zu ändern. Die jeweils aktuelle Datenschutzerklärung kann jederzeit auf der Website unter [https://eckertalex.dev/datenschutz](https://eckertalex.dev/datenschutz) von Ihnen abgerufen und ausgedruckt werden.
 

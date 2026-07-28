@@ -57,7 +57,10 @@ var md = goldmark.New(
 			Position: anchor.After,
 		},
 	),
-	goldmark.WithParserOptions(parser.WithAutoHeadingID()),
+	// WithHeadingAttribute lets `## Heading {#custom-id}` override the
+	// auto-generated ID; used for headings whose text goldmark's default
+	// ASCII-only slugifier would otherwise mangle (see the German pages).
+	goldmark.WithParserOptions(parser.WithAutoHeadingID(), parser.WithHeadingAttribute()),
 	goldmark.WithRendererOptions(html.WithUnsafe()),
 )
 
