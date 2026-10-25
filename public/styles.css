@@ -580,6 +580,21 @@ footer ul[aria-label="Social links"] a:hover {
     font-style: italic;
 }
 
+/* Repeats a sentence from the body, so the markup sets aria-hidden. */
+.prose .pull-quote {
+    border-block: 3px solid var(--accent);
+    padding-block: 1rem;
+    margin-block: 2.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: -0.02em;
+}
+
+.prose .pull-quote p {
+    margin: 0;
+}
+
 .prose hr {
     border: none;
     border-top: 1px solid var(--border);
