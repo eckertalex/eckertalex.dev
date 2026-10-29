@@ -3,26 +3,26 @@
 The source for [eckertalex.dev](https://eckertalex.dev), a static site built by a
 small custom generator written in Go (stdlib + [goldmark](https://github.com/yuin/goldmark)).
 
-## Requirements
+## Build
 
-- Go (see `.tool-versions`)
+`build.sh` compiles the generator into `build/generator` and generates the site
+into `dist/`. No make, no build system.
 
-## Commands
+```sh
+./build.sh                          # build/generator, then the site into dist/
+./build.sh release                  # production site (--prod adds analytics)
+./build.sh run                      # serve dist/ at http://localhost:3000
+./build.sh run -- serve --port 8080 # anything after -- goes to the generator
+./build.sh test
+./deploy.sh                         # production site, then wrangler pages deploy
+```
 
-Run `make help` to list everything. The common ones:
+The generator takes `build [--prod]` and `serve [--port N]`. `serve` regenerates
+the site (without analytics), then watches `content/`, `public/`, and `config.json`,
+rebuilds on any change, and reloads open browser tabs. Changes to the generator
+itself need a restart.
 
-| Command        | What it does                                        |
-| -------------- | --------------------------------------------------- |
-| `make gen`     | Build the site into `dist/`                         |
-| `make serve`   | Build, then serve `dist/` at <http://localhost:3000> |
-| `make build`   | Compile the binary into `bin/generator`             |
-| `make deploy`  | Production build (`--prod`) then `wrangler pages deploy` |
-| `make audit`   | gofmt check, `go vet`, `go test`, `go mod verify`   |
-| `make test`    | Run the tests                                       |
-| `make clean`   | Remove `bin/`, `tmp/`, and `dist/`                  |
-
-The binary itself takes `build [--prod]` and `serve` subcommands; `serve` accepts `--port`.
-`--prod` enables the analytics script (omitted from local builds).
+Needs: Go and wrangler from `.tool-versions`.
 
 ## Content
 

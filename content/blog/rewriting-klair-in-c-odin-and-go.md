@@ -1,6 +1,6 @@
 ---
 {
-    "title": "Rewriting klair in C, Odin and Go",
+    "title": "rewriting klair in C, Odin and Go",
     "description": "How my Elgato Key Light tool went from a Bash script to a Go TUI to C, and why I'm writing it three more times.",
     "published": "2026-10-25"
 }
@@ -32,7 +32,7 @@ The new C version is meant to be portable, support Windows, and have a proper Ha
 
 Does klair need a platform layer and Windows support? Not really. But I can learn how one would do this with a real project that I use, instead of a toy example. It's reinventing the wheel, and I think that's a good thing.
 
-And then I thought, let's compare this with a Go version. I'm still more comfortable with Go, and it should be quick to write. I've also been curious about Odin, and I felt the papercuts of C. So I wanted to see if Odin is a better fit for me.
+And then I thought, let's compare this with a Go version. I'm still more comfortable with Go than with C or Odin, and it should be quick to write. I've also been curious about Odin, and I felt the papercuts of C. So I wanted to see if Odin is a better fit for me.
 
 So I decided to write klair in all three languages, each one fully featured like the original C version, and see how something like this ports to Odin and whether I like it better. The three versions also wait on the lights in three different ways. Go has a good standard library, so I use it: a goroutine per light, and the runtime does the waiting. Odin has `core:nbio`, an event loop that already uses whatever each platform does best under the hood. C doesn't give me that. Its standard library has no sockets at all, so I'd write the event loop myself, with one backend per OS (`io_uring` on Linux, `kqueue` on macOS and `IOCP` on Windows). And that's what I _want_ to implement, to learn how each of them works.
 

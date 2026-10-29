@@ -52,5 +52,5 @@ func usage() {
 commands:
   build    build the site into dist/
     --prod   production build (enables analytics)
-  serve    build, then serve dist/ over http`)
+  serve    build, serve dist/ over http, rebuild and reload on changes`)
 }
