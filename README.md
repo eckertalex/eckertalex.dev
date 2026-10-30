@@ -5,16 +5,15 @@ small custom generator written in Go (stdlib + [goldmark](https://github.com/yui
 
 ## Build
 
-`build.sh` compiles the generator into `build/generator` and generates the site
-into `dist/`. No make, no build system.
+`build.sh` builds `build/generator` and the site in `dist/`.
 
 ```sh
-./build.sh                          # build/generator, then the site into dist/
-./build.sh release                  # production site (--prod adds analytics)
-./build.sh run                      # serve dist/ at http://localhost:3000
-./build.sh run -- serve --port 8080 # anything after -- goes to the generator
+./build.sh              # generator and site
+./build.sh release      # production site, with analytics
+./serve.sh              # http://localhost:3000
+./serve.sh --port 8080
 ./build.sh test
-./deploy.sh                         # production site, then wrangler pages deploy
+./deploy.sh             # production build, then wrangler
 ```
 
 The generator takes `build [--prod]` and `serve [--port N]`. `serve` regenerates
